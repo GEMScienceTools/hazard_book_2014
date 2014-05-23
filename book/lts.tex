@@ -1,0 +1,69 @@
+%
+\index{Logic-tree}
+The logic-tree is an integral component of a PSHA input model for the 
+OpenQuake-engine. An input model always contains a logic tree structure 
+which describes the epistemic uncertainties associated with the construction 
+of the seismic source model and a logic-tree used to formally specify 
+epistemic uncertainties related to \gls{acr:gsim} models to be used in 
+different tectonic regions.
+
+This Chapter is dedicated to the description of the basic theory behind 
+logic-trees and to the delineation of how logic-trees are implemented 
+into the OpenQuake-engine.
+%
+% ..............................................................................
+\section{Introduction (meaning and interpretation)}
+The use of logic-trees to account for epistemic uncertainties in a probabilistic
+seismic hazard analysis was originally proposed by 
+\cite{kulkarni84}
+%
+Logic-trees are nowadays an essential component of a \gls{acr:psha} input
+model. 
+%
+% ..............................................................................
+\section{The OpenQuake-engine logic-tree structure}
+%
+The \gls{acr:oqe} provides with the user a flexible and modular methodology 
+to create model specific logic-tree structures. Logic-trees are defined as a
+set of linked modules which starting from the roots get to the uppermost 
+branches.
+%
+% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+\subsection{The seismic source model logic tree}
+The seismic source model logic tree handles the epistemic uncertainties
+related to the definition of geometry, position and seismicity occurrence 
+properties of seismic sources. 
+%
+\subsubsection{Supported epistemic uncertainties}
+
+\begin{description}
+\item [Source model] models the uncertainty on seismic source model e.g. models
+with different geometries of sources covering the same region.
+\item [maxMagGRRelative]
+\item [bGRRelative] models relative uncertainty on the b-value of a
+double-truncated Gutenberg-Richter relationship.
+\item [abGRAbsolute]
+\item [maxMagGRAbsolute]
+\end{description}
+%
+% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+\subsection{The ground-motion model logic tree}
+%
+\subsubsection{Supported epistemic uncertainties}
+Currently the only epistemic uncertainty allowed for the \gls{acr:gsim}
+logic-tree.
+%
+% ..............................................................................
+\section{Logic tree processing}
+The \gls{acr:oqe} currently provides two distinct ways to process logic-trees
+%
+\subsection{Full-path enumeration}
+Full-path enumeration is the simplest logic-tree processing methodology
+implemented. The use of this methodology is possible only when the logic tree
+structure is relatively simple i.e. the number of end branches is small. 
+%
+\subsection{Monte Carlo sampling}
+Monte Carlo sampling is the processing methodology 
+%
+\subsection{Logic tree pruning/collapsing}
+\subsection{Calculation of mean and percentiles/quantiles}

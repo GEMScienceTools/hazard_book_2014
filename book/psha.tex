@@ -1,0 +1,78 @@
+This chapter contains a general introduction to \gls{acr:sha} and a 
+description of the main concepts needed to understand the hazard calculation 
+methodologies implemented in the OpenQuake-engine.
+
+%\Gls{psha} is a methodology to compute the probability that ground motion, 
+%for a site or region, will exceed a given level of intensity in a specified 
+%time period. Originally formulated in the classic works of \cite{cornell1968} 
+%and \cite{esteva1968}, the fundamental theory of \gls{acr:psha} has remained 
+%robust. 
+%Over the last four decades there have been many developments that have 
+%increased 
+%the accuracy and rigour of the process, particularly with respect to the 
+%treatment of uncertainties.
+%
+% ..............................................................................
+\section{Common concepts}
+%
+\subsection{Magnitude-frequency distributions}
+\index{Magnitude-frequency distribution}
+%
+In statistics a distribution represents an arrangment of the 
+
+The OpenQuake-engine supports the following \glspl{acr:mfd}:
+\begin{itemize}
+    \item Double-truncated Gutenberg-Richter;
+    \item Evenly-spaced;
+    \item Characteristic \cite{youngs1985}
+\end{itemize}
+%
+% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+\subsection{Magnitude-scaling relationships}
+%
+\glspl{acr:msr} - a fundamental component of a seismic hazard analysis - are 
+empirical functions linking independent an independent variable (e.g. 
+magnitude) to a parameter describing some properties of the earthquake 
+rupture geometry (e.g. area or length).
+%
+% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+\subsection{Ground-motion prediction equations}
+\index{Ground-motion prediction equation}
+A \gls{acr:gmpe} is an empirical relationship which associates a number of 
+predictive 
+%
+% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+\subsection{Local soil conditions}
+%
+% ..............................................................................
+\section{Methodologies for seismic hazard analysis}
+\index{Seismic hazard analysis}
+The hazard integral as implemented in the \gls{acr:oqe}
+
+\cite{cornell1968}
+\cite{mcguire2004}
+%
+% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+\subsection{Scenario-based Hazard Analysis}
+\index{Seismic hazard analysis!Scenario-based}
+%
+% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+%
+\subsection{Classical Probabilistic Seismic Hazard Analysis}
+\index{Seismic hazard analysis!Classical PSHA}
+%
+% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+\subsection{Event-Based Probabilistic Seismic Hazard Analysis}
+\index{Seismic hazard analysis!Event-based PSHA}
+%
+% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+\subsection{Disaggregation}
+\index{Seismic hazard analysis!Disaggregation}
+%
+% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+\section{What's missing}
+\subsection{Vector based PSHA}
+\index{Seismic hazard analysis!Vector-based PSHA}
+\subsection{PFDHA}
+\index{Seismic hazard analysis!Probabilistic fault displacement hazard analysis}
+\subsection{PSHA using site-specific transfer functions}
