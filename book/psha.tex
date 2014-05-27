@@ -219,9 +219,9 @@ stochastic event sets. These can then be joined together to form a stochastic ev
 duration to provide a stable estimate of the rates of ground motion exceedance.
 
 \section{Disaggregation analysis}
-Goal of a disaggregation analysis is to investigate how the different earthquake ruptures defined in a source model
-contribute to the probability of exceeding a certain ground motion parameter level $x$ at a given site. Given the very large number
-of earthquake ruptures associated with a source model, contributions cannot be investigated on a rupture by
+The disaggregation analysis allows investigating how the different earthquake ruptures defined in a source model
+contribute to the probability of exceeding a certain ground motion level $x$ at a given site. Given the very
+large number of earthquake ruptures associated with a source model, contributions cannot be investigated on a rupture by
 rupture basis but a classification scheme is used instead. Ruptures are classified in terms of the following parameters:
 \begin{itemize}
 	\item magnitude ($M$)
@@ -229,20 +229,22 @@ rupture basis but a classification scheme is used instead. Ruptures are classifi
 	\item longitude and latitude of rupture surface-projection closest point ($\lambda$, $\phi$)
 	\item tectonic region type ($TRT$)
 \end{itemize}
-The above parameters (magnitude, distance, longitude, latitude, tectonic region type) effectively define a 5-dimensional
-model space which is discretized into bins. Each rupture in a source model is then associated to a specific bin
-according to its properties. The ground motion distribution is also discretized into a number of $\epsilon$ bins,
-where $\epsilon$ is the difference, in terms of number of total standar deviations, between $x$ and the mean ground
-motion $\mu$ as predicted by the ground motion model, that is:
+For each earthquake rupture, the associated conditional probability of exceedance - $P(X \ge x | T, rup)$ - is computed
+for different $\epsilon$ bins, where $\epsilon$ is the difference, in terms of number of total standar deviations,
+between $x$ and the mean ground motion $\mu$ as predicted by the ground motion model, that is:
 \begin{equation}
-\epsilon = \frac{x - \mu}{\sigma_{Tot}}
+\epsilon = \frac{x - \mu}{\sigma_{total}}
 \end{equation}
-For all ruptures associated to a given model space bin $\bm{m} = (M, r_{jb}, \lambda, \phi, TRT)$
-and for a given $\epsilon$ bin, the probability of exceeding level $x$ at least once in a time span $T$ is computed using equation
-\ref{eq:hazard_eq_poiss}, that is:
+The disaggregation in terms of $\epsilon$ allows investigating what are the regions of the ground motion distributions
+that are contributing the most to the probability of exceedance.\\
+The rupture parameters ($M$, $r_{jb}$, $\lambda$, $\phi$, $TRT$) together with the $\epsilon$ parameter effectively
+create a 6-dimensional model space which, discretized into a number of bins, is used to classify the probability
+of exceedance for different combination of rupture parameters and $\epsilon$ values.\\
+For a given model space bin $\bm{m} = (M, r_{jb}, \lambda, \phi, TRT, \epsilon)$ the probability of
+exceeding level $x$ at least once in a time span $T$ is computed using equation \ref{eq:hazard_eq_poiss}, that is:
 \begin{align}
 \label{eq:disagg}
-P(X > x | T, \epsilon, \bm{m}) =
+P(X > x | T, \bm{m}) =
 	1 - \prod_{i=1}^{I}\prod_{j=1}^{J}
 	\begin{cases} (1 - P_{rup_{j}}(n \ge 1 | T))^{P(X \ge x | rup_{j}, \epsilon)} & \mbox{if}\;rup_{j}\;\in\;\bm{m}\\
 			      1 & \mbox{if}\;rup_{j}\;\notin\;\bm{m}
@@ -251,11 +253,38 @@ P(X > x | T, \epsilon, \bm{m}) =
 
 \subsection{Disaggregation histograms}
 Disaggregation values as given by equation \ref{eq:disagg} can be aggregated in order to investigate earthquake rupture
-contributions over a reduced model space. Indicating with $\bm{M}$, $\bm{r_{jb}}$, $\bm{\lambda}$, $\bm{\phi}$, and $\bm{\epsilon}$
-the 5 dimensions of the space used to discretize the rupture scenarios
+contributions over a reduced model space.\\
 Magnitude disaggregation can be obtained as:
 \begin{equation}
-P(X > x | T, M) = 1 - \prod_{(\forall\;M\in\;\bm{M})}\prod_{(\forall\;r_{jb}\in\;\bm{r_{jb}})}\prod_{(\forall\;\lambda\in\;\bm{\lambda})}\prod_{(\forall\;\phi\in\;\bm{\phi})}
+P(X > x | T, M) = 1 -\prod_{r_{jb}}\prod_{\lambda}\prod_{\phi}\prod_{TRT} \prod_{\epsilon}(1 - P(X > x | T, \bm{m}))
+\end{equation}
+Distance disaggregation:
+\begin{equation}
+P(X > x | T, r_{jb}) = 1 -\prod_{M}\prod_{\lambda}\prod_{\phi}\prod_{TRT} \prod_{\epsilon}(1 - P(X > x | T, \bm{m}))
+\end{equation}
+Tectonic region type disaggregation:
+\begin{equation}
+P(X > x | T, TRT) = 1 -\prod_{M}\prod_{r_{jb}}\prod_{\lambda}\prod_{\phi} \prod_{\epsilon}(1 - P(X > x | T, \bm{m}))
+\end{equation}
+Magnitude-Distance disaggregation:
+\begin{equation}
+P(X > x | T, M, r_{jb}) = 1 -\prod_{\lambda}\prod_{\phi}\prod_{TRT}\prod_{\epsilon}(1 - P(X > x | T, \bm{m}))
+\end{equation}
+Magnitude-Distance-Epsilon disaggregation:
+\begin{equation}
+P(X > x | T, M, r_{jb}, \epsilon) = 1 -\prod_{\lambda}\prod_{\phi}\prod_{TRT}(1 - P(X > x | T, \bm{m}))
+\end{equation}
+Longitude-Latitude disaggregation:
+\begin{equation}
+P(X > x | T, \lambda, \phi) = 1 -\prod_{M}\prod_{r_{jb}}\prod_{TRT}\prod_{\epsilon}(1 - P(X > x | T, \bm{m}))
+\end{equation}
+Longitude-Latitude-Magnitude disaggregation:
+\begin{equation}
+P(X > x | T, \lambda, \phi, M) = 1 -\prod_{r_{jb}}\prod_{TRT}\prod_{\epsilon}(1 - P(X > x | T, \bm{m}))
+\end{equation}
+Longitude-Latitude-Tectonic Region Type disaggregation:
+\begin{equation}
+P(X > x | T, \lambda, \phi, TRT) = 1 -\prod_{M}\prod_{r_{jb}}\prod_{\epsilon}(1 - P(X > x | T, \bm{m}))
 \end{equation}
 
 %This chapter contains a general introduction to \gls{acr:sha} and a 
