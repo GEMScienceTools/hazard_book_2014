@@ -6,9 +6,9 @@ known as ground motion models or \glspl{acr:gmpe}) are implemented in the
 % ..............................................................................
 \section{Introduction}
 %
-\glspl{groundshakingintensitymodel} are empirical equations that - given a 
-small set of parameters 
-- compute a value representative value of the shaking intensity (or any other 
+\Glspl{groundshakingintensitymodel} are empirical equations that - given a 
+set of parameters - compute a value representative value of the shaking 
+intensity (or any other 
 effect produced by an earthquake such as fault displacement) together with 
 an associated uncertainty. 
 %
@@ -25,18 +25,21 @@ $X_{es}$ is the vector of explanatory (or independent) variables, $\theta$
 is the vector of model coefficients and $\Delta$ is a random variable 
 describing the overall variability of the ground shaking intensity at 
 the site.
-%
+
 The selection of independent variables and the definition of the structure 
 of the equation is usually done on the basis of physical principles and 
 basic descriptions of the earthquake process, the latter
-intended as the combination of a rupturing event and the synchronous 
+intended as the combination of a rupturing occurrence, the synchronous 
 radiation of seismic waves and their propagation to a site.
 %
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 \subsection{Main predictor variables}
 \index{Ground-motion prediction equation!Predictor variables}
+In the current section we give a brief overview of the most important predictor 
+supported by the \gls{acr:oqe}.
 %
 \subsubsection{Magnitude}
+\index{Ground-motion prediction equation!predictor variables!Magnitude}
 Moment magnitude \parencite{hanks1979} is the magnitude typology 
 preponderantly used today. 
 %
@@ -45,14 +48,13 @@ It is up to the user to ensure that the magnitude used to define earthquake
 occurrence in the \gls{seismicsourcemodel} is consistent with the one used 
 in the selected \glspl{groundshakingintensitymodel}.
 %
-%
-% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 \subsubsection{Distance}
-\index{Ground-motion prediction equation!Source-site distances}
+\index{Ground-motion prediction equation!predictor variables!Source-site distance}
 %
 The OpenQuake-engine supports almost all the most common rupture-site 
 distance metrics used by the most recent and complex 
-\glspl{groundshakingintensitymodel}. 
+\glspl{groundshakingintensitymodel} (see \ref{tab:distances} for a 
+comprehensive list).
 %
 \begin{table}[!b]
 \centering
@@ -72,22 +74,27 @@ Top-edge depth & Z$_{tor}$ & Depth to the top edge of the rupture \\
 \hline
 \end{tabular}
 \caption{Rupture-site distances supported by the \gls{acr:oqe}.}
+\label{tab:distances}
 \end{table}
 %
-\paragraph{Calculation of distances}
-\index{Ground-motion prediction equation!Calculation of distances}
+The calculation of distances within the hazard component of the \gls{acr:oqe} 
+is perfomed assuming a spherical earth with a radius of 6371.0 km. 
 %
-% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 \subsubsection{Rupture mechanism}
 \index{Ground-motion prediction equation!Rupture mechanism}
+The rupturing mechanism has been introduced as a predictor variable only in 
+recent time. Many \gls{acr:gsim} 
 %
 \subsubsection{V$_{S,30}$}
-\index{Ground-motion prediction equation!Rupture mechanism}
+\index{Ground-motion prediction equation!Rupture mechanism!V$_{S,30}$}
 %
-Local soil conditions and their effects on the ground motion are incorporated
-into \glspl{groundshakingintensitymodel} by means of the time-averaged shear
-wave velocity measured in the shallowest 30m of material below the topographic
-surface. This is also the parameter used by \gls{acr:oqe}.
+Local soil conditions and their effects on the ground motion are routinely 
+incorporated into \glspl{groundshakingintensitymodel} by means of the 
+time-averaged shear wave velocity measured in the shallowest 30m of material 
+below the topographic surface. 
+
+Accordingly V$_{S,30}$ is one of the parameters used by \gls{acr:oqe} to 
+specify local soil conditions.
 
 In case of \glspl{groundshakingintensitymodel} which support the definition 
 of local soil conditions through classes (e.g. hard rock, soft soil) their
@@ -95,6 +102,16 @@ implementation is done in a way that given a value of V$_{S,30}$ the
 corresponding soil class is used to compute the value of ground motion 
 (provided that a mapping between soil classes and V$_{S,30}$ was defined 
 by the authors).
+
+Additional parameters used to quantititatively describe local geology are 
+the depths of the 1 km/s and 2.5 km/s interfaces. These are paremeters used
+in some \gls{acr:gsim} (e.g. \cite{chiou2008;campbell2008}) to quantify the 
+overall thickness of the soil column. 
+%
+\subsubsection{Z$_{tor}$}
+\index{Ground-motion prediction equation!Rupture mechanism!Z$_{tor}$}
+Depth to the 
+
 %
 % ..............................................................................
 \section{Use of GMPEs in seismic hazard analysis}
