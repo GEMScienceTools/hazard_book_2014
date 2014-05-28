@@ -100,6 +100,9 @@
 \glstoctrue
 \makeglossaries
 
+% package for bold symbols
+\usepackage{bm}
+
 %----------------------------------------------------------------------------------------
 % Insert the commands.tex file which contains the majority of the structure 
 % behind the template
@@ -197,7 +200,7 @@ The OpenQuake-engine Book: Hazard\par % Book title
 %	CHAPTER 2
 %----------------------------------------------------------------------------------------
 \chapterimage{chapter_head_2.pdf} % Chapter heading image
-\chapter{Seismic Hazard Analysis}
+\chapter{PSHA with the OpenQuake-engine}
 \input{./book/psha.tex}
 
 %----------------------------------------------------------------------------------------
@@ -205,6 +208,7 @@ The OpenQuake-engine Book: Hazard\par % Book title
 %----------------------------------------------------------------------------------------
 \chapterimage{chapter_head_1.pdf} % Chapter heading image
 \chapter{Seismic Source Models}
+\label{chap:ssm}
 \input{./book/models.tex}
 
 %----------------------------------------------------------------------------------------
