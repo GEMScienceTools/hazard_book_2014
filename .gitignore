@@ -98,3 +98,4 @@ sympy-plots-for-*.tex/
 
 # vim
 *.swp
+.DS_Store
