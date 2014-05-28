@@ -25,6 +25,19 @@
   Timestamp                = {2011.10.18}
 }
 
+@Article{abrahamson1997,
+  Title                    = {Over},
+  Author                   = {Abrahamson, N. A. and Shedlock, K.},
+  Journal                  = {Seismological Research Letters},
+  Year                     = {1997},
+  Number                   = {1},
+  Pages                    = {9-23},
+  Volume                   = {68},
+
+  Owner                    = {mpagani},
+  Timestamp                = {2014.05.28}
+}
+
 @Article{abrahamson1997a,
   Title                    = {Empirical Response Spectral Attenuation Relations for Shallow Crustal Earthquakes},
   Author                   = {Abrahamson, N. A. and Silva},
@@ -112,6 +125,17 @@ Mediterranean Region, and the Middle East}},
   Doi                      = {10.1785/gssrl.81.2.195},
   Owner                    = {marcop},
   Timestamp                = {2011.11.06}
+}
+
+@TechReport{akkar2013r,
+  Title                    = {Define a Consistent Strategy to Model Ground Motion: Consistency in Model Parameters},
+  Author                   = {Akkar, S. and Douglas, J. and Di Alessandro, C. and Campbell, K. W. and Somerville, P. G. and Cotton, F. and Silva, W. A. and Baker, J. W.},
+  Institution              = {GEM Foundation},
+  Year                     = {2013},
+  Note                     = {71 pages},
+
+  Owner                    = {mpagani},
+  Timestamp                = {2014.05.28}
 }
 
 @Article{alatik2010,
@@ -341,6 +365,20 @@ and Their Application to Cascadia and Other Regions}},
   Timestamp                = {2011.10.18}
 }
 
+@Article{boore2010,
+  Title                    = {Orientation-Independent, Nongeometric-Mean Measures of Seismic Intensity from Two Horizontal Components of Motion},
+  Author                   = {Boore, D. M.},
+  Journal                  = {Bulletin of the Seismological Society of America},
+  Year                     = {2010},
+  Number                   = {4},
+  Pages                    = {1830-1835},
+  Volume                   = {100},
+
+  Doi                      = {10.1785/0120090400},
+  Owner                    = {mpagani},
+  Timestamp                = {2014.05.28}
+}
+
 @Article{boore2008,
   Title                    = {{Ground-Motion Prediction Equations for the Average Horizontal Component of PGA, PGV, and 5\%-Damped PSA at Spectral Periods between 0.01 s and 10.0 s}},
   Author                   = {Boore, D. M. and Atkinson, G. M.},
@@ -392,6 +430,20 @@ and Their Application to Cascadia and Other Regions}},
 
   Owner                    = {marcop},
   Timestamp                = {2011.07.24}
+}
+
+@TechReport{budnitz1997,
+  Title                    = {Recommendations for Probabilistic Seismic Hazard Analysis: Guidance on Uncertainty and the Use of Experts},
+  Author                   = {Budnitz, R. J. and Apostolakis, G. and Boore, D. M. and Cluff, S. L. and Coppersmith, K. J. and Cornell, C. A. and Morris, P. A. (1997)},
+  Institution              = {U.S. Nuclear Regulatory Commission},
+  Year                     = {1997},
+
+  Address                  = {Washington D.C., United States},
+  Note                     = {Two volumes},
+  Number                   = {NUREG/CR-6372},
+
+  Owner                    = {mpagani},
+  Timestamp                = {2014.05.28}
 }
 
 @Article{campbell2003SCR,
@@ -545,6 +597,19 @@ and Their Application to Cascadia and Other Regions}},
   Timestamp                = {2014.05.15}
 }
 
+@Article{crowley2006,
+  Title                    = {Modelling Seismic Hazard in Earthquake Loss Models with Spatially Distributed Exposure},
+  Author                   = {Crowley, H. and Bommer, J. J.},
+  Journal                  = {Bulletin of Earthquake Engineering},
+  Year                     = {2006},
+  Pages                    = {249-273},
+  Volume                   = {4},
+
+  Doi                      = {10.1007/s10518-006-9009-y},
+  Owner                    = {mpagani},
+  Timestamp                = {2014.05.28}
+}
+
 @TechReport{crowley2010a,
   Title                    = {{GEM1 Seismic Risk Report: Part 2}},
   Author                   = {Crowley, H. and Cerisara, A. and Jaiswal, K. and Keller, N. and Luco, N. and Pagani, M. and Porter, K. and Silva, V. and Wald, D. and Wyss B.},
@@ -573,18 +638,6 @@ and Their Application to Cascadia and Other Regions}},
   Timestamp                = {2011.09.02}
 }
 
-@Book{crowley2011,
-  Title                    = {OpenQuake Engine Book},
-  Author                   = {Crowley, H. and Monelli, D. and Pagani, M. and Silva, V. and Weatherill, G.},
-  Publisher                = {GEM FOUNDATION},
-  Year                     = {2011},
-
-  Address                  = {Pavia, Italy},
-
-  Owner                    = {marcop},
-  Timestamp                = {2010.10.04}
-}
-
 @TechReport{danciu2010,
   Title                    = {GEM1 Hazard: Review of PSHA software},
   Author                   = {Danciu, L. and Monelli, D. and Pagani, M. and Wiemer, S.},
@@ -597,6 +650,19 @@ and Their Application to Cascadia and Other Regions}},
 
   Owner                    = {marcop},
   Timestamp                = {2011.09.02}
+}
+
+@Article{delavaud2012,
+  Title                    = {Toward a ground-motion logic tree for probabilistic seismic hazard assessment in Europe},
+  Author                   = {Delavaud, E. and Cotton, F. and Akkar, S. and Scherbaum, F. and Danciu, L. and Beauval, C. and Drouet, S. and Douglas, J. and Basili, R. and Sandikkaya, M. A. and Segou, M. and Faccioli, E. and Theodulidis, N.},
+  Journal                  = {Journal of Seismology},
+  Year                     = {2012},
+  Pages                    = {451-473},
+  Volume                   = {16},
+
+  Doi                      = {10.1007/s10950-012-9281-z},
+  Owner                    = {mpagani},
+  Timestamp                = {2014.05.28}
 }
 
 @Article{dowrick2004,
@@ -1320,20 +1386,6 @@ Ground Motion Prediction Equations
   Timestamp                = {2014.05.20}
 }
 
-@TechReport{thomas2010,
-  Title                    = {Verification of Probabilistic Seismic Hazard Analysis Computer Programs},
-  Author                   = {Thomas, P. and Wong, I. and Abrahamson, N. A.},
-  Institution              = {Pacific Earthquake Engineering Research Center},
-  Year                     = {2010},
-
-  Address                  = {College of Engineering, University of California, Berkeley},
-  Number                   = {2010/106},
-  Type                     = {PEER Report},
-
-  Owner                    = {marcop},
-  Timestamp                = {2011.08.30}
-}
-
 @Unpublished{t2002,
   Title                    = {Modification of the Toro Et Al. (1997) Attenuation Equations for Large Magnitudes and Short Distances},
   Author                   = {Toro, G. R.},
@@ -1354,6 +1406,16 @@ Ground Motion Prediction Equations
 
   Owner                    = {damianomonelli},
   Timestamp                = {2011.10.18}
+}
+
+@TechReport{weatherill2014,
+  Title                    = {Ground Motion Prediction Equation and Strong Motion Modeller's Tookit},
+  Author                   = {Weatherill, G.},
+  Institution              = {GEM Foundation},
+  Year                     = {2014},
+
+  Owner                    = {mpagani},
+  Timestamp                = {2014.05.28}
 }
 
 @Article{weichert1980,
