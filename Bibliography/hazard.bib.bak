@@ -26,12 +26,10 @@
 }
 
 @Article{abrahamson1997,
-  Title                    = {Overview},
+  Title                    = {Over},
   Author                   = {Abrahamson, N. A. and Shedlock, K.},
   Journal                  = {Seismological Research Letters},
   Year                     = {1997},
-
-  Month                    = {January/February},
   Number                   = {1},
   Pages                    = {9-23},
   Volume                   = {68},
@@ -367,6 +365,20 @@ and Their Application to Cascadia and Other Regions}},
   Timestamp                = {2011.10.18}
 }
 
+@Article{boore2010,
+  Title                    = {Orientation-Independent, Nongeometric-Mean Measures of Seismic Intensity from Two Horizontal Components of Motion},
+  Author                   = {Boore, D. M.},
+  Journal                  = {Bulletin of the Seismological Society of America},
+  Year                     = {2010},
+  Number                   = {4},
+  Pages                    = {1830-1835},
+  Volume                   = {100},
+
+  Doi                      = {10.1785/0120090400},
+  Owner                    = {mpagani},
+  Timestamp                = {2014.05.28}
+}
+
 @Article{boore2008,
   Title                    = {{Ground-Motion Prediction Equations for the Average Horizontal Component of PGA, PGV, and 5\%-Damped PSA at Spectral Periods between 0.01 s and 10.0 s}},
   Author                   = {Boore, D. M. and Atkinson, G. M.},
@@ -420,6 +432,20 @@ and Their Application to Cascadia and Other Regions}},
   Timestamp                = {2011.07.24}
 }
 
+@TechReport{budnitz1997,
+  Title                    = {Recommendations for Probabilistic Seismic Hazard Analysis: Guidance on Uncertainty and the Use of Experts},
+  Author                   = {Budnitz, R. J. and Apostolakis, G. and Boore, D. M. and Cluff, S. L. and Coppersmith, K. J. and Cornell, C. A. and Morris, P. A. (1997)},
+  Institution              = {U.S. Nuclear Regulatory Commission},
+  Year                     = {1997},
+
+  Address                  = {Washington D.C., United States},
+  Note                     = {Two volumes},
+  Number                   = {NUREG/CR-6372},
+
+  Owner                    = {mpagani},
+  Timestamp                = {2014.05.28}
+}
+
 @Article{campbell2003SCR,
   Title                    = {Prediction of Strong Ground Motion Using the Hybrid Empirical Method and Its Use in the Development of Ground-Motion (Attenuation) Relations in Eastern North America},
   Author                   = {Campbell, K. W.},
@@ -446,7 +472,7 @@ and Their Application to Cascadia and Other Regions}},
 }
 
 @Article{campbell2008,
-  Title                    = {{NGA Ground Motion Model for the Geometric Mean Horizontal Component of PGA, PGV, PGD and 5 Damped Linear Elastic Response Spectra for Periods Ranging from 0.01 to 10 s}},
+  Title                    = {{NGA Ground Motion Model for the Geometric Mean Horizontal Component of PGA, PGV, PGD and 5% Damped Linear Elastic Response Spectra for Periods Ranging from 0.01 to 10 s}},
   Author                   = {Campbell, K. W. and Bozorgnia, Y.},
   Journal                  = {Earthquake Spectra},
   Year                     = {2008},
@@ -571,6 +597,19 @@ and Their Application to Cascadia and Other Regions}},
   Timestamp                = {2014.05.15}
 }
 
+@Article{crowley2006,
+  Title                    = {Modelling Seismic Hazard in Earthquake Loss Models with Spatially Distributed Exposure},
+  Author                   = {Crowley, H. and Bommer, J. J.},
+  Journal                  = {Bulletin of Earthquake Engineering},
+  Year                     = {2006},
+  Pages                    = {249-273},
+  Volume                   = {4},
+
+  Doi                      = {10.1007/s10518-006-9009-y},
+  Owner                    = {mpagani},
+  Timestamp                = {2014.05.28}
+}
+
 @TechReport{crowley2010a,
   Title                    = {{GEM1 Seismic Risk Report: Part 2}},
   Author                   = {Crowley, H. and Cerisara, A. and Jaiswal, K. and Keller, N. and Luco, N. and Pagani, M. and Porter, K. and Silva, V. and Wald, D. and Wyss B.},
@@ -597,18 +636,6 @@ and Their Application to Cascadia and Other Regions}},
 
   Owner                    = {marcop},
   Timestamp                = {2011.09.02}
-}
-
-@Book{crowley2011,
-  Title                    = {OpenQuake Engine Book},
-  Author                   = {Crowley, H. and Monelli, D. and Pagani, M. and Silva, V. and Weatherill, G.},
-  Publisher                = {GEM FOUNDATION},
-  Year                     = {2011},
-
-  Address                  = {Pavia, Italy},
-
-  Owner                    = {marcop},
-  Timestamp                = {2010.10.04}
 }
 
 @TechReport{danciu2010,
@@ -1271,7 +1298,7 @@ Ground Motion Prediction Equations
   Timestamp                = {2010.12.31}
 }
 
-@TechReport{somerville2006,
+@TechReport{sommerville2006,
   Title                    = {Magnitude-rupture area scaling of large strike-slip earthquakes},
   Author                   = {Somerville, P. G. and Collins, N. and Graves, R.},
   Institution              = {USGS},
@@ -1282,17 +1309,6 @@ Ground Motion Prediction Equations
   Owner                    = {marcop},
   Timestamp                = {2011.08.18},
   Url                      = {http://earthquake.usgs.gov/research/external/reports/05HQGR0004.pdf}
-}
-
-@InProceedings{somerville2006a,
-  Title                    = {Differences in earthquake source and ground motion characteristics between surface and buried earthquakes},
-  Author                   = {Somerville, P. G. and Pitarka, A.},
-  Booktitle                = {Proceedings of the Eight National Conference on Earthquake Engineering},
-  Year                     = {2006},
-  Note                     = {Paper n. 977},
-
-  Owner                    = {mpagani},
-  Timestamp                = {2014.05.27}
 }
 
 @Article{sEtAl1999,
@@ -1390,6 +1406,16 @@ Ground Motion Prediction Equations
 
   Owner                    = {damianomonelli},
   Timestamp                = {2011.10.18}
+}
+
+@TechReport{weatherill2014,
+  Title                    = {Ground Motion Prediction Equation and Strong Motion Modeller's Tookit},
+  Author                   = {Weatherill, G.},
+  Institution              = {GEM Foundation},
+  Year                     = {2014},
+
+  Owner                    = {mpagani},
+  Timestamp                = {2014.05.28}
 }
 
 @Article{weichert1980,
