@@ -1,11 +1,22 @@
 %
 \index{Logic-tree}
 The logic-tree is an integral component of a PSHA input model for the 
-OpenQuake-engine. An input model always contains a logic tree structure 
+OpenQuake-engine.  
+
+An Openuake-engine hazard input model always contains a logic tree structure 
 which describes the epistemic uncertainties associated with the construction 
 of the seismic source model and a logic-tree used to formally specify 
 epistemic uncertainties related to \gls{acr:gsim} models to be used in 
 different tectonic regions.
+
+The definition of logic trees in the OpenQuake-engine is based on
+the combination of a number of predefined modules each one modelling a specific
+epistemic uncertainty. Two are the main advantages of this approach. The first
+and most evident is that the user is not forced to use a predefined logic tree
+structure and - instead - can create a specific logic tree which reflects the 
+uncertainties they defined. The logic tree structure become an integral part of
+the definition of a PSHA input model. The hazard calculations with this approach
+become fully reproducible and do not require pre- or post-processing steps.
 
 This Chapter is dedicated to the description of the basic theory behind 
 logic-trees and to the delineation of how logic-trees are implemented 
@@ -37,6 +48,21 @@ branches.
 The seismic source model logic tree handles the epistemic uncertainties
 related to the definition of geometry, position and seismicity occurrence 
 properties of seismic sources. 
+
+Logic-trees are a tool designed to consider in a systematic manner the 
+epistemic uncertainties of models and parameters included in a hazard 
+analysis.
+% ..............................................................................
+% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . > Figure
+%\renewcommand{\psedge}{\ncdiag[armA=0,angleB=180,armB=1cm]}
+\begin{figure}[!hb]
+%\input{./pstricks/sslt_absolute.tex}
+\caption{An example of branch set used to account for the epistemic 
+uncertainties on faults dip angle; in this case each branch contains a value 
+of the dip.}
+\label{fig:logic_tree_branching_levels}
+\end{figure}
+
 %
 \subsubsection{Supported epistemic uncertainties}
 

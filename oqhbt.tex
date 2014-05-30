@@ -80,12 +80,14 @@
 % Figure caption settings
 \usepackage[textfont=it,margin=10pt,font=small,labelfont=bf,labelsep=endash]{caption}
 
-% Table
+% Table - colors from 
 \usepackage{verbatim}
 \usepackage{color, colortbl}
 \definecolor{almond}{rgb}{0.94, 0.87, 0.8}
 \definecolor{ashgrey}{rgb}{0.7, 0.75, 0.71}
 \definecolor{anti-flashwhite}{rgb}{0.95, 0.95, 0.96}
+\definecolor{anti-flashwhite}{rgb}{0.95, 0.95, 0.96}
+\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
 
 % Index
 \usepackage{calc} % For simpler calculation - used for spacing the index letter headings correctly
@@ -108,19 +110,26 @@
 \usepackage{ctable}
 
 %----------------------------------------------------------------------------------------
+
+% Trees
+%\usepackage[pdf]{pstricks}
+%\usepackage{auto-pst-pdf}
+%\usepackage{pst-tree}
+
+%-------------------------------------------------------------------------------
+
 % Insert the commands.tex file which contains the majority of the structure 
 % behind the template
 \input{structure} 
 
 
 \begin{document}
-
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  Load the glossary
 \input{./book/glossary.tex}
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
 %	TITLE PAGE
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
 
 \begingroup
 \thispagestyle{empty}
