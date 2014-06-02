@@ -99,8 +99,8 @@ rupture mechanism).
     {./Pictures/gsim/mag_scaling_example.pdf}
 \caption{Scaling of Peak Ground Acceleration as a function of magnitude 
     obtained by some of the \gls{acr:gsim} implemented in the \gls{acr:oqe}. 
-    The ipython notebook used to generate this figure can be downloaded here 
-    \href{}{}}
+    The ipython notebook used to generate this figure can be downloaded  
+    \href{https://github.com/GEMScienceTools/hazard_book_2014/tree/lts/notebooks}{here}.}
 \label{fig:gsim_mag_scaling}
 \end{figure}
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . < Figure
@@ -114,20 +114,28 @@ distance metrics used by the most recent and complex
 \glspl{groundshakingintensitymodel} published in the scientific 
 literature (see \ref{tab:distances} for a comprehensive list).
 % --------------------------------------------------------------------->>> Table
-\begin{table}[!b]
+\begin{table}[!t]
 \centering
-\begin{tabular}{|p{5cm}cp{5cm}|}
+\begin{tabular}{|p{4.5cm}cp{7.5cm}|}
 \hline
 \rowcolor{anti-flashwhite}
 \bf{Distance definition} & \bf{Symbol} & \bf{Description} \\
 \hline 
-Epicentral & R$_{epi}$ & \\
-Hypocentral & R$_{hypo}$ & \\
-Joyner and Boore distance & R$_{jb}$ & Closest distance from the surface 
-    projection of the rupture \\
-Rupture distance & R$_{rup}$ & Closest distance to the rupture surface \\
-Horizontal top-edge distance & R$_{x}$ & Horizontal distance from the top 
-    edge of the rupture \\
+Epicentral & R$_{epi}$ & Distance between the epicenter and the site. 
+                         Note that currently in the \gls{acr:oqe} the 
+                         hypocenter is assumed to be at the center of 
+                         a rupture.\\
+Hypocentral & R$_{hypo}$ & Distance between the hypocenter and the site. 
+                           Note that currently in the \gls{acr:oqe} the 
+                           hypocenter is assumed to be at the center of 
+                           a rupture.\\
+Joyner and Boore distance & R$_{jb}$ & Closest distance between the site and 
+                                       the surface projection of the rupture \\
+Closest distance to the rupture & R$_{rup}$ & Closest distance between 
+                                              the site and the rupture 
+                                              surface \\
+Horizontal top-edge distance & R$_{x}$ & Horizontal distance between the site 
+                                         and the top edge of the rupture \\
 Top-of-Rupture depth & Z$_{tor}$ & Depth to the top edge of the rupture \\
 \hline
 \end{tabular}
@@ -207,17 +215,16 @@ PGA & Peak Ground Acceleration & g \\
 PGV & Peak Ground Velocity     & cm/s \\
 PGD & Peak Ground Displacement & \\
 SA  & Spectral Acceleration    & g \\
-IA  &  &  \\
-CAV &  &  \\
-RSD &  &  \\
-MMI &  &  \\
+IA  & Arias intensity &  \\
+CAV & Cumulative Absolute Velocity &  \\
+RSD & Relative Significative Duration \parencite{trifunac1975}&  \\
+MMI & Modified Mercalli Intensity &  \\
 \hline
 \end{tabular}
 \caption{Principal intensity measure types supported.}
 \label{tab:imts}
 \end{table}
 % ---------------------------------------------------------------------<<< Table
-
 The definitions of the ground-motion component supported are instead listed in
 Table \ref{tab:hor_comp}. 
 % --------------------------------------------------------------------->>> Table
@@ -231,11 +238,13 @@ Table \ref{tab:hor_comp}.
 HORIZONTAL & General horizontal component \\
 MEDIAN\_HORIZONTAL & Median of the two horizontal components \\
 AVERAGE\_HORIZONTAL & Median of the two horizontal components \\
-GMRotI50 & \parencite{boore2010} \\
-RotD50 &  \\
-RANDOM\_HORIZONTAL &  \\
-GREATER\_OF\_TWO\_HORIZONTAL &  \\
-VERTICAL & vertical \\
+GMRotI50 & Median value of the (period independent) geometric mean 
+           \parencite{boore2006} \\
+RotD50 & Median value of the (period dependent) geometric mean 
+         \parencite{boore2010} \\
+RANDOM\_HORIZONTAL & Random horizontal component \\
+GREATER\_OF\_TWO\_HORIZONTAL & Largest horizontal component of ground-motion \\
+VERTICAL & Vertical component of ground-motion\\
 \hline
 \end{tabular}
 \caption{Principal ground-motion components supported.}

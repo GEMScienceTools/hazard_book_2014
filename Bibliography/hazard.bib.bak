@@ -366,7 +366,7 @@ and Their Application to Cascadia and Other Regions}},
 
 @Article{bEtAl2009,
   Title                    = {Empirical Equations for the Prediction of the Significant, Bracketed, and Uniform Duration of Earthquake Ground Motion},
-  Author                   = {Bommer, J. J. and Stafford, P. J. and Alarcn, J. E.},
+  Author                   = {Bommer, J. J. and Stafford, P. J. and Alarcon, J. E.},
   Journal                  = {Bulletin of the Seismological Society of America},
   Year                     = {2009},
   Pages                    = {3217-3233},
@@ -441,6 +441,18 @@ and Their Application to Cascadia and Other Regions}},
 
   Owner                    = {marcop},
   Timestamp                = {2011.07.24}
+}
+
+@Article{boore2006,
+  Title                    = {Orientation-independent measures of ground motion},
+  Author                   = {Boore, D. M. and Watson-Lamprey, J. and Abrahamson, N. A.},
+  Journal                  = {Bulletin of the Seismological Society of America},
+  Year                     = {2006},
+  Pages                    = {1502-1511},
+  Volume                   = {96},
+
+  Owner                    = {mpagani},
+  Timestamp                = {2014.06.02}
 }
 
 @TechReport{budnitz1997,
@@ -1456,6 +1468,16 @@ Ground Motion Prediction Equations
 
   Owner                    = {damianomonelli},
   Timestamp                = {2011.10.18}
+}
+
+@Article{trifunac1975,
+  Title                    = {A study on the duration of strong earthquake ground-motion},
+  Author                   = {Trifunac, M. D. and Brady, A. G.},
+  Journal                  = {Bulletin of the Seismological Society of America},
+  Year                     = {1975},
+
+  Owner                    = {mpagani},
+  Timestamp                = {2014.06.02}
 }
 
 @TechReport{weatherill2014,
