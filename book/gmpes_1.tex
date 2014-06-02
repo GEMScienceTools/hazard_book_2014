@@ -78,13 +78,32 @@ Site parameters & - V$_{S,30}$ \\
 \subsubsection{Magnitude}
 \index{Ground-motion prediction equation!predictor variables!Magnitude}
 Moment magnitude \parencite{hanks1979} is the magnitude typology 
-preponderantly used within the most recent \gls{acr:gsim} and as a 
+preponderantly used within the most recent \glspl{acr:gsim} and as a 
 consequence within seismic hazard analysis in general. 
 %
 However, in the \gls{acr:oqe} there is not a predefined magnitude typology.
 It is up to the user to ensure that the magnitude used to define earthquake 
 occurrence in the \gls{seismicsourcemodel} is consistent with the one used 
 in the selected \glspl{groundshakingintensitymodel}.
+
+Figure \ref{fig:gsim_mag_scaling} shows the scaling of ground-motion versus 
+magnitude for some of the \glspl{acr:gsim} implemented in the \gls{acr:oqe}.
+The ground motion is computed for a site at a R$_{jb}$ distance of about 33 km
+with V$_{S,30}$ equal to 760 m/s for two different values of rake (i.e. 
+rupture mechanism).
+% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . > Figure
+\begin{figure}[hb]
+\centering
+% left bottom right top
+\includegraphics[trim = 23mm 0mm 23mm 5mm, clip,width=\textwidth]
+    {./Pictures/gsim/mag_scaling_example.pdf}
+\caption{Scaling of Peak Ground Acceleration as a function of magnitude 
+    obtained by some of the \gls{acr:gsim} implemented in the \gls{acr:oqe}. 
+    The ipython notebook used to generate this figure can be downloaded here 
+    \href{}{}}
+\label{fig:gsim_mag_scaling}
+\end{figure}
+% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . < Figure
 %
 \subsubsection{Distance}
 \index{Ground-motion prediction equation!predictor variables!Source-site 
