@@ -18,6 +18,7 @@
 % commands below to make sure your LaTeX distribution is configured correctly:
 %
 % 1) pdflatex oqhbt
+% 1a) pdflatex -shell-escape oqhbt
 % 2) makeindex oqhbt.idx -s StyleInd.ist
 % 3) biber oqhbt
 % 4  makeglossaries oqhbt
@@ -108,21 +109,18 @@
 
 % for better looking tables
 \usepackage{ctable}
-
+%
 %----------------------------------------------------------------------------------------
-
 % Trees
 %\usepackage[pdf]{pstricks}
 %\usepackage{auto-pst-pdf}
 %\usepackage{pst-tree}
-
+%
 %-------------------------------------------------------------------------------
-
 % Insert the commands.tex file which contains the majority of the structure 
 % behind the template
 \input{structure} 
-
-
+%
 \begin{document}
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  Load the glossary
 \input{./book/glossary.tex}
