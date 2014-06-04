@@ -27,7 +27,7 @@
 
 @Article{abrahamson2005,
   Title                    = {Probability and Uncertainty in Seismic Hazard Analysis},
-  Author                   = {Abrahamson, N. A. and Bommer, J. J.},
+  Author                   = {Abrahamson, N. A. and Bommer},
   Journal                  = {Earthquake Spectra},
   Year                     = {2005},
   Number                   = {2},
@@ -323,17 +323,6 @@ and Their Application to Cascadia and Other Regions}},
   Timestamp                = {2011.01.26}
 }
 
-@Book{Benjamin,
-  Title                    = {"Probability, Statistics and Decisions for Civin Engineers"},
-  Author                   = {Benjamin, J. R. and Cornell, C. A.},
-  Publisher                = {McGraw-Hill Book Company},
-  Year                     = {1970},
-  Note                     = {684 pages},
-
-  Owner                    = {mpagani},
-  Timestamp                = {2014.06.04}
-}
-
 @Article{beyer2006,
   Title                    = {Relationships between Median Values and between Aleatory Variabilities for Different Definitions of the Horizontal Component of Motion},
   Author                   = {Beyer, K. and Bommer, J. J.},
@@ -455,15 +444,16 @@ and Their Application to Cascadia and Other Regions}},
 }
 
 @Article{boore2006,
-  Title                    = {Orientation-independent measures of ground motion},
+  Title                    = {Orientation-Independent Measures of Ground Motion},
   Author                   = {Boore, D. M. and Watson-Lamprey, J. and Abrahamson, N. A.},
   Journal                  = {Bulletin of the Seismological Society of America},
   Year                     = {2006},
-  Pages                    = {1502-1511},
+  Number                   = {1502-1511},
   Volume                   = {96},
 
+  Doi                      = {10.1785/0120050209},
   Owner                    = {mpagani},
-  Timestamp                = {2014.06.02}
+  Timestamp                = {2014.06.04}
 }
 
 @TechReport{budnitz1997,
@@ -1182,7 +1172,7 @@ Ground Motion Prediction Equations
 }
 
 @Article{musson2000,
-  Title                    = {{The use of Monte Carlo simulations for seismic hazard assessment in the U.K.}},
+  Title                    = {The use of Monte Carlo simulations for seismic hazard assessment in the U.K.},
   Author                   = {Musson, R. M. W.},
   Journal                  = {Annals of Geophys.},
   Year                     = {2000},

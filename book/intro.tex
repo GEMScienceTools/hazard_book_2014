@@ -13,8 +13,9 @@ whose development is actively supported by the
 \href{http://globalquakemodel.org}{\gls{acr:gem}} initiative.
 %
 The \gls{acr:oqe} is part of a suite of open source software developed by 
-\href{http://globalquakemodel.org}{\gls{acr:gem}} which comprises: the 
-\gls{acr:oqe}, the OpenQuake-platform and a large set of tools of which 
+\href{http://globalquakemodel.org}{\gls{acr:gem}} which comprises
+(see also Figure \ref{fig:oq_platform}): 
+the \gls{acr:oqe}, the OpenQuake-platform and a large set of tools of which 
 the most interesting from a hazard perspective are the hazard modellers' 
 toolkit (see \href{https://github.com/GEMScienceTools/hmtk}
 {https://github.com/GEMScienceTools/hmtk}).
@@ -48,22 +49,23 @@ The \gls{acr:oqe} is the combination of different and sometimes
 self-sufficient libraries. Below we provide a short description for each of
 them.
 \begin{description}
-    \item [oq-hazardlib] Contains the software used to describe 
+    \item [oq-hazardlib] Contains the code used to describe 
         seismic sources, create the \gls{acr:erf}, calculate hazard curves, 
         create stochastic event sets, compute ground motion fields and 
         calculate seismic hazard disaggregation.
-    \item [oq-risklib] Comprises the used to describe exposures, vulnerability 
-        and fragility curves and to compute losses.
-    \item [oq-nrmllib] Includes the scheme which describes the structure of 
+    \item [oq-risklib] Comprises the code used to describe exposures, 
+        vulnerability and fragility curves and to compute losses.
+    \item [oq-nrmllib] Includes the scheme describing the structure of 
         the \gls{acr:oqe} input and output files. The majority of these files 
         is formatted according to a dialect of 
         \href{http://www.w3.org/XML/}{XML} called \gls{acr:nrml}. 
     \item [oq-commonlib] Includes common code for \gls{acr:oqe} applications,
         such as - for example - the code used to describe logic tree structures.
-    \item [oq-engine] It incorporates the core of the \gls{acr:oqe}; the code in
-        this library is the glue that sticks the different libraries together 
-        and let the user easily perform calculations according to a established 
-        set of calculation options.
+    \item [oq-engine] It incorporates the core of the \gls{acr:oqe}; 
+        the code in this library acts as the glue that sticks the 
+        different libraries together and let the user easily perform 
+        calculations according to an established set of calculation 
+        options.
 \end{description}
 %
 % ..............................................................................
@@ -78,14 +80,16 @@ Foundation.
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 \subsection{Development tools}
 %
-The \gls{acr:oqe} development process is completely open and transparent. Each
-new feature, improvement or bug fix before being implemented is described 
-in a bug tracking system (in our case, 
+The \gls{acr:oqe} development process is based on a number of open 
+source tool which guarantee an open and transparent process. 
+%
+For example, each new feature improvement or bug fix before being 
+implemented is described in a bug tracking system (in our case, 
 \href{https://launchpad.net/}{Launchpad}).  
 
 The tools used to maintain and make publicly available the \gls{acr:oqe} 
-master repository and to manage the almost ceaseless process improvement 
-and expansion are \href{http://git-scm.com/}{git} and a git-based repository 
+repository and to manage the almost ceaseless improvement and enhancement 
+process are \href{http://git-scm.com/}{git} and a git-based repository 
 hosting service called \href{http://github.com/}{GitHub}.
 %
 \begin{table}[!t]
@@ -104,8 +108,11 @@ OQ-engine web repository &
     \href{http://github.com/gem}{http://github.com/gem} \\
 \hline
 \end{tabular}
+\label{tab:development_tools}
 \caption{Main services and websites related to the \gls{acr:oqe}}
 \end{table}
+Table \ref{tab:development_tools} provides a short summary of the main 
+resources related to the \gls{acr:oqe}.
 %
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 \subsection{Programming language}
@@ -116,8 +123,7 @@ which can run on almost all the operative systems currently available.
 %
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 \subsubsection{Main libraries to which the \gls{acr:oqe} depends upon}
-The development of the engine is using relying on a number of libraries such 
-as:
+The engine relies in on a number of open source libraries such as:
 \begin{description}
     \item [\href{http://redis.io/}{Redis}] A key-value store
     \item [\href{https://www.rabbitmq.com/}{RabbitMQ}] A messaging system
@@ -139,9 +145,10 @@ of the oq-hazardlib follows quite closely the classical schematic proposed by
 \textcite{reiter1991} i.e. a seismic source, a ground shaking intensity model 
 and a calculator that using this information computes the hazard at the site.
 
-The \gls{acr:oqe} builds on top of this library and expands this concept by
-taking into account not just the essential objects needed to compute the hazard
-at a site but also the associated epistemic uncertainties.
+The \gls{acr:oqe} builds on top of oq-hazardlib and expands this 
+concept by taking into account not just the essential objects 
+needed to compute the hazard at a site discussed before but 
+also the associated epistemic uncertainties.
 %
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 \subsection{Calculation workflows}
@@ -150,7 +157,7 @@ workflows:
 \begin{itemize}
 \item Classical \gls{acr:psha}. Calculates hazard curves, hazard maps, 
     and uniform hazard spectra by solving the PSHA integration procedure, 
-    as proposed by \citetext{field2003}. 
+    as proposed by \textcite{field2003}. 
     This is the usual approach adopted in regional/national-scale hazard 
     assessment, as well as in site-specific studies. Using the risk 
     component of the OQ-engine, the computed hazard curves can be 
@@ -198,30 +205,37 @@ workflows:
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 \subsection{Testing and Quality Assurance}
 %
-\gls{acr:qa} is an aspect carefully considered in the development 
-of the \gls{acr:oqe} based on several important motivations.
+\gls{acr:qa} is an aspect carefully and diligently considered 
+in the development of the \gls{acr:oqe}. There are a several 
+different reasons explaining the adoption of this approach.
+
+The first and most practical one is dictated by the development 
+process which involves experts from different disciplines (e.g. 
+seismic hazard and information technology). 
 %
-The first and most practical one is dictated by the development process which 
-involves experts from different disciplines (e.g. seismic hazard and 
-information technology). 
-%
-In this context the use of a common and strong testing process is a way 
-trough which developers confirm the compliance of the tools developed 
-against the requirements defined by the scientific team and it is also 
-a process through which it can be demonstrated that the entire code fulfills 
-minimum quality criteria (e.g. the code comply with the
-\href{http://legacy.python.org/dev/peps/pep-0008/}{PEP 8 standard}, the code
-before getting into the master repository is revised by at least one one 
-separate developer and is clearly documented).
-% 
-The second motivation relates to the specific goal of building a dynamical 
-tool (i.e. providing a very large flexibility) while constantly proving the 
-stability and reliability of the supported calculation workflows.
+In this context the use of a formal testing process is a way 
+trough which developers confirm the compliance of the tools 
+developed against the requirements defined by the scientific 
+team and it is also a process through which it can be 
+demonstrated that the entire code fulfills minimum quality 
+criteria (e.g. the code comply with the
+\href{http://legacy.python.org/dev/peps/pep-0008/}{PEP 8 standard}, 
+the code before getting into the master repository is 
+revised by at least one one separate developer and is 
+clearly documented).
+ 
+The second motivation relates to the specific goal of building 
+a dynamical tool (i.e. offering a large flexibility and expandability) 
+while constantly assuring the stability and reliability of 
+the supported calculation workflows.
 
 The implementation of tests is usually done in parallel with code 
-development, but tests are also added every time there's a bug fix 
-in order to improve the overall robustness and reliability of the code.
+development, but tests are also added for example every time a bug 
+is fixed.
 %
+This improves the overall robustness and reliability of the code
+and reduces drastically the possibility of regressions.
+
 Four are the approaches used to test the \gls{acr:oqe} behavior 
 and therefore provide high quality assurance standards. 
 %
@@ -236,19 +250,22 @@ and therefore provide high quality assurance standards.
         \gls{acr:oqe} are compared benchmark results. Several of the 
         tests defined by \textcite{thomas2010} are used to check the 
         reliability and correctness of the results provided. 
-    \item [Tests against provided by other PSHA codes: simple cases]
+    \item [Tests against provided by other PSHA codes: simple cases] 
+        The result computed with the \gls{acr:oqe} for simple models (e.g. one
+        area source) are compared against the results calculated using 
+        independent PSHA software.
     \item [Tests against provided by other PSHA codes: national or regional 
-        PSHA input models]
+        PSHA input models] The result computed with the \gls{acr:oqe} 
+        using national or regional models are compared against the 
+        results calculated using independent PSHA software.
 \end{description}
 %
 % ..............................................................................
 \section{Input and output description}
-The \gls{acr:oqe} reads and writes for the majority XML formatted files
-according to a
-
+This will be completed later.
 %
 % ..............................................................................
 \section{Description of book structure}
-This book is organised into five additonal chapters. Chapter 2 contains a 
+This book is organised into five additional chapters. Chapter 2 contains a 
 short introduction to seismic hazard analysis with a focus on probabilistic 
 methodologies and on their implementation into the OQ-engine.

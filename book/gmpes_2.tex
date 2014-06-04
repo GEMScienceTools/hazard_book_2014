@@ -39,6 +39,27 @@ possible to achieve with a high confidence level the consistency between
 the original results and the corresponding values computed with the 
 version of the \gls{acr:gsim} implemented.
 %
+% 
+\subsection{GSIM library}
+Figure \ref{fig:gsim_mag_scaling} shows the scaling of ground-motion versus 
+magnitude for some of the \glspl{acr:gsim} implemented in the \gls{acr:oqe}.
+The ground motion is computed for a site at a R$_{jb}$ distance of about 33 km
+with V$_{S,30}$ equal to 760 m/s for two different values of rake (i.e. 
+rupture mechanism).
+% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . > Figure
+\begin{figure}[hb]
+\centering
+% left bottom right top
+\includegraphics[trim = 23mm 0mm 23mm 5mm, clip, width=\textwidth]
+    {./Pictures/gsim/mag_scaling_example.pdf}
+\caption{Scaling of Peak Ground Acceleration as a function of magnitude 
+    obtained by some of the \gls{acr:gsim} implemented in the \gls{acr:oqe}. 
+    The ipython notebook used to generate this figure can be downloaded  
+    \href{https://github.com/GEMScienceTools/hazard_book_2014/tree/lts/notebooks}{here}.}
+\label{fig:gsim_mag_scaling}
+\end{figure}
+% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . < Figure
+%
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 \subsection{Testing}
 %
