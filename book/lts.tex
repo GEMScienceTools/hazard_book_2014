@@ -347,13 +347,37 @@ at each branching level.
 %
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 \subsection{Calculation of mean and percentiles/quantiles}
-The calculation of statistical parameters for the computed result follows 
-two distinct methodologies based on the logic tree processing methodology 
-selected.
+% https://github.com/gem/oq-engine/blob/master/openquake/engine/calculators/hazard/general.py#L417
+% https://github.com/gem/oq-engine/blob/master/openquake/engine/calculators/post_processing.py
+% http://stats.stackexchange.com/questions/13169/defining-quantiles-over-a-weighted-sample
+The calculation of statistical parameters on the computed hazard results
+is done using the following approach.
+
+From the set of hazard curves computed at a specific site we select 
+the probabilities of exceedance for a given intensity measure level
+$P=\{poe_1, poe_2, ..., poe_n\}$ where $n$ is the number of realisations
+i.e. hazard results obtained by processing the logic tree.
+
+In case of a full path enumeration processing methodology, we order $P$
+in ascending order and we change the order of the corresponding 
+weights accordingly. Using these weights we compute the cumulative 
+distribution function (CDF). 
+%
+We intepolate the curve defined by the CDF and the probabilities of 
+exceedance (poes) to obtain the values of poes corresponding to the 
+quantiles defined by the user. 
+%
+Using the computed values of the probability of exceedance we find 
+the corresponding curves.
+
+In case of a logic tree processing based on a Monte Carlo sampling the 
+quantiles are computed from this set of probabilities using standard
+methodologies.
 %
 \clearpage
 % ..............................................................................
 \section{Future developments}
+This will completed later.
 %
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 \subsection{Logic tree pruning/collapsing}
