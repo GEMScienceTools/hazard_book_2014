@@ -28,8 +28,6 @@ val$_{2,1}$ & val$_{2,2}$ & val$_{2,3}$ & val$_{2,4}$ & val$_{2,5}$ & \\
 \label{tab:verification}
 \end{table}
 % ---------------------------------------------------------------------<<< Table
-
-
 Examples of verification tables are available on the OpenQuake-hazardlib Github
 repository\footnote{
 \href{https://github.com/gem/oq-hazardlib/tree/master/openquake/hazardlib/tests/gsim/data}{
@@ -77,28 +75,9 @@ The modularity used to create the {acr:oqhl} promotes the use of
 residuals and for the selection of \glspl{acr:gsim} models which build on top 
 of the \gls{acr:oqe} hazard library. In this way the 
 %
-% ..............................................................................
-\section{Calculation of ground motion fields}
-%
-The calculation of \glspl{groundmotionfield} is an essential step in the
-calculation of hazard via an \gls{epsha} and for the calculation of losses 
-in case of spatially distributed assets.
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 \subsection{Spatial correlation of ground motion}
-The spatial correlation of within-event residuals 
-is a topic that is 
+The spatial correlation of within-event residuals is a topic that is 
 receiving more and more importance in the ground-motion community given 
 its importance on the calculation of losses for portfolios of distributed 
 assets \parencite{crowley2006}.
-%
-% ..............................................................................
-\section{Modified GMPEs}
-The \gls{acr:oqe} currently does not provide a straightforward methodology 
-to modify currently implemented \glspl{acr:gsim}.
-%
-% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-\subsection{Adjusted equations}
-%
-% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-\subsection{Non-ergodic sigma}
-
