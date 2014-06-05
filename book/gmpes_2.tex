@@ -31,10 +31,10 @@ A second advantage of the developed library relates to its flexibility
 and modularity. Once the properties of main objects are defined, 
 \glspl{acr:gsim} can be used interchangeably. 
 %
-The OpenQuake Ground Motion Toolkit \parencite{weatherill2014} for 
-example builds on top of this library and, for example, includes 
-tools for computing residuals given a dataset of recordings, for 
-the calculation of trellis plots.
+For example, the OpenQuake Ground Motion Toolkit 
+\parencite{weatherill2014} builds on top of this library and 
+includes tools for computing residuals given a dataset 
+of recordings, for the calculation of trellis plots.
 %
 Figure \ref{fig:gsim_mag_scaling} shows the scaling of ground-motion 
 versus magnitude for some of the \glspl{acr:gsim} implemented in the 
@@ -42,20 +42,27 @@ versus magnitude for some of the \glspl{acr:gsim} implemented in the
 %
 The ground motion is computed for a site at a R$_{jb}$ distance of 
 about 33 km with V$_{S,30}$ equal to 760 m/s from a rupture with a 
-strike of dip of 45 degrees toward for two different values of rake 
-(i.e. rupture mechanism).
-
-
+strike of dip of 45 degrees toward south for two different values 
+of rake (i.e. rupture mechanism). The upper panel of Figure 
+\ref{fig:gsim_mag_scaling} shows the position of the site and 
+the rupture.
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . > Figure
 \begin{figure}[hb]
 \centering
 % left bottom right top
+\includegraphics[width=10cm]{./Pictures/gsim/rupture_plot.pdf}
 \includegraphics[trim = 23mm 0mm 23mm 5mm, clip, width=\textwidth]
     {./Pictures/gsim/mag_scaling_example.pdf}
-\caption{Scaling of Peak Ground Acceleration as a function of magnitude 
-    obtained by some of the \gls{acr:gsim} implemented in the \gls{acr:oqe}. 
-    The ipython notebook used to generate this figure can be downloaded  
-    \href{https://github.com/GEMScienceTools/hazard_book_2014/tree/lts/notebooks}{here}.}
+    \caption{
+        (upper panel)
+        Simple schematic with the surface projection of the 
+        rupture and the site (red square) used in this example. 
+        The green dots show the position of the top of rupture.
+        (lower panels)
+        Scaling of Peak Ground Acceleration as a function 
+        of magnitude obtained by some of the \gls{acr:gsim} 
+        implemented in the \gls{acr:oqe}. 
+    }
 \label{fig:gsim_mag_scaling}
 \end{figure}
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . < Figure
@@ -65,18 +72,18 @@ strike of dip of 45 degrees toward for two different values of rake
 %
 The progressively increasing complexity of 
 \glspl{groundshakingintensitymodel}
-is giving more and more emphasis and relevance to the validation between 
-between the results provided by the \gls{acr:gsim} implemented in
+is giving more and more emphasis and relevance to the validation 
+of results provided by the \gls{acr:gsim} implemented within 
 \gls{acr:psha} codes and the results of original \gls{acr:gsim} 
-implementations described in the scientific literature or directly 
-provided by the authors.
+implementations as described in the scientific literature 
+(or directly provided by the authors).
 
 The standard process adopted for the implementation in the 
 \gls{acr:oqe} of a \gls{groundshakingintensitymodel} requires a 
 set of verification tables each one containing values of 
 ground-motion (or standard deviation) computed using a large 
 number of combinations of the predictor variables. 
-
+%
 Table \ref{tab:verification} shows a simplified example of a 
 \gls{acr:gsim} verification table; it consists of: a header 
 line with (standard) names for each of the column, a number
