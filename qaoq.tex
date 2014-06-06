@@ -139,7 +139,8 @@
 \centering
 \vspace*{9cm}
 \par\normalfont\fontsize{35}{35}\sffamily\selectfont
-The OpenQuake-engine Book: Hazard\par % Book title
+Quality assurance procedures adopted in the development of the hazard 
+component of the OpenQuake-engine\par % Book title
 \endgroup
 
 %----------------------------------------------------------------------------------------
@@ -158,7 +159,7 @@ The OpenQuake-engine Book: Hazard\par % Book title
 
 \noindent 
    {\bf{Disclaimer}} \hfill \\
-   The OpenQuake Engine Book Hazard is distributed in 
+   This report is distributed in 
    the hope that it will be useful, but without any warranty: without 
    even the implied warranty of merchantability or fitness for a 
    particular purpose. While every 
@@ -169,17 +170,14 @@ The OpenQuake-engine Book: Hazard\par % Book title
    use of information contained in this document or from the use of 
    programs and source code that may accompany it, even if the authors 
    and GEM Foundation have been advised of the possibility of such damage. 
-   The Book provided hereunder is on as "as is" basis, and the authors 
+   The report provided hereunder is on as "as is" basis, and the authors 
    and GEM Foundation have no obligations to provide maintenance, support,
    updates, enhancements, or modifications. 
    \hfill \\
-   \todo{This needs to be updated or removed}
-   The current version of the book has been revised only by members of 
-   the GEM model facility and it must be considered a draft copy. 
    %
    \vspace{0.4cm} \hfill \\
    {\bf{License}} \hfill \\
-   This Book is distributed under the Creative Common License 
+   This Report is distributed under the Creative Common License 
    Attribution-NonCommercial-NoDerivs 3.0 Unported (CC BY-NC-ND 3.0) 
    (see link below). You can download this Book and share it with 
    others as long as you provide proper credit, but you cannot change 
@@ -205,48 +203,33 @@ The OpenQuake-engine Book: Hazard\par % Book title
 %----------------------------------------------------------------------------------------
 %	CHAPTER 1
 %----------------------------------------------------------------------------------------
-\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapterimage{chapter_head_1.pdf} % Chapter heading image
 \chapter{Introduction}
-\input{./book/intro.tex}
-
+\input{./qareport/intro.tex}
 %----------------------------------------------------------------------------------------
 %	CHAPTER 2
 %----------------------------------------------------------------------------------------
-\chapterimage{chapter_head_2.pdf} % Chapter heading image
-\chapter{PSHA with the OpenQuake-engine}
-\input{./book/psha.tex}
-
+\chapterimage{chapter_head_1.pdf} % Chapter heading image
+\chapter{Unittesting}
+\input{./qareport/unittesting.tex}
+%----------------------------------------------------------------------------------------
+%	CHAPTER 3
+%----------------------------------------------------------------------------------------
+\chapterimage{chapter_head_1.pdf} % Chapter heading image
+\chapter{Benchmark tests}
+\input{./qareport/benchmarks.tex}
 %----------------------------------------------------------------------------------------
 %	CHAPTER 4
 %----------------------------------------------------------------------------------------
 \chapterimage{chapter_head_1.pdf} % Chapter heading image
-\chapter{Seismic Source Models}
-\label{chap:ssm}
-\input{./book/models.tex}
-
+\chapter{Other PSHA codes: simple cases}
+\input{./qareport/psha_codes_simple.tex}
 %----------------------------------------------------------------------------------------
 %	CHAPTER 5
 %----------------------------------------------------------------------------------------
 \chapterimage{chapter_head_1.pdf} % Chapter heading image
-\chapter{Ground Motion Prediction Equations}
-\label{chap:gmpes}
-\input{./book/gmpes.tex}
-
-%----------------------------------------------------------------------------------------
-%	CHAPTER 6
-%----------------------------------------------------------------------------------------
-\chapterimage{chapter_head_1.pdf} % Chapter heading image
-\chapter{Logic-trees}
-\input{./book/lts.tex}
-
-%----------------------------------------------------------------------------------------
-%	CHAPTER 7
-%----------------------------------------------------------------------------------------
-\chapterimage{chapter_head_1.pdf} % Chapter heading image
-\chapter{Calculation Examples}
-\input{./book/calc.tex}
-
-
+\chapter{Other PSHA codes: real cases}
+\input{./qareport/psha_codes_real.tex}
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
@@ -262,11 +245,9 @@ The OpenQuake-engine Book: Hazard\par % Book title
 \addcontentsline{toc}{section}{Reports}
 \printbibliography[heading=bibempty,nottype=book,nottype=article]
 
-
 %----------------------------------------------------------------------------------------
 %	INDEX
 %----------------------------------------------------------------------------------------
-
 \cleardoublepage
 \phantomsection
 \setlength{\columnsep}{0.75cm}
