@@ -155,7 +155,7 @@ The event-based acceptance tests are designed to verify that for a sufficiently 
 
 \subsection{Deaggregation Acceptance Tests}
 
-TODO - Need to find out how the expected matrix was generated! Ask Damiano
+The disaggregation calculator is tested in two separate places. A first unit-test evaluates the disaggregation of hazard for a simple case in which the probabilities in the disaggregations bins have been calculated, by hand, for a simple rupture model. This unit-test will fulfil the requirements of line and parameter coverage, including edge cases such as if the rupture crosses the international dateline, or if no ruptures contribute to the hazard at the site. A second unit-test using a more realistic source and GMPE combination are then implemented. In this case it is not possible to calculate the probabilities by hand, but instead the OpenQuake results are used as the expected values. This test is circular in nature, and is intended simply as a means to ensure that changes to the code do not alter the results of the disaggregation calculator.
 
 \section{Summary}
 
