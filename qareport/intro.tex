@@ -1,35 +1,49 @@
 Nowadays seismic hazard analysis serves different needs coming 
-from a wide spectrum of users and applications. 
+from a variety of users and applications. 
 %
 These may encompass engineering design, assessment of earthquake risk 
 to portfolios of assets within the insurance and reinsurance sectors, 
 engineering seismological research, and effective mitigation via public 
 policy in the form of urban zoning and building design code formulation.
 
-Decisions made using the results of seismic hazard assessment involve
-citizens and capitals and may have large impacts on our day-to-day 
-life. 
+Decisions based on seismic hazard results may have impacts on
+population and capitals possibly with important repercussions 
+on our day-to-day life, for these reasons the generation of hazard 
+models and their calculation must be based on well-recognized, 
+state-of-the-art and tested techniques. 
+% 
+Seismic hazard is still an active research area in science 
+and engineering, therefore hazard codes need to:
+\begin{itemize}
+\item have a modular and flexible structure to incorporate new 
+features and warranting the most recent and advanced techniques;
+\item have and extensive test coverage which tries in any possible 
+way to capture the errors that might be included and search 
+in the new features added errors capable to alter or corrupt the 
+behavior of the components already included \parencite{myers2012}.
+\end{itemize}
 
-Seismic hazard is still an active research area in science and engineering.
+According to \textcite{berkes2012} the main requirements for 
+scientific programming are:
+\begin{itemize}
+\item Error proof
+\item Flexible and able to accommodate different methods
+\item Reproducible and re-usable. 
+\end{itemize}
 
-The development process of software for seismic hazard assessment 
-must be able to provide the flexibility needed for the progress of 
-science and to guaratee that the results generated comply with basic
-quality standards.
 
-Quality Control is a set of activities designed to evaluate whether a 
-developed product (project document, developed system etc.) meets 
-customer requirements. It ensures that delivered products are checked 
-for quality and determines how well it is built. 
-Its focus is to find defects and to ensure that they are corrected.
-(from
-http://www.planit.net.au/resource/software-quality-assurance-is-it-the-same-as-testing/)
 
+The current document describes the testing procedures adopted in 
+the development of the hazard component of the \gls{acr:oqe}, the 
+open source hazard and risk software developed by the Global 
+Earthquake Model initiative.
+
+ 
+% http://www.planit.net.au/resource/software-quality-assurance-is-it-the-same-as-testing/)
+%
+% ..............................................................................
 \section{Quality Assurance}
-
-
 From the IEEE ``Standard for Software Quality Assurance Processes'':
-
 \emph{Software quality assurance is a set of activities that define and 
 assess the adequacy of software processes to provide evidence that establishes 
 confidence that the software processes are appropriate for and produce 
@@ -38,3 +52,75 @@ A key attribute of SQA is the objectivity of the SQA function with
 respect to the project. The SQA function may also be organizationally 
 independent of the project; that is, free from technical, managerial, 
 and financial pressures from the project.}
+%
+% ..............................................................................
+\section{Testing}
+Depending on the testing strategy adopted this can be completed at different
+stages of the process.
+
+% from \href{http://en.wikipedia.org/wiki/Software_testing}{}
+Testing levels:
+\begin{itemize}
+\item Unit testing
+\item Integration testing
+\item Component interface testing
+\item System testing
+System testing, or end-to-end testing, tests a completely integrated system 
+to verify that it meets its requirements.[36] For example, a system test 
+might involve testing a logon interface, then creating and editing an entry, 
+plus sending or printing results, followed by summary processing or deletion
+(or archiving) of entries, then logoff.
+
+In addition, the software testing should ensure that the program, as well
+as working as expected, does not also destroy or partially corrupt its 
+operating environment or cause other processes within that environment
+to become inoperative (this includes not corrupting shared memory, not 
+consuming or locking up excessive resources and leaving any parallel 
+processes unharmed by its presence).
+\item Acceptance testing
+\end{itemize}
+
+Testing types:
+\begin{itemize}
+\item Installation testing
+\item Compatibility testing
+\item Smoke and sanity testing
+Sanity testing determines whether it is reasonable to proceed with 
+further testing.
+Smoke testing consists of minimal attempts to operate the software, 
+designed to determine whether there are any basic problems that will 
+prevent it from working at all. Such tests can be used as build 
+verification test.
+\item Regression testing
+\item Acceptance testing
+\item Alpha testing
+\item Beta testing
+\item Functional vs non-functional testing
+\item Destructive testing
+\item Software performance testing
+\item Usability testing
+\item Accessibility testing
+\item Security testing
+\item Internationalization and localization
+\item Development testing
+\item A/B testing
+\item Concurrent testing
+\item Conformance testing or type testing
+\end{itemize}
+
+
+%
+% ..............................................................................
+\section{Document structure}
+The document is organized into three main chapter plus and introductory 
+section. 
+%
+The current chapter we provides a general introduction to software 
+testing with a focus on the testing of scientific software. 
+%
+In the second chapter we describe the module, or unit, testing 
+methodology adopted and we provide some examples. 
+%
+In the third and fourth chapters we describe tests where we compare 
+the results computed with the \gls{acr:oqe} against the ones 
+computed using different probabilistic seismic hazard analysis software.
