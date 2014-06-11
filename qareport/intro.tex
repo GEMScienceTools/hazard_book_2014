@@ -7,21 +7,46 @@ engineering seismological research, and effective mitigation via public
 policy in the form of urban zoning and building design code formulation.
 
 Decisions based on seismic hazard results may have impacts on
-population and capitals possibly with important repercussions 
-on our day-to-day life, for these reasons the generation of hazard 
-models and their calculation must be based on well-recognized, 
-state-of-the-art and tested techniques. 
-% 
-Seismic hazard is still an active research area in science 
-and engineering, therefore hazard codes need to:
+population, properties and capitals possibly with important repercussions 
+on our day-to-day life. For these reasons, it is recommendable that 
+the generation of hazard models and their calculation is based on 
+well-recognized, state-of-the-art and tested techniques, requirements 
+that must be reconciled with the need to regularly incorporate 
+the most recent scientific advance. 
+%
+The features described below contribute to fulfill these requirements: 
+%
 \begin{itemize}
-\item have a modular and flexible structure to incorporate new 
-features and warranting the most recent and advanced techniques;
-\item have and extensive test coverage which tries in any possible 
-way to capture the errors that might be included and search 
-in the new features added errors capable to alter or corrupt the 
-behavior of the components already included \parencite{myers2012}.
+\item software should have have a modular and flexible structure to 
+incorporate new features and offer the most recent and advanced 
+techniques;
+\item software should have and extensive test coverage which captures 
+possible errors and avoids regressions (i.e. unexpected behaviors 
+introduced by new features).
 \end{itemize}
+% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . > Figure
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=9cm]{./Pictures/qa/oq-engine_structure.pdf}
+\caption{A schematic describing the main components of the OpenQuake-engine 
+    structure.}
+\label{fig:oqe_structure}
+\end{figure}
+% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . < Figure
+
+In very general terms, modularity is the level to which a component 
+of a system can be moved, replaced or reused. 
+%
+In software design modularity means the separation of the software
+into smaller independent components that can be implemented, maintained 
+and tested more easily and efficiently.
+% 
+The \gls{acr:oqe} is organized into different levels of modularity. The first
+is the one separates the engine itself into a number of 
+libraries (see Figure \ref{fig:oqe_structure} each one containing well 
+identified knowledge, objects and methods (e.g. the OQ-hazardlib  
+includes objects and methods needed to compute probabilistic 
+seismic hazard). 
 
 According to \textcite{berkes2012} the main requirements for 
 scientific programming are:
@@ -31,15 +56,34 @@ scientific programming are:
 \item Reproducible and re-usable. 
 \end{itemize}
 
-
-
 The current document describes the testing procedures adopted in 
 the development of the hazard component of the \gls{acr:oqe}, the 
 open source hazard and risk software developed by the Global 
 Earthquake Model initiative.
 
+Software testing \parencite{myers2012} is an important, complex and 
+vast discipline which develops methods and processes aimed at 
+establishing that a computer code behaves according to the original 
+design and user specifications. 
  
+%spewhat it was designed to do and that it does not do anything unintended. Software should be predictable and consistent, offering no surprises to users. In this book we will look at many approaches to achieving this goal. 
+
 % http://www.planit.net.au/resource/software-quality-assurance-is-it-the-same-as-testing/)
+%
+% ..............................................................................
+\section{Testing}
+Software testing can be implemented at different stages of the development 
+process, clearly this implies different strategies to approach the problem.
+%
+The \gls{acr:oqe} and the associated libraries are developed following an 
+agile paradigm. This development strategy is organized in such a way that 
+the preparation of the real code is completed in parallel and fully 
+integrated with the software testing process.
+
+The software engineering community provides a wide range of testing levels
+and typologies. In the current document we consider just a portion of them
+with the specific intent to illustrate what has been adopted in the 
+development of the \gls{acr:oqe} and particularly of its hazard component.
 %
 % ..............................................................................
 \section{Quality Assurance}
@@ -54,73 +98,19 @@ independent of the project; that is, free from technical, managerial,
 and financial pressures from the project.}
 %
 % ..............................................................................
-\section{Testing}
-Depending on the testing strategy adopted this can be completed at different
-stages of the process.
-
-% from \href{http://en.wikipedia.org/wiki/Software_testing}{}
-Testing levels:
-\begin{itemize}
-\item Unit testing
-\item Integration testing
-\item Component interface testing
-\item System testing
-System testing, or end-to-end testing, tests a completely integrated system 
-to verify that it meets its requirements.[36] For example, a system test 
-might involve testing a logon interface, then creating and editing an entry, 
-plus sending or printing results, followed by summary processing or deletion
-(or archiving) of entries, then logoff.
-
-In addition, the software testing should ensure that the program, as well
-as working as expected, does not also destroy or partially corrupt its 
-operating environment or cause other processes within that environment
-to become inoperative (this includes not corrupting shared memory, not 
-consuming or locking up excessive resources and leaving any parallel 
-processes unharmed by its presence).
-\item Acceptance testing
-\end{itemize}
-
-Testing types:
-\begin{itemize}
-\item Installation testing
-\item Compatibility testing
-\item Smoke and sanity testing
-Sanity testing determines whether it is reasonable to proceed with 
-further testing.
-Smoke testing consists of minimal attempts to operate the software, 
-designed to determine whether there are any basic problems that will 
-prevent it from working at all. Such tests can be used as build 
-verification test.
-\item Regression testing
-\item Acceptance testing
-\item Alpha testing
-\item Beta testing
-\item Functional vs non-functional testing
-\item Destructive testing
-\item Software performance testing
-\item Usability testing
-\item Accessibility testing
-\item Security testing
-\item Internationalization and localization
-\item Development testing
-\item A/B testing
-\item Concurrent testing
-\item Conformance testing or type testing
-\end{itemize}
-
-
-%
-% ..............................................................................
 \section{Document structure}
 The document is organized into three main chapter plus and introductory 
 section. 
-%
+ 
 The current chapter we provides a general introduction to software 
 testing with a focus on the testing of scientific software. 
-%
+ 
 In the second chapter we describe the module, or unit, testing 
-methodology adopted and we provide some examples. 
-%
+and the acceptance tests adopted and we discuss some examples. 
+ 
 In the third and fourth chapters we describe tests where we compare 
 the results computed with the \gls{acr:oqe} against the ones 
 computed using different probabilistic seismic hazard analysis software.
+  
+Appendix \ref{sec:app1} provides details on the PEER tests 
+implemented in the \gls{acr:oqhl}.
