@@ -335,6 +335,17 @@
   Timestamp                = {2014.06.04}
 }
 
+@Electronic{berkes2012,
+  Title                    = {Writing robust scientific code with testing (and Python)},
+  Author                   = {Berkes, P.},
+  Organization             = {Euroscipy},
+  Url                      = {http://archive.euroscipy.org/talk/6634},
+  Year                     = {2012},
+
+  Owner                    = {mpagani},
+  Timestamp                = {2014.06.10}
+}
+
 @Article{beyer2006,
   Title                    = {Relationships between Median Values and between Aleatory Variabilities for Different Definitions of the Horizontal Component of Motion},
   Author                   = {Beyer, K. and Bommer, J. J.},
@@ -1211,6 +1222,16 @@
 
   Owner                    = {marcop},
   Timestamp                = {2011.04.22}
+}
+
+@Book{myers2012,
+  Title                    = {The art of software testing},
+  Author                   = {Myers, G. J. and Sandler, C. and Badgett, T.},
+  Publisher                = {Wiley and Sons, Inc.},
+  Year                     = {2012},
+
+  Owner                    = {mpagani},
+  Timestamp                = {2014.06.10}
 }
 
 @Article{pagani2007,
