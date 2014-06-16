@@ -21,7 +21,7 @@ the two software adopt different modeling strategies. The OQ-engine uses a magni
 
 \begin{figure}
 \centering
-\includegraphics[width=12cm]{./qareport/pictures/CAmapC_21.pdf}
+\includegraphics[width=10cm]{./qareport/pictures/CAmapC_21.pdf}
 \caption{Gridded seismicity model used as benchmark for testing distributed seismicity in the OQ-engine. Hazard curves are compared for a set of 21 sites defining a profile connecting San Francisco to Los Angeles.}
 \label{fig:cal_grid}
 \end{figure}
@@ -29,37 +29,37 @@ the two software adopt different modeling strategies. The OQ-engine uses a magni
 
 \begin{figure}
 \centering
-\includegraphics[width=12cm]{./qareport/pictures/gridded_seismicity_oq_nshmp_point.pdf}
+\includegraphics[width=10cm]{./qareport/pictures/gridded_seismicity_oq_nshmp_point.pdf}
 \caption{Comparison of hazard map values for different return periods (RP) along the profile assuming \textit{point ruptures}}
 \label{fig:cal_grid_map_point}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=12cm]{./qareport/pictures/-120pt7_36pt31_point.pdf}
+\includegraphics[width=10cm]{./qareport/pictures/-120pt7_36pt31_point.pdf}
 \caption{Hazard curve comparison for site with coordinates -120.7E, 36.31N assuming \textit{point ruptures}}
 \label{fig:cal_grid_curve_point}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=12cm]{./qareport/pictures/gridded_seismicity_oq_nshmp_fixedstrikevertical.pdf}
+\includegraphics[width=10cm]{./qareport/pictures/gridded_seismicity_oq_nshmp_fixedstrikevertical.pdf}
 \caption{Comparison of hazard map values for different return periods (RP) along the profile assuming finite vertical ruptures with fixed strike.}
 \label{fig:cal_grid_map_finite}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=12cm]{./qareport/pictures/-120pt7_36pt31_fixedstrikevertical.pdf}
+\includegraphics[width=10cm]{./qareport/pictures/-120pt7_36pt31_fixedstrikevertical.pdf}
 \caption{Hazard curve comparison for site with coordinates -120.7E 36.31N assuming finite vertical ruptures with fixed strike.}
 \label{fig:cal_grid_curve_finite}
 \end{figure}
 
 \subsection{Benchmarks for crustal faults}
-As benchmarks for crustal faults, we considered two fault models for the State of California. One based on type-A faults (\cite{petersen2008}), which defines only characteristic faul sources (Figure \ref{fig:type_a_fault}) and one based on type-B faults (Figure \ref{fig:type_b_fault}), which contain mostly Gutenberg-Richter fault sources. Characteristic faults are defined through a Normal (i.e. Gaussian) magnitude-frequency distribution. For each magnitude-bin, the entire fault surface is assumed to rupture. In a characteristic model no scaling relationship is required, and hence no floating ruptures are modeled. On the contrary, in a Gutenberg-Richter fault, ruptures are floated along the fault surface (both along strike and dip) and rupture extension is modeled in terms of a magnitude-length scaling relationship. We compare hazard curves for the same set of locations as for the distributed seismicity model. Results of the comparison are given in Figures \ref{fig:type_a_map} and \ref{fig:type_a_curve} for the type-A fault model, and \ref{fig:type_b_map}, and \ref{fig:type_b_curve} for the type-B fault model. For the type-A fault model, the agreement between the USGS-NSHMP and OpenQuake-engine solutions is very good. When considering instead the results from the type-B fault model some discrepancies are visibile, especially for return periods longer than 500 years, altough the level of agreement is still acceptable. The lack of a complete agreement in the type-B fault model solutions may indicate the effect of differences in the rupture floating algorithm between the two software. Indeed, the very good agreement in the case of the type-A fault model (which does not consider any rupture floating) confirms that the modeling of rupture extension and location on a fault surface plays an important role in the hazard calculation procedure.
+As benchmarks for crustal faults, we considered two fault models for the State of California. One based on type-A faults (\cite{petersen2008}), which defines only characteristic faul sources (Figure \ref{fig:type_a_fault}) and one based on type-B faults (Figure \ref{fig:type_b_fault}), which contain mostly Gutenberg-Richter fault sources.
 
 % Type-A fault
-\begin{figure}
+\begin{figure}[htb]
 \centering
 \includegraphics[width=10cm]{./qareport/pictures/aFault_aPriori_D2pt1.pdf}
 \caption{Type-A fault model}
@@ -67,42 +67,40 @@ As benchmarks for crustal faults, we considered two fault models for the State o
 \end{figure}
 
 % Type-B fault
-\begin{figure}
+\begin{figure}[htb]
 \centering
 \includegraphics[width=10cm]{./qareport/pictures/bFault_stitched_D2pt1_GR0.pdf}
 \caption{Type-B fault model}
 \label{fig:type_b_fault}
 \end{figure}
 
+Characteristic faults are defined through a Normal (i.e. Gaussian) magnitude-frequency distribution. For each magnitude-bin, the entire fault surface is assumed to rupture. In a characteristic model no scaling relationship is required, and hence no floating ruptures are modeled. On the contrary, in a Gutenberg-Richter fault, ruptures are floated along the fault surface (both along strike and dip) and rupture extension is modeled in terms of a magnitude-length scaling relationship. We compare hazard curves for the same set of locations as for the distributed seismicity model. Results of the comparison are given in Figures \ref{fig:type_a_map} and \ref{fig:type_a_curve} for the type-A fault model, and \ref{fig:type_b_map}, and \ref{fig:type_b_curve} for the type-B fault model. For the type-A fault model, the agreement between the USGS-NSHMP and OpenQuake-engine solutions is very good. When considering instead the results from the type-B fault model some discrepancies are visibile, especially for return periods longer than 500 years, altough the level of agreement is still acceptable. The lack of a complete agreement in the type-B fault model solutions may indicate the effect of differences in the rupture floating algorithm between the two software. Indeed, the very good agreement in the case of the type-A fault model (which does not consider any rupture floating) confirms that the modeling of rupture extension and location on a fault surface plays an important role in the hazard calculation procedure.
+
 \begin{figure}
 \centering
-\includegraphics[width=12cm]{./qareport/pictures/oq_nshmp_aFault.pdf}
+\includegraphics[width=10cm]{./qareport/pictures/oq_nshmp_aFault.pdf}
 \caption{Hazard map comparison for Type-A fault model.}
 \label{fig:type_a_map}
 \end{figure}
 \begin{figure}
 \centering
-\includegraphics[width=12cm]{./qareport/pictures/-120pt49_36pt12_aFault.pdf}
+\includegraphics[width=10cm]{./qareport/pictures/-120pt49_36pt12_aFault.pdf}
 \caption{Hazard curve comparison for site with coordinates -120.49E 36.12N using Type-A fault model}
 \label{fig:type_a_curve}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=12cm]{./qareport/pictures/oq_nshmp_bFault_ar1.pdf}
+\includegraphics[width=10cm]{./qareport/pictures/oq_nshmp_bFault_ar1.pdf}
 \caption{Hazard map comparison for Type-B fault model}
 \label{fig:type_b_map}
 \end{figure}
 \begin{figure}
 \centering
-\includegraphics[width=12cm]{./qareport/pictures/-120pt49_36pt12_bFault_ar1.pdf}
+\includegraphics[width=10cm]{./qareport/pictures/-120pt49_36pt12_bFault_ar1.pdf}
 \caption{Hazard curve comparison for site with coordinates -120.49E 36.12N using Type-B fault model}
 \label{fig:type_b_curve}
 \end{figure}
-
-
-
-
 
 \subsection{Benchmarks for subduction faults}
 The 2008 U.S. national seismic hazard model (\cite{pertersen2008}) defines fault sources with complex geometries to model large subdaction interface faults in the Cascadia region. We thus selected a fault model for the Cascadia region as a benchmark for the modeling of complex fault sources. Similarly to what done for crustal sources, we considered a characteristic model (where earthquakes always rupture the entire fault surface) and an unsegmented model where ruptures (whose extension is constrained by a scaling relationship) are allowed to move along the entire fault surface. The characteristic model defines a single event of magnitude ($M_{w}=9.2$) which breaks a complex fault surface depicted in Figure \ref{fig:cascadia_geo}. The unsegmented model defines the same fault geometry, however earthquake ruptures are generated from minimum magnitude 8.3 to maximum magnitude 8.7. Hazard curves are compared along two profiles, aligned along the E-W and N-S directions. When considering the characteristic model, the agreement between the solutions provided by the two software is very good (Figures \ref{fig:cascadia_char_ew}, \ref{fig:cascadia_char_ns}). On the contrary, when considering the unsegmented model (Figures \ref{fig:cascadia_float_ew} and \ref{fig:cascadia_float_ns}) large discrepancies are evident especially along the N-S profile. The large discrepancies can be understood again in terms of the differences between the rupture floating algorithm in the two software. In particular, the USGS-NSHMP code define rupture extension along length only (using a magnitude-lenght scaling relationship), and assume each rupture to extend along dip until the fault bottom edge. That is rupture floating occurs only along the strike direction and not along dip. In the OQ-engine instead, rupture extension and shape is determined by a magnitude-area scaling relationship and rupture aspect-ratio, and each rupture can be moved both along strike and along dip. The bulge in the hazard map profiles as visibile in Figure \ref{fig:cascadia_float_ns} can be explained in terms of a large number of ruptures model by the OQ-engine in the inner part of the fault surface. In the USGS-NSHMP approach, the number of ruptures along the fault surface is constant, as also demonstrated by the constant hazard values along the N-S profile.
@@ -115,26 +113,26 @@ The 2008 U.S. national seismic hazard model (\cite{pertersen2008}) defines fault
 
 \begin{figure}
 \centering
-\includegraphics[width=12cm]{./qareport/pictures/cascadia_char_oq_nshmp_ew.pdf}
+\includegraphics[width=10cm]{./qareport/pictures/cascadia_char_oq_nshmp_ew.pdf}
 \caption{Hazard map comparison along EW profile}
 \label{fig:cascadia_char_ew}
 \end{figure}
 \begin{figure}
 \centering
-\includegraphics[width=12cm]{./qareport/pictures/cascadia_char_oq_nshmp_ns.pdf}
+\includegraphics[width=10cm]{./qareport/pictures/cascadia_char_oq_nshmp_ns.pdf}
 \caption{Hazard map comparison along NS profile}
 \label{fig:cascadia_char_ns}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=12cm]{./qareport/pictures/cascadia_float_oq_nshmp_ew.pdf}
+\includegraphics[width=10cm]{./qareport/pictures/cascadia_float_oq_nshmp_ew.pdf}
 \caption{Hazard map comparison along EW profile using Cascadia unsegmented model}
 \label{fig:cascadia_float_ew}
 \end{figure}
 \begin{figure}
 \centering
-\includegraphics[width=12cm]{./qareport/pictures/cascadia_float_oq_nshmp_ns.pdf}
+\includegraphics[width=10cm]{./qareport/pictures/cascadia_float_oq_nshmp_ns.pdf}
 \caption{Hazard map comparison along NS profile using Cascadia unsegmented model}
 \label{fig:cascadia_float_ns}
 \end{figure}
