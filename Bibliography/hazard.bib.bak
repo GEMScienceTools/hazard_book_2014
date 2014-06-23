@@ -226,6 +226,21 @@
   Timestamp                = {2011.10.18}
 }
 
+@Article{ab1995,
+  Title                    = {{Ground-Motion Relations for Eastern North America}},
+  Author                   = {Atkinson, G. M. and Boore, D. M.},
+  Journal                  = {Bull. Seism. Soc. Am.},
+  Year                     = {1995},
+  Number                   = {1},
+  Pages                    = {17-30},
+  Volume                   = {85},
+
+  Date-added               = {2014-06-19 09:49:27 +0000},
+  Date-modified            = {2014-06-19 09:51:22 +0000},
+  Owner                    = {mpagani},
+  Timestamp                = {2014.06.23}
+}
+
 @Article{bakun1997,
   Title                    = {Estimating earthquake location and magnitude from seismic intensity data},
   Author                   = {Bakun, W. H. and Wentworth, C. M.},
@@ -467,6 +482,20 @@
 
   Owner                    = {marcop},
   Timestamp                = {2011.07.24}
+}
+
+@TechReport{bjf1993,
+  Title                    = {{Estimation of Responce Spectra and Peak Accelerations from Western North American Earthquakes: An Interim Report}},
+  Author                   = {Boore, D. M. and Joyner, W. B. and Fumal, T. E.},
+  Institution              = {U.S. Geological Survey},
+  Year                     = {1993},
+  Number                   = {93-509},
+  Type                     = {Open File Report},
+
+  Date-added               = {2014-06-19 13:32:27 +0000},
+  Date-modified            = {2014-06-19 13:34:28 +0000},
+  Owner                    = {mpagani},
+  Timestamp                = {2014.06.23}
 }
 
 @Article{boore2006,
@@ -831,6 +860,20 @@
   Timestamp                = {2010.10.04}
 }
 
+@TechReport{frankel1996,
+  Title                    = {National Seismic Hazard Maps---Documentation June 1996},
+  Author                   = {Frankel, A. and Mueller, C. and Barnhard, T. and Perkins, D. and Leyendecker, E. and Dickman, N. and Hanson, S. and Hopper, M.},
+  Institution              = {U.S. Geological Survey},
+  Year                     = {1996},
+  Number                   = {96-532},
+  Type                     = {Open-File Report},
+
+  Date-added               = {2014-06-20 20:25:06 +0000},
+  Date-modified            = {2014-06-20 20:28:12 +0000},
+  Owner                    = {mpagani},
+  Timestamp                = {2014.06.23}
+}
+
 @TechReport{frankel1997,
   Title                    = {{National 1996 Seismic Hazard Maps}},
   Author                   = {Frankel, A. and Mueller, C. and Barnhard, T. and Perkins, D. and Leyendecker, E. V. and Dickman, N. and Hanson, S. and Hopper, M.},
@@ -867,6 +910,31 @@
 
   Owner                    = {marcop},
   Timestamp                = {2011.09.02}
+}
+
+@Unpublished{geomatrix1993,
+  Title                    = {Seismic margin earthquake for the Trojan site},
+  Author                   = {Geomatrix Consultants, Inc.},
+  Note                     = {Final unpublished report prepared for Portland General Electric Trojan Nuclear Plant, Ranier, Oregon},
+  Year                     = {1993},
+
+  Date-added               = {2014-06-20 20:51:39 +0000},
+  Date-modified            = {2014-06-20 20:53:25 +0000},
+  Owner                    = {mpagani},
+  Timestamp                = {2014.06.23}
+}
+
+@TechReport{halchuk2008,
+  Title                    = {{Fourth generation seismic hazard maps of Canada: Maps and grid values to be used with the 2005 National Building Code of Canada}},
+  Author                   = {Halchuk, S. and Adams, J.},
+  Institution              = {Geological Survey of Canada},
+  Year                     = {2008},
+  Type                     = {Open File 5813},
+
+  Date-added               = {2014-06-19 09:35:44 +0000},
+  Date-modified            = {2014-06-19 09:37:18 +0000},
+  Owner                    = {mpagani},
+  Timestamp                = {2014.06.23}
 }
 
 @Article{hancock2005,
@@ -993,7 +1061,7 @@
   Timestamp                = {2011.09.01}
 }
 
-@Article{Jayaram2009,
+@Article{jayaram2009,
   Title                    = {Correlation model for spatially distributed ground-motion intensities},
   Author                   = {Jayaram, N. and Baker, J. W.},
   Journal                  = {Earthquake Engineering and Structural Dynamics},
@@ -1433,6 +1501,30 @@
   Timestamp                = {2010.12.31}
 }
 
+@TechReport{silva2002,
+  Title                    = {{Development of hard rock attenuation relations for central and eastern North America}},
+  Author                   = {Silva, W. and Gregor, N. and Darragh, R.},
+  Institution              = {Pacific Engineering},
+  Year                     = {2002},
+
+  Date-added               = {2014-06-20 20:39:13 +0000},
+  Date-modified            = {2014-06-20 20:40:20 +0000},
+  Owner                    = {mpagani},
+  Timestamp                = {2014.06.23}
+}
+
+@TechReport{somerville2001,
+  Title                    = {Ground motion attenuation relations for the Central and Eastern United States---Final report, June 30, 2001},
+  Author                   = {Somerville, P. and Collins, N. and Abrahamson, N. and Graves, R., and Saikia, C.},
+  Institution              = {U.S. Geological Survey},
+  Year                     = {2001},
+
+  Date-added               = {2014-06-20 20:28:18 +0000},
+  Date-modified            = {2014-06-20 20:29:56 +0000},
+  Owner                    = {mpagani},
+  Timestamp                = {2014.06.23}
+}
+
 @TechReport{sommerville2006,
   Title                    = {Magnitude-rupture area scaling of large strike-slip earthquakes},
   Author                   = {Somerville, P. G. and Collins, N. and Graves, R.},
@@ -1519,6 +1611,20 @@
   Timestamp                = {2011.08.18}
 }
 
+@Article{tavakoli2005,
+  Title                    = {{Empirical-stochastic ground-motion prediction for eastern North America}},
+  Author                   = {Tavakoli, B. and Pezeshk, S.},
+  Journal                  = {Bull. Seism. Soc. Am.},
+  Year                     = {2005},
+  Pages                    = {2283-2296},
+  Volume                   = {95},
+
+  Date-added               = {2014-06-20 20:36:50 +0000},
+  Date-modified            = {2014-06-20 20:37:45 +0000},
+  Owner                    = {mpagani},
+  Timestamp                = {2014.06.23}
+}
+
 @TechReport{ceus2012,
   Title                    = {Central and Eastern United States Seismic Source Characterization for Nuclear Facilities.},
   Author                   = {{Technical Report}},
@@ -1542,6 +1648,20 @@
 
   Owner                    = {mpagani},
   Timestamp                = {2014.05.20}
+}
+
+@Article{toro1997,
+  Title                    = {{A model of strong ground motions from earthquakes in central and eastern North America---Best estimates and uncertainties}},
+  Author                   = {Toro, G.R. and Abrahamson, N.A. and Schneider, J.F},
+  Journal                  = {Seism. Res. Lett.},
+  Year                     = {1997},
+  Pages                    = {41-57},
+  Volume                   = {68},
+
+  Date-added               = {2014-06-20 20:33:18 +0000},
+  Date-modified            = {2014-06-20 20:34:18 +0000},
+  Owner                    = {mpagani},
+  Timestamp                = {2014.06.23}
 }
 
 @Unpublished{t2002,
@@ -1713,6 +1833,20 @@
   Doi                      = {10.1785/0120050122},
   Owner                    = {marcop},
   Timestamp                = {2011.02.10}
+}
+
+@Book{burbidge2012,
+  Title                    = {{The 2012 Australian Earthquake Hazard Map}},
+  Editor                   = {Burbidge, D. R.},
+  Publisher                = {Geoscience Australia},
+  Year                     = {2012},
+
+  Address                  = {Canberra},
+
+  Date-added               = {2014-06-19 08:40:22 +0000},
+  Date-modified            = {2014-06-19 08:44:50 +0000},
+  Owner                    = {mpagani},
+  Timestamp                = {2014.06.23}
 }
 
 @comment{jabref-meta: selector_publisher:}
