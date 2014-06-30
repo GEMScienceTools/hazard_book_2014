@@ -138,8 +138,8 @@ Rake angle & Defines faulting style \\
 \label{table:simple_fault_tab}
 \end{table}
 The fault surface is constructed by translating the fault trace from the upper to the lower seismogenic depth along a direction perpendicular to the fault trace (measured as the difference between the azimuths of the first and last coordinates of the trace) and with an inclination equal to the dip angle. The surface so defined is
-effectively modeled as a regular (i.e. equally spaced in distance) mesh [Figure
-\ref{fig:SimpleFaultSource} a)].
+effectively modeled as a regular (i.e. equally spaced in distance) mesh (Figure
+\ref{fig:SimpleFaultSource}a).
 \begin{figure}
 \centering
 \includegraphics[width=14cm]{./Pictures/SimpleFaultSource.pdf}
@@ -147,8 +147,8 @@ effectively modeled as a regular (i.e. equally spaced in distance) mesh [Figure
 \label{fig:SimpleFaultSource}
 \end{figure}
 For each magnitude bin defined in the magnitude-frequency distribution, an earthquake rupture is modeled as a portion of the fault surface, accordingly with the magnitude scaling relationship and the rupture aspect
-ratio [Figure \ref{fig:SimpleFaultSource} b)]. To simulate all possible rupture locations, each earthquake rupture is \textit{floated}, that is moved, along both the strike and dip directions [Figure
-\ref{fig:SimpleFaultSource} c)]. The floating step is assumed equal to the mesh discretization step.
+ratio (Figure \ref{fig:SimpleFaultSource}b). To simulate all possible rupture locations, each earthquake rupture is \textit{floated}, that is moved, along both the strike and dip directions (Figure
+\ref{fig:SimpleFaultSource}c). The floating step is assumed equal to the mesh discretization step.
 The occurrence rate associated to a given magnitude bin is distributed uniformly over all the ruptures associated with the same magnitude value.
 \subsection{The rupture floating algorithm for a Simple Fault source}
 We describe here in more detail the algorithm adoped for modeling floating ruptures in a Simple Fault source. We indicate with $\Delta$ the mesh spacing, and with $n_{strike}^{fault}$ and $n_{dip}^{fault}$ the number of nodes along the strike and dip directions in the mesh representing the entire fault surface. By indicating with $L(M)$ and $W(M)$ the length and width of a rupture of magnitude $M$ (obtained from equation \ref{eq:rup_l_w}), the equivalent number of nodes (along strike and dip) representing a rupture on the mesh can be computed as:
@@ -199,7 +199,7 @@ Rake angle & Defines faulting style \\
 \end{table}
 To accomodate the definition of irregular geometries, the Complex Fault source requires the
 specification of the coordinates of, at leats, the top and bottom edges of the fault surface, and
-optionally, of one or more intermediate edges [Figure \ref{fig:ComplexFaultSource} a)]. Edges
+optionally, of one or more intermediate edges (Figure \ref{fig:ComplexFaultSource}a). Edges
 can have different and variable directions and a single edge can develop over different depth levels.
 This gives a very large flexibility in the definition of the fault surface, allowing for changes in width
 and inclination both along strike and along dip.
@@ -212,7 +212,7 @@ and inclination both along strike and along dip.
 
 \subsection{Mesh construction in a Complex Fault source}
 The fault edges are used to construct a mesh representing the fault surface 
-[Figure \ref{fig:ComplexFaultSource} b)]. The mesh is, in general, not uniform; that is,
+(Figure \ref{fig:ComplexFaultSource}b). The mesh is, in general, not uniform; that is,
 the mesh spacing may be spatially variable to accomodate the irregular geometry of the surface.
 The construction of the mesh rely on the following algorithm. By indicating with
 $\overline{L}_{edge}$ the average edge length, and with $\Delta$
