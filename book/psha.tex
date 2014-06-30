@@ -1,11 +1,11 @@
 This chapter describes the mathematical framework for PSHA implemented by the OpenQuake-engine.
-Seismicity is assumed to be described as a time-indipendent Poissonian process. Seismicity modeling
+Seismicity is assumed to be described as a time-independent Poissonian process. Seismicity modeling
 relies therefore on the following three assumptions:
 \begin{itemize}
-	\item seismicity in a region is described by a collection of \textit{indipendent seismic sources}
+	\item seismicity in a region is described by a collection of \textit{independent seismic sources}
 	(i.e. the occurrence of an earthquake rupture in a source does not affect the probability of
 	earthquake occurrence in the other sources)
-	\item each source generates \textit{indipendent earthquake ruptures} (i.e. the occurrence of an
+	\item each source generates \textit{independent earthquake ruptures} (i.e. the occurrence of an
 	earthquake rupture in a source does not affect the probability of occurrence of the other
 	potential earthquake ruptures in the same source)
 	\item the number of occurrences for each earthquake rupture in a source follows a \textit{Poissonian}
@@ -22,7 +22,7 @@ rupture.
 The design of a seismic source model involves the specification of a number of sources whose main parameters
 are the geometry, constraining the earthquake rupture locations, and the \textit{magnitude-frequency
 distribution}, defining the average annual occurrence rate over a magnitude range. Chapter \ref{chap:ssm} provides
-a detailed description of the different source typologies supported by the OQ-engine. However, indipendently
+a detailed description of the different source typologies supported by the OQ-engine. However, independently
 of the typology, in a PSHA each source undergoes a discretization process which effectively generates a
 number of distinct earthquake ruptures. We can therefore assume a source to define a set of earthquake ruptures:
 \begin{equation}
@@ -44,7 +44,7 @@ defined in a seismic source model. Such a list of probability values is usually 
 
 We indicate with $P(X \ge x | T)$ the probability that a ground-motion parameter $X$ exceeds, at least once in
 a time span $T$, a level $x$. $P(X \ge x | T)$ can be computed as 1 minus the probability that none of the
-sources is causing a ground motion exceedance. By assuming \textit{indipendent sources}, the probability
+sources is causing a ground motion exceedance. By assuming \textit{independent sources}, the probability
 that none of the sources is causing an exceedance is equal to the product of the probabilities that each source
 does not cause an exceedance, that is:
 \begin{align}
@@ -55,7 +55,7 @@ P(X \ge x | T) & =  1 - P_{src1}(X < x | T) * P_{src2}(X < x | T) * ... * P_{src
 where $P_{src_{i}}(X < x | T)$ is the probability that the $i-th$ source is not causing an exceedance and $I$ is the
 total number of sources in the source model.
 
-By further assuming each source generates \textit{indipendent
+By further assuming each source generates \textit{independent
 earthquake ruptures}, we can compute $P_{src_{i}}(X < x | T)$ as the product of the probabilities that each rupture
 does not cause an exceedance, that is:
 \begin{align}

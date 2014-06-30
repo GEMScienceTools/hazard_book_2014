@@ -15,11 +15,11 @@ at different depth levels. Earthquake ruptures can extend without barriers along
 For modeling fault-based seismicity, that is seismic activity occurring on a well identified and characterized
 fault zone, the OQ-engine provides two main options, the \textit{Simple Fault} and the \textit{Complex Fault}
 sources. Both source typologies allows distributing seismicity \textit{uniformly over a fault surface}, with the
-only constrain that an earthquake rupture cannot extend outside of the defined fault surface. In both sources an earthquake of a given magnitude is defined as a portion of the fault surface. To simulate all possible rupture locations, an earthquake rupture is \textit{floated}, that is moved, over the entire fault surface. The two source typologies differs instead in terms of the geometrical complexity they can accomodate when modeling a fault surface. In particular, a Simple Fault source can model a fault surface as a plain rectangle in the simplest case, or as a set of connected parallelograms in the most complex case. A Complex Fault source can instead model an arbitrarily complex quadrilateral surface, which can therefore accomodate changes in dip angle along depth or along strike or changes in fault width. The Complex Fault source is therefore particularly suitable for modeling large subdution interface faults, while Simple Fault sources can be used for modeling crustal faults. The \textit{Characteristic Fault} source can model both simple and complex geometries, but instead of simulating floating ruptures, each earthquake breaks the entire fault surface indipendently of the associated magnitude. The Characteristic Source typology can be used to model individual faults or fault segments that tend to produce essentialy same size earthquakes (\cite{schwartscoppersmith1984}).
+only constrain that an earthquake rupture cannot extend outside of the defined fault surface. In both sources an earthquake of a given magnitude is defined as a portion of the fault surface. To simulate all possible rupture locations, an earthquake rupture is \textit{floated}, that is moved, over the entire fault surface. The two source typologies differs instead in terms of the geometrical complexity they can accomodate when modeling a fault surface. In particular, a Simple Fault source can model a fault surface as a plain rectangle in the simplest case, or as a set of connected parallelograms in the most complex case. A Complex Fault source can instead model an arbitrarily complex quadrilateral surface, which can therefore accomodate changes in dip angle along depth or along strike or changes in fault width. The Complex Fault source is therefore particularly suitable for modeling large subdution interface faults, while Simple Fault sources can be used for modeling crustal faults. The \textit{Characteristic Fault} source can model both simple and complex geometries, but instead of simulating floating ruptures, each earthquake breaks the entire fault surface independently of the associated magnitude. The Characteristic Source typology can be used to model individual faults or fault segments that tend to produce essentialy same size earthquakes (\cite{schwartscoppersmith1984}).
 
 %-------- Common parameters -------%
 %-------- Magnitude-Frequency Distribution-------%
-Indipendently of the typology, all sources require the definition of the following main parameters:
+Independently of the typology, all sources require the definition of the following main parameters:
 \begin{itemize}
 \item magnitude-frequency distribution
 \item tectonic region type
@@ -46,7 +46,7 @@ location and number of ruptures of a given magnitude, the occurrence rate (and t
 probability) is uniform over ruptures with the same magnitude.
 
 %----------Tectonic Region Type---------%
-The second typology-indipendent parameter associated to a seismic source is the tectonic region type.
+The second typology-independent parameter associated to a seismic source is the tectonic region type.
 This is a source attribute which is used as a key to associate a seismic source to a ground motion model.
 Given a source model describing seismicity occurring in a region where different tectonic settings overlap or
 are close to each other, the associated ground motion model may prescribe different equations for the different
