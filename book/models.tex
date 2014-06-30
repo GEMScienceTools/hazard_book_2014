@@ -9,12 +9,14 @@ This chapter describes the seismic source typologies supported by the OQ-engine:
 The OQ-engine provides several seismic source typologies to accomodate different modeling approaches. For modeling distributed seismicity, that is seismic activity occurring over a geographilcal region and not tight to
 specific well characterized fault structures, the OQ-engine provides the \textit{Point} and \textit{Area} sources. The former defines seismic activity \textit{nucleating in a single geographical location}, while the second seismicity occurring \textit{uniformly over a geographical region}. Both sources define a seismogenic layer which constrains rupture location and extension along depth. A collection of Point sources can be used to model seismicity with spatially variable parameters (as obtained from a smoothed seismicity approach for instance), while Area sources can be used to model seismicity in geographic zones usually defined by expert judgments taking into account seismological, geological and geodetic information. Both source typologies
 allows modeling earthquake ruptures as extended surfaces (that is as plane rectangles in a 3D space) with potentially multiple orientations and inclinations (that is multiple strike and dip angles) and also placed
-at different depth levels. Earthquake ruptures can extend without barriers along strike but cannot cross the seismogenic layer.\\
+at different depth levels. Earthquake ruptures can extend without barriers along strike but cannot cross the seismogenic layer.
+
 %------- Faults ---------%
 For modeling fault-based seismicity, that is seismic activity occurring on a well identified and characterized
 fault zone, the OQ-engine provides two main options, the \textit{Simple Fault} and the \textit{Complex Fault}
 sources. Both source typologies allows distributing seismicity \textit{uniformly over a fault surface}, with the
-only constrain that an earthquake rupture cannot extend outside of the defined fault surface. In both sources an earthquake of a given magnitude is defined as a portion of the fault surface. To simulate all possible rupture locations, an earthquake rupture is \textit{floated}, that is moved, over the entire fault surface. The two source typologies differs instead in terms of the geometrical complexity they can accomodate when modeling a fault surface. In particular, a Simple Fault source can model a fault surface as a plain rectangle in the simplest case, or as a set of connected parallelograms in the most complex case. A Complex Fault source can instead model an arbitrarily complex quadrilateral surface, which can therefore accomodate changes in dip angle along depth or along strike or changes in fault width. The Complex Fault source is therefore particularly suitable for modeling large subdution interface faults, while Simple Fault sources can be used for modeling crustal faults. The \textit{Characteristic Fault} source can model both simple and complex geometries, but instead of simulating floating ruptures, each earthquake breaks the entire fault surface indipendently of the associated magnitude. The Characteristic Source typology can be used to model individual faults or fault segments that tend to produce essentialy same size earthquakes (\cite{schwartscoppersmith1984}).\\
+only constrain that an earthquake rupture cannot extend outside of the defined fault surface. In both sources an earthquake of a given magnitude is defined as a portion of the fault surface. To simulate all possible rupture locations, an earthquake rupture is \textit{floated}, that is moved, over the entire fault surface. The two source typologies differs instead in terms of the geometrical complexity they can accomodate when modeling a fault surface. In particular, a Simple Fault source can model a fault surface as a plain rectangle in the simplest case, or as a set of connected parallelograms in the most complex case. A Complex Fault source can instead model an arbitrarily complex quadrilateral surface, which can therefore accomodate changes in dip angle along depth or along strike or changes in fault width. The Complex Fault source is therefore particularly suitable for modeling large subdution interface faults, while Simple Fault sources can be used for modeling crustal faults. The \textit{Characteristic Fault} source can model both simple and complex geometries, but instead of simulating floating ruptures, each earthquake breaks the entire fault surface indipendently of the associated magnitude. The Characteristic Source typology can be used to model individual faults or fault segments that tend to produce essentialy same size earthquakes (\cite{schwartscoppersmith1984}).
+
 %-------- Common parameters -------%
 %-------- Magnitude-Frequency Distribution-------%
 Indipendently of the typology, all sources require the definition of the following main parameters:
@@ -33,21 +35,24 @@ widely used in any PSHA. Required parameters are the cumulative \textit{a-value}
 of the \textit{cumulative} distribution at $M=0$ in a $log10$ scale), the $b-value$, the minimum and
 the maximum magnitudes. However, to accomodate also other possibile parametric (and non-parametric)
 forms, the OQ-engine provides a generic discrete \textit{Incremental} magnitude-frequency distribution
-defined through a list of annual occurrence rates, associated to an equally spaced set of magnitude values.\\
+defined through a list of annual occurrence rates, associated to an equally spaced set of magnitude values.
+
 In a PSHA, the magnitude-frequency distribution is subject to a discretization process which defines a set
 of equally spaced magnitude bins and the associated annual occurrence rates (for an \textit{Incremental}
 magnitude-frequency distribution such a discretization is part of its definition). For each source, the annual
 occurrence rate associated to a magnitude bin is \textit{uniformly} distributed over all the ruptures associated
 to the same magnitude bin value. In other words, while the particular geometry of a source determines
 location and number of ruptures of a given magnitude, the occurrence rate (and thus the occurrence
-probability) is uniform over ruptures with the same magnitude.\\
+probability) is uniform over ruptures with the same magnitude.
+
 %----------Tectonic Region Type---------%
 The second typology-indipendent parameter associated to a seismic source is the tectonic region type.
 This is a source attribute which is used as a key to associate a seismic source to a ground motion model.
 Given a source model describing seismicity occurring in a region where different tectonic settings overlap or
 are close to each other, the associated ground motion model may prescribe different equations for the different
 tectonic settings. The mapping between a ground motion model equation and a seismic source is therefore
-achieved through the tectonic region type attribute.\\
+achieved through the tectonic region type attribute.
+
 %-----------Magnitude-Area Scaling and Rupture Aspect Ratio----------%
 All sources model earthquake ruptures as extended surfaces. With the only exception of the Characteristic Fault source, the area of an earthquake rupture surface is magnitude dependent. To constrain the rupture surface area, the Point, Area, Simple and Complex Fault sources require the definition of a \textit{magnitude-area} scaling relationship. Together with a \textit{rupture aspect ratio} (defined as ratio between length and width), the rupture extension and shape (assumed rectangular) is completely defined. Indeed, indicating with $A$ the rupture area and with $ar$ the rupture aspect ratio, rupture length ($L$) and and width ($W$) can be computed as:
 \begin{equation}
@@ -56,7 +61,8 @@ All sources model earthquake ruptures as extended surfaces. With the only except
 &W = \sqrt{A / ar}
 \end{split}
 \end{equation}
-In all sources, the rupture aspect ratio is used to constrain the initial rupture shape. However, if this conflicts with other source-dependent geometrical constrains, the rupture is reshaped so as to conserve the area as given by the scaling relationship.\\
+In all sources, the rupture aspect ratio is used to constrain the initial rupture shape. However, if this conflicts with other source-dependent geometrical constrains, the rupture is reshaped so as to conserve the area as given by the scaling relationship.
+
 %-----------Upper and Lower Seismogenic Depths-------------%
 The upper and lower seismogenic depths define the seismogenic layer, that is the depth range over which earthquake ruptures can occur. The definition of a seismogenic layer is required to avoid an uncontrolled extension of the earthquake ruptures along depth which can lead, especially for large magnitude events, to unrealistic scenarios. The definition of a seismogenic layer thickness effectively induces a magnitude-dependent rupture aspect ratio. Indeed, as the rupture size increases with increasing magnitude values, the rupture width reaches the maximum allowed width, and the rupture aspect ratio starts deviating, that is increasing, from the original value.
 
@@ -92,7 +98,8 @@ Sources are parameterized so that earthquake ruptures are modeled as planar rect
 \caption{Graphical representation of the earthquake ruptures as generated by a Point Source. a) Given a geographical location on the earth surface, ruptures are generated underneath according to a scaling relationship and aspect ratio value and forced to not exceed the upper and lower seismogenic depths. Ruptures can be distributed over multiple dips b), strikes c) and hypocentral depths d).}
 \label{fig:PointSource}
 \end{figure}
-Rupture centroids are co-located with the point-source location and are positioned at depths specified by the hypocentral depth distribution. Rupture shapes follow the given aspect ratio. However, if for a given aspect ratio and hypocentral depth the rupture plane crosses either boundary (upper or lower) of the seismogenic layer, the plane is shifted along the dip direction so as to fit within the upper and lower seismogenic depths. As a consequence, the hypocentral location no longer corresponds with the plane centroid. If this adjustment is insufficient to avoid crossing either boundary of the seismogenic layer, the plane is reshaped; the width becomes the maximum allowed by the seismogenic layer thickness, and the length is increased so as to conserve rupture area (at the expense of the aspect ratio).\\
+Rupture centroids are co-located with the point-source location and are positioned at depths specified by the hypocentral depth distribution. Rupture shapes follow the given aspect ratio. However, if for a given aspect ratio and hypocentral depth the rupture plane crosses either boundary (upper or lower) of the seismogenic layer, the plane is shifted along the dip direction so as to fit within the upper and lower seismogenic depths. As a consequence, the hypocentral location no longer corresponds with the plane centroid. If this adjustment is insufficient to avoid crossing either boundary of the seismogenic layer, the plane is reshaped; the width becomes the maximum allowed by the seismogenic layer thickness, and the length is increased so as to conserve rupture area (at the expense of the aspect ratio).
+
 In an area source (Figure \ref{fig:AreaSource}), earthquake ruptures are distributed over a regular grid (equally-spaced in distance) covering a geographical region as defined by a seismic zone. 
 \begin{figure}
 \centering
@@ -100,8 +107,12 @@ In an area source (Figure \ref{fig:AreaSource}), earthquake ruptures are distrib
 \caption{Earthquake ruptures generated by an area source in the OQ-engine. Ruptures are distributed uniformly over a regular grid within the area. In this plot, for better visualization, ruptures are modeled only according to a single nodal plane and hypocentral depth, but actual calculations may involve multiple orientations and hypocentral depths. Ruptures originating from different grid nodes may also overlap and cross each other.}
 \label{fig:AreaSource}
 \end{figure}
-Generation of ruptures follows the same algorithm as for point sources. For both sources, the rate associated to each rupture plane is the original rate associated to the corresponding magnitude bin, scaled by the location weight (1 for a point source and 1 / N for an area source, where N is the total number of grid points in the area), the nodal plane (that is orientation and faulting style) weight, and the hypocentral depth weight.\\
-For an area source, the boundary is assumed ‘leaky’, that is earthquake ruptures can extend out of it. Because of rupture area conservation, earthquake surfaces associated to large magnitudes can extend well beyond the source boundaries. If the rupture orientation is considered random then this behavior can potentially lead to unrealistic scenarios, that is earthquake ruptures that are not consistent with the area geometry and the tectonic feature it is meant to represent. The design of an area source requires therefore a careful estimation not only of the associated activity rates but also of the predominant faulting orientations.\\
+Generation of ruptures follows the same algorithm as for point sources.
+
+For both sources, the rate associated to each rupture plane is the original rate associated to the corresponding magnitude bin, scaled by the location weight (1 for a point source and 1 / N for an area source, where N is the total number of grid points in the area), the nodal plane (that is orientation and faulting style) weight, and the hypocentral depth weight.
+
+For an area source, the boundary is assumed ‘leaky’, that is earthquake ruptures can extend out of it. Because of rupture area conservation, earthquake surfaces associated to large magnitudes can extend well beyond the source boundaries. If the rupture orientation is considered random then this behavior can potentially lead to unrealistic scenarios, that is earthquake ruptures that are not consistent with the area geometry and the tectonic feature it is meant to represent. The design of an area source requires therefore a careful estimation not only of the associated activity rates but also of the predominant faulting orientations.
+
 \section{The Simple Fault source}
 Parameters required for the definition of a Simple Fault source are given in Table \ref{table:simple_fault_tab}.
 \begin{table}

@@ -17,7 +17,8 @@ The Classical, Event-Based, and Disaggregation analysis requires the definition 
 the \textit{seismic source model}, that is a collection of seismic sources describing the seismic activity in a
 region of interest, and the \textit{ground motion model}, that is a mathematical relationship defining the
 probability distribution of a ground motion parameter at a site given the occurrence of an earthquake
-rupture.\\
+rupture.
+
 The design of a seismic source model involves the specification of a number of sources whose main parameters
 are the geometry, constraining the earthquake rupture locations, and the \textit{magnitude-frequency
 distribution}, defining the average annual occurrence rate over a magnitude range. Chapter \ref{chap:ssm} provides
@@ -27,6 +28,7 @@ number of distinct earthquake ruptures. We can therefore assume a source to defi
 \begin{equation}
 Src = \left\{Rup_{1}, Rup_{2}, ..., Rup_{J}\right\}
 \end{equation}
+
 By indicating with $\nu_{j}$ the average annual occurrence rate for the $j-th$ rupture, the probability of the
 $j-th$ rupture to occur $k$ times in a time span $T$ can be written, accordingly with the Poissonian assumption,
 as:
@@ -39,6 +41,7 @@ P_{rup_{j}}(k | T) = e^{-\nu_{j} T} \frac{(\nu_{j} T) ^ {k}}{k!}
 The classical PSHA analysis allows calculating the probabilities of exceeding, at least once in a given time
 span, and at a given site, a set of ground motion parameter levels considering all possible earthquake ruptures
 defined in a seismic source model. Such a list of probability values is usually referred to as \textit{hazard curve}.
+
 We indicate with $P(X \ge x | T)$ the probability that a ground-motion parameter $X$ exceeds, at least once in
 a time span $T$, a level $x$. $P(X \ge x | T)$ can be computed as 1 minus the probability that none of the
 sources is causing a ground motion exceedance. By assuming \textit{indipendent sources}, the probability
@@ -50,7 +53,9 @@ P(X \ge x | T) & =  1 - P_{src1}(X < x | T) * P_{src2}(X < x | T) * ... * P_{src
 		      & =  1 - \prod_{i=1}^{I} P_{src_{i}}(X < x | T)
 \end{align}
 where $P_{src_{i}}(X < x | T)$ is the probability that the $i-th$ source is not causing an exceedance and $I$ is the
-total number of sources in the source model. By further assuming each source generates \textit{indipendent
+total number of sources in the source model.
+
+By further assuming each source generates \textit{indipendent
 earthquake ruptures}, we can compute $P_{src_{i}}(X < x | T)$ as the product of the probabilities that each rupture
 does not cause an exceedance, that is:
 \begin{align}
@@ -72,7 +77,8 @@ P_{rup_{j}}(X < x | T) & = P_{rup_{j}}(n = 0 | T) + P_{rup_{j}}(n = 1 | T) * P(X
 \end{align}
 where $P_{rup_{j}}(k | T)$ is the probability that the $j-th$ rupture is occurring $k$ times in time span $T$ and
 $P(X < x | rup_{j})$ is the conditional probability that parameter $X$ is not exceeding level $x$ given an
-occurrence of the $j-th$ rupture.\\
+occurrence of the $j-th$ rupture.
+
 By now assuming that the \textit{number of occurrences of each rupture in a time span $T$ follows a Poissonian distribution}
 we can place equation \ref{eq:poisson_pd} in \ref{eq:prup_noexceed_rup} and thus write:
 \begin{align}
@@ -134,6 +140,7 @@ The equivalence between equations \ref{eq:hazard_eq_rate} and \ref{eq:hazard_eq_
 \label{eq:equivalence_condition_0}
 \nu  =  \sum_{i=1}^{I} \sum_{j=1}^{J} \nu_{j} * P(X \ge x | rup_{j})
 \end{align}
+
 Assuming now, for the sake of simplicity, that a rupture is completely characterized by magnitude and distance from a site, we
 can write the rate of occurrence of the $j-th$ rupture as:
 \begin{equation}
@@ -193,6 +200,7 @@ where:
 \sigma_{N}\sigma_{1}\rho_{N1}&\sigma_{N}\sigma_{2}\rho_{N2}&\cdots &\sigma_{N}^2
 \end{bmatrix}
 \end{align}
+
 It is worth noticing how the inter-event variability, uniform for all sites given an earthquake rupture, is drawn
 from an univariate normal distribution of mean 0 and standard deviation $\tau$, while the intra-event variability
 is a random sample of a multivariate normal distribution of mean $\bm{0}$ and covariance matrix $\bm\Sigma$.
@@ -211,7 +219,8 @@ in time $T_{0}$, we can compute the rate of exceedance of a ground motion level 
 where $H$ is the Heaviside function and $x_{k}$ is the ground motion parameter value at the considered site associated
 with the $k-th$ ground motion field. The exceedance rate obtained from equation \ref{eq:rate_from_gmfs} can then be
 used to compute the probability of at least one occurrence in any time span $T$, accordingly with the Poissonian distribution,
-using equation \ref{eq:hazard_eq_rate}.\\
+using equation \ref{eq:hazard_eq_rate}.
+
 As the stochastic event set duration $T_{0}$ increases, equation \ref{eq:rate_from_gmfs}
 provides an increasingly more accurrate estimate of the actual rate of exceedance. A larger $T_{0}$ can be achieved
 not only by simulating a single stochastic event set with longer duration, but also by simulating multiple
@@ -236,10 +245,12 @@ between $x$ and the mean ground motion $\mu$ as predicted by the ground motion m
 \epsilon = \frac{x - \mu}{\sigma_{total}}
 \end{equation}
 The disaggregation in terms of $\epsilon$ allows investigating what are the regions of the ground motion distributions
-that are contributing the most to the probability of exceedance.\\
+that are contributing the most to the probability of exceedance.
+
 The rupture parameters ($M$, $r_{jb}$, $\lambda$, $\phi$, $TRT$) together with the $\epsilon$ parameter effectively
 create a 6-dimensional model space which, discretized into a number of bins, is used to classify the probability
-of exceedance for different combination of rupture parameters and $\epsilon$ values.\\
+of exceedance for different combination of rupture parameters and $\epsilon$ values.
+
 For a given model space bin $\bm{m} = (M, r_{jb}, \lambda, \phi, TRT, \epsilon)$ the probability of
 exceeding level $x$ at least once in a time span $T$ is computed using equation \ref{eq:hazard_eq_poiss}, that is:
 \begin{align}

@@ -13,6 +13,7 @@ Ruptures are associated to a single hypocentral depth (10 km) and nodal plane (s
 We study here the effect of the area source discretization step ($\Delta$) in the calculation of hazard map values. That is, we investigate the effect that the spacing used to discretize the region delimited by the area
 source boundary has on hazard levels corresponding to a given probability of exceedance. We thus compute
 hazard curves (for PGA) on a set of locations equally spaced by 10 km defing a profile crossing the centre of the area source, from east to west.
+
 We compute hazard curves using different GMPEs (\cite{boore2008}, \cite{chiou2008}, \cite{campbell2008} and \cite{abrahamson2008}) to investigate the potential dependence of the results accuracy on the ground motion model. From the hazard curves we extract PGA values corresponding to 10 \% in 50 years. Results for four discretization levels (20, 10, 5, and 2.5 km) are show in
 Figure \ref{fig:delta_area}. When using $\Delta=20$ km, the hazard map values show strong fluctuations
  (where the highest are for the \cite{boore2008} model) within the area region (that is in the distance
@@ -31,6 +32,7 @@ range [-200, 200] km). For discretization steps equal to or smaller than 10 km, 
 To investigate the effect of modelling earthquake ruptures with different inclination (that is dip angle) and
 faulting style (rake angle), we compare here hazard map values for an area source generating only vertical,
 strike-slip ruptures and an area source generating dipping (dip=$50^{\circ}$), reverse (rake=$90^{\circ}$) ruptures.
+
 To investgate the potential dependence on the source seismic activity level, we compute hazard maps for
 area sources having different Gutenberg-Richter a values ($a_{GR}$) equal to 3, 4 and 5, corresponding to
 annual occurrence rates above $M=5$ of 0.01, 0.1 and 1, respectively. Results are shown in Figure \ref{fig:dip_rake_area}. Sensitivity on rupture dip and faulting style clearly depends on the source activity level and on the GMPE model. Indipendently of the GMPE, the highest absolute difference in PGA is for the highest $a_{GR}$. Among the different GMPE models, \cite{campbell2008} shows the highest sensitivity (about 20 %
@@ -70,7 +72,8 @@ N = N_{GR}^{N_{S}} \times N_{MaxMag}^{N_{S}}
 \end{align}
 where $N_{GR}$ is the number of Gutenberg-Richter parameters (i.e. $a_{GR}$ - $b_{GR}$ pairs) for each
 source, $N_{MaxMag}$ is the number of maximum magnitudes for each source, and $N_{S}$ is the number
-of sources. In the present case $N_{GR}=5$, $N_{MaxMag}=3$, $N_{S}=5$, and thus $N=5^{5} \times 3^{5}=759375$. $N$ represents the total number of paths in the source model logic tree.\\
+of sources. In the present case $N_{GR}=5$, $N_{MaxMag}=3$, $N_{S}=5$, and thus $N=5^{5} \times 3^{5}=759375$. $N$ represents the total number of paths in the source model logic tree.
+
 The OQ-engine allows random sampling the logic tree to avoid calculating hazard results for all possible
 logic tree paths. Figure \ref{fig:logic_tree_curves} presents mean and quantile hazard curves
 as obtained from different numbers of samples (10, 100, 1000, 5000). It can be seen how, by increasing the number
@@ -107,7 +110,7 @@ set with longer duration is required.
 
 \section{Disaggregation analysis}
 We present here an example of disaggregation analysis for the city of Seattle, always considering the 2008
-national seismic hazard model for U.S. developed by (\cite{petersen2008}). In particular, we show the geographic-magnitude (Figure \ref{fig:seattle_lonlatmag}) and geographic-tectonic region type (Figure \ref{fig:seattle_lonlattrt}) disaggregation histograms for PGA corresponding to 10\% probability of exceedance in 50 years. The geographic disaggregation allows investigating the spatial distribution of the
+national seismic hazard model for U.S. developed by \cite{petersen2008}. In particular, we show the geographic-magnitude (Figure \ref{fig:seattle_lonlatmag}) and geographic-tectonic region type (Figure \ref{fig:seattle_lonlattrt}) disaggregation histograms for PGA corresponding to 10\% probability of exceedance in 50 years. The geographic disaggregation allows investigating the spatial distribution of the
 seismic sources contributing to a given level of hazard. By including magnitude and tectonic region type,
 we can understand the influence of the different tectonic regions, and also the magnitude ranges involved.
 Indeed, the disaggregation analysis for the city of Seattle shows that, for a return period of 475 years, the
