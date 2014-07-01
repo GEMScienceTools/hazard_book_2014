@@ -2,8 +2,7 @@ This chapter provides an overview of the \gls{acr:oqe},
 its structure and the processes adopted for its development. 
 A particular emphasis is placed on transparency, reproducibility,
 community-based development and testing \parencite{pagani2014}, 
-tenets endorsed since the early stages of development which make
-the \gls{acr:oqe} indubitably characteristic. 
+tenets endorsed since the early stages of development. 
 %
 % ..............................................................................
 \section{Overview of the OpenQuake-engine}
@@ -12,7 +11,7 @@ The \gls{acr:oqe} is an open-source hazard and risk calculation engine
 whose development is actively supported by the 
 \href{http://globalquakemodel.org}{\gls{acr:gem}} initiative.
 %
-The \gls{acr:oqe} is part of a suite of open source software developed by 
+The \gls{acr:oqe} is part of a suite of open-source software developed by 
 \href{http://globalquakemodel.org}{\gls{acr:gem}} which comprises
 (see also Figure \ref{fig:oq_platform}): 
 the \gls{acr:oqe}, the OpenQuake-platform and a large set of tools of which 
@@ -22,12 +21,12 @@ toolkit (see \href{https://github.com/GEMScienceTools/hmtk}
 
 The development of the engine - started in 2010 and currently in 
 progress - follows classical standards adopted for the development 
-of open source software such as open access of the source code though an easily
+of open-source software such as open access of the source code though an easily
 accessible website and transparency of the development process\footnote{See for 
 example the documentation available on the website 
-of the \href{http://opensource.org/osr}{Open Source Initiative for a 
+of the \href{http://opensource.org/osr}{Open-Source Initiative for a 
 more comprehensive description of the development standards commonly 
-adopted within the open source software community}}.
+adopted within the open-source software community}}.
 The engine was designed to operate on hardware with different properties
 ranging from a simple laptop to a heterogeneous cluster of multi-core machines.
 The operative system currently supported is Ubuntu Linux (additional
@@ -63,7 +62,7 @@ them.
         such as - for example - the code used to describe logic tree structures.
     \item [oq-engine] It incorporates the core of the \gls{acr:oqe}; 
         the code in this library acts as the glue that sticks the 
-        different libraries together and let the user easily perform 
+        different libraries together and lets the user easily perform 
         calculations according to an established set of calculation 
         options.
 \end{description}
@@ -80,8 +79,8 @@ Foundation.
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 \subsection{Development tools}
 %
-The \gls{acr:oqe} development process is based on a number of open 
-source tool which guarantee an open and transparent process. 
+The \gls{acr:oqe} development process is based on a number of open-source
+tool which guarantee an open and transparent process. 
 %
 For example, each new feature improvement or bug fix before being 
 implemented is described in a bug tracking system (in our case, 
@@ -117,13 +116,13 @@ resources related to the \gls{acr:oqe}.
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 \subsection{Programming language}
 The core of the \gls{acr:oqe} is developed in 
-\href{https://www.python.org/}{Python}. Python is a high level and open 
-source programming language extensively used in the scientific community 
+\href{https://www.python.org/}{Python}. Python is a high level and open-source
+programming language extensively used in the scientific community 
 which can run on almost all the operative systems currently available.
 %
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 \subsubsection{Main libraries to which the \gls{acr:oqe} depends upon}
-The engine relies in on a number of open source libraries such as:
+The engine relies in on a number of open-source libraries such as:
 \begin{description}
     \item [\href{http://redis.io/}{Redis}] A key-value store
     \item [\href{https://www.rabbitmq.com/}{RabbitMQ}] A messaging system
