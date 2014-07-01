@@ -134,7 +134,7 @@ The engine relies in on a number of open-source libraries such as:
 \section{The basics of the OpenQuake-engine hazard component}
 %
 The hazard component of the \gls{acr:oqe} has been developed mostly following 
-an object oriented programming paradigm taking in some cases as an example 
+an object oriented programming paradigm taking, in some cases,  
 concepts introduced in the development of OpenSHA, a seismic hazard 
 analysis library developed within a joint SCEC-USGS collaboration 
 \parencite{field2003}. 
@@ -180,13 +180,18 @@ workflows:
     Ground-motion fields are essential input for loss estimations, 
     whereby loss exceedance curves and loss maps are calculated for 
     a collection of assets by combining a vulnerability and exposure
-    model with these sets of ground- motion fields. Because the spatial
+    model with these sets of ground-motion fields. Because the spatial
     correlation of the ground-motion residuals can be taken into account
     in this calculator, the losses to each asset can be summed per 
     ground-motion field, and a total loss exceedance curve representative 
     of the whole collection of assets can be derived. These results are 
     important for deriving reliable estimates of the variance of the
     total losses.
+\item Disaggregation. Given a PSHA model, it computes the earthquake
+    scenarios contributing the most to a given hazard level at a specific
+    site \parencite{bazzurro1999}. Currently this is done following 
+    the classical PSHA methodology; this functionality will be added to 
+    the event-based calculator in subsequent development phases.
 \item Scenario-based \gls{acr:sha}. Given an earthquake rupture and a 
     ground-shaking model, a set of ground-motion fields can be computed. 
     This is a typical use case for urban-scale loss analysis. This set of
@@ -194,11 +199,6 @@ workflows:
     model to calculate distribution of damage/losses for a collection of
     assets. Such results are of importance for emergency management planning
     and for raising societal awareness of risk.
-\item Disaggregation. Given a PSHA model, it computes the earthquake
-    scenarios contributing the most to a given hazard level at a specific
-    site \parencite{bazzurro1999}. Currently this is done following 
-    the classical PSHA methodology; this functionality will be added to 
-    the event-based calculator in subsequent development phases.
 \end{itemize}
 %
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
@@ -213,7 +213,7 @@ process which involves experts from different disciplines (e.g.
 seismic hazard and information technology). 
 %
 In this context the use of a formal testing process is a way 
-trough which developers confirm the compliance of the tools 
+through which developers confirm the compliance of the tools 
 developed against the requirements defined by the scientific 
 team and it is also a process through which it can be 
 demonstrated that the entire code fulfills minimum quality 

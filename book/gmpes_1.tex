@@ -1,6 +1,6 @@
 This chapter provides an overview of ground shaking intensity modeling based 
-on empirical equations and describes the way \glspl{acr:gsim} (more commonly 
-known as ground motion models or \glspl{acr:gmpe}) are implemented in the 
+on empirical equations and describes the way \glspl{acr:gsim} --- more commonly 
+known as ground motion models or \glspl{acr:gmpe} --- are implemented in the 
 \gls{acr:oqe}.
 %
 % ..............................................................................
@@ -8,8 +8,7 @@ known as ground motion models or \glspl{acr:gmpe}) are implemented in the
 %
 \Glspl{groundshakingintensitymodel} are empirical equations that - given a 
 set of parameters - compute a value representative of the shaking 
-intensity (or any other effect produced by an earthquake such as fault 
-displacement) together with an associated uncertainty. 
+intensity together with an associated variability. 
 %
 \gls{acr:gsim} have a fundamental importance in the overall \gls{acr:psha} 
 architecture.
@@ -92,7 +91,7 @@ Moment magnitude \parencite{hanks1979} is the magnitude typology
 preponderantly used within the most recent \glspl{acr:gsim} and - as a 
 consequence - within seismic hazard analysis in general. 
 %
-The \gls{acr:oqe} however do not contain a predefined magnitude typology.
+The \gls{acr:oqe}, however, does not contain a predefined magnitude typology.
 It is up to the user to ensure that the magnitude used to define earthquake 
 occurrence in the \gls{seismicsourcemodel} is consistent with the one used 
 in the selected \glspl{groundshakingintensitymodel}.
@@ -136,7 +135,7 @@ Top-of-Rupture depth & Z$_{tor}$ & Depth to the top edge of the rupture \\
 \end{table}
 % ---------------------------------------------------------------------<<< Table
 The calculation of distances within the hazard component of the \gls{acr:oqe} 
-is performed by assuming a spherical earth with a radius of 6371.0 km. 
+is performed by assuming a spherical Earth with a radius of 6371.0 km. 
 
 Since earthquakes are always modelled in the \gls{acr:oqe} as finite ruptures 
 all rupture-site metrics are always computed instantaneously. For this reason
@@ -163,12 +162,12 @@ supported by each specific model (for a review see
 \index{Ground-motion prediction equation!Rupture mechanism! Time averaged
 shear-wave velocity in the uppermost 30m, V$_{S,30}$}
 %
-Local soil conditions and their effects on the ground-motion are routinely 
+Local site conditions and their effects on the ground-motion are routinely 
 incorporated into \glspl{groundshakingintensitymodel} by means of a scalar
 quantity corresponding to the time-averaged shear wave velocity measured 
 in the uppermost 30m of the soil column (V$_{S,30}$).
 %
-Local soil conditions in the \gls{acr:oqe} are specified by means of this
+Local site conditions in the \gls{acr:oqe} are specified by means of this
 parameter.
 
 In case of \glspl{groundshakingintensitymodel} which support the definition 
@@ -181,7 +180,7 @@ by the authors).
 Additional parameters used to quantitatively describe local geology are 
 the depths to the 1 km/s and 2.5 km/s shear-wave velocity interfaces. 
 These are parameters used in some \glspl{acr:gsim} (e.g. \cite{chiou2008}) 
-to quantify the overall thickness of the soil column. 
+to capture the influence of the deeper stratigraphy. 
 %
 \subsubsection{Depth to the top-of-rupture (Z$_{tor}$)}
 \index{Ground-motion prediction equation!Rupture mechanism!Depth to the top of
