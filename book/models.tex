@@ -139,13 +139,14 @@ Rake angle & Defines faulting style \\
 \end{tabular}
 \label{table:simple_fault_tab}
 \end{table}
-The fault surface is constructed by translating the fault trace from the upper to the lower seismogenic depth along a direction perpendicular to the fault trace (measured as the difference between the azimuths of the first and last coordinates of the trace) and with an inclination equal to the dip angle. The surface so defined is
+The fault surface is constructed by translating the fault trace (defined as the intersection between the fault surface and the Earth
+s surface) from the upper to the lower seismogenic depth along a direction perpendicular to the fault trace (measured as the difference between the azimuths of the first and last coordinates of the trace) and with an inclination equal to the dip angle. The surface so defined is
 effectively modeled as a regular (i.e. equally spaced in distance) mesh (Figure
 \ref{fig:SimpleFaultSource}a).
 \begin{figure}
 \centering
 \includegraphics[width=14cm]{./Pictures/SimpleFaultSource.pdf}
-\caption{Simple Fault source in the OQ-engine. a) Mesh representation of the fault surface, b) Single earthquake rupture on the fault surface, c) Earthquakes floated over the fault surface}
+\caption{Simple Fault source in the OQ-engine. The fault surface is obtained by translating the fault trace from the Earth's surface to the lower seismogenic depth with an inclination equal to the dip angle. The upper seismogenic depth delimits the fault top edge. A mesh representation of the fault surface is then constructed a). An earthquake rupture is defined as a portion of the fault surface b), and all possible rupture locations are simulated by floating the rupture surface both along strike and along dip c)}
 \label{fig:SimpleFaultSource}
 \end{figure}
 For each magnitude bin defined in the magnitude-frequency distribution, an earthquake rupture is modeled as a portion of the fault surface, accordingly with the magnitude scaling relationship and the rupture aspect
