@@ -47,7 +47,7 @@ correctly, we wish to write a set of tests that will confirm the
 behaviour is correct:
 
 \begin{enumerate}
-\item 1. If both $a$ and $b$ are equal to 10.0, then the function 
+\item If both $a$ and $b$ are equal to 10.0, then the function 
     should return 2.0
 \item If $a = -1$ and $b = 10$ the function should raise an error 
     reporting the stated message ``Both inputs must be positive''.
@@ -192,7 +192,7 @@ Thus, this relatively simple function is verified in the following cases:
 
 The test suite for this one function is illustrative of several key components of the unit-testing. First is the use of an independent tool to provide the expected values of the calculation under simple conditions. Second is the use of ``extreme cases'' such as polar locations, or across the International Dateline. These ensure that the function can be global in application. 
 
-The nature of the interdependencies between the functions also means that one a functions own unit-test is verified, the function can then form the basis for testing other conditions. So for example, the geodetic distance tools also contain a method to calculate the minimum distance between a collection of points and a single point. Rather than requiring new expected distances for the different conditions, the geodetic distance function can then be used to construct tests for functions that utilise it. This makes the testing process more efficient, and reduced the need to write large numbers of tests in order to ensure correct behaviour of the function.
+The nature of the interdependencies between the functions also means that one a functions own unit-test is verified, the function can then form the basis for testing other conditions. So for example, the geodetic distance tools also contain a method to calculate the minimum distance between a collection of points and a single point. Rather than requiring new expected distances for the different conditions, the geodetic distance function can then be used to construct tests for functions that utilise it. This makes the testing process more efficient, and reduces the need to write large numbers of tests in order to ensure correct behaviour of the function.
 
 \subsection{Ground Motion Prediction Equation (GMPE) Testing}
 
