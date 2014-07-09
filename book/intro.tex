@@ -2,32 +2,29 @@ This chapter provides an overview of the \gls{acr:oqe},
 its structure and the processes adopted for its development. 
 A particular emphasis is placed on transparency, reproducibility,
 community-based development and testing \parencite{pagani2014}, 
-tenets endorsed since the early stages of development. 
+the central tenets of the development process adopted since the early stages of the project. 
 %
 % ..............................................................................
 \section{Overview of the OpenQuake-engine}
 %
 The \gls{acr:oqe} is an open-source hazard and risk calculation engine 
-whose development is actively supported by the 
+developed by the 
 \href{http://globalquakemodel.org}{\gls{acr:gem}} initiative.
 %
-The \gls{acr:oqe} is part of a suite of open-source software developed by 
-\href{http://globalquakemodel.org}{\gls{acr:gem}} which comprises
-(see also Figure \ref{fig:oq_platform}): 
-the \gls{acr:oqe}, the OpenQuake-platform and a large set of tools of which 
+The \gls{acr:oqe} is part of OpenQuake, a suite of open-source software packages developed by 
+\href{http://globalquakemodel.org}{\gls{acr:gem}} (Figure \ref{fig:oq_platform}), which comprises the \gls{acr:oqe}, the OpenQuake-platform and a large set of tools of which 
 the most interesting from a hazard perspective are the hazard modellers' 
 toolkit (see \href{https://github.com/GEMScienceTools/hmtk}
 {https://github.com/GEMScienceTools/hmtk}).
 
 The development of the engine - started in 2010 and currently in 
-progress - follows classical standards adopted for the development 
-of open-source software such as open access of the source code though an easily
-accessible website and transparency of the development process\footnote{See for 
+progress - follows established standards adopted for the development 
+of open-source software such as open access of the source code though an easily accessible, website and transparency of the development process\footnote{See for 
 example the documentation available on the website 
 of the \href{http://opensource.org/osr}{Open-Source Initiative for a 
 more comprehensive description of the development standards commonly 
 adopted within the open-source software community}}.
-The engine was designed to operate on hardware with different properties
+The engine was designed to operate on computational hardware with different properties
 ranging from a simple laptop to a heterogeneous cluster of multi-core machines.
 The operative system currently supported is Ubuntu Linux (additional
 information on the supported version and on the installation procedure can 
@@ -52,11 +49,10 @@ them.
         seismic sources, create the \gls{acr:erf}, calculate hazard curves, 
         create stochastic event sets, compute ground motion fields and 
         calculate seismic hazard disaggregation.
-    \item [oq-risklib] Comprises the code used to describe exposures, 
-        vulnerability and fragility curves and to compute losses.
-    \item [oq-nrmllib] Includes the scheme describing the structure of 
-        the \gls{acr:oqe} input and output files. The majority of these files 
-        is formatted according to a dialect of 
+    \item [oq-risklib] Comprises the code used to describe exposure, 
+        vulnerability and fragility curves, and for the computation of losses.
+    \item [oq-nrmllib] Includes the code relating to the reading, writing and validation of the full suite of \gls{acr:oqe} input and output files. The majority of these files 
+        are formatted according to a dialect of 
         \href{http://www.w3.org/XML/}{XML} called \gls{acr:nrml}. 
     \item [oq-commonlib] Includes common code for \gls{acr:oqe} applications,
         such as - for example - the code used to describe logic tree structures.
@@ -71,25 +67,23 @@ them.
 \section{Overview of the OpenQuake-engine development process}
 %
 The \gls{acr:oqe} is developed through a close and continuous collaboration 
-between the GEM scientific and IT teams. The development process is completely
-carried out in the open in order to favor and promote the
-participation of experts working in organizations different from the GEM 
-Foundation.
+between the GEM scientific and IT teams. The development process is operates in the open in order to promote the
+participation of experts working in the disciplines of earthquake hazard and risk analysis, as well as those specialising in software development.
 %
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 \subsection{Development tools}
 %
 The \gls{acr:oqe} development process is based on a number of open-source
-tool which guarantee an open and transparent process. 
+tools, which guarantee an open and transparent process. 
 %
 For example, each new feature improvement or bug fix before being 
 implemented is described in a bug tracking system (in our case, 
-\href{https://launchpad.net/}{Launchpad}).  
+\href{https://launchpad.net/}{Launchpad}). Bug tracking systems such as Launchpad keep a log of bugs and errors identified by users of the software, in addition to requests for new features.
 
 The tools used to maintain and make publicly available the \gls{acr:oqe} 
-repository and to manage the almost ceaseless improvement and enhancement 
+repository and to manage the continual improvement and enhancement 
 process are \href{http://git-scm.com/}{git} and a git-based repository 
-hosting service called \href{http://github.com/}{GitHub}.
+hosting service called \href{http://github.com/}{GitHub}. This process ensures comprehensive version control, facilitating the tracking of feature implementation and bug fixing. It also ensures that previous versions of the software can be easily retrieved. When a developer commits new code to the main repository the record of the change is kept. If the code is intended to resolve a bug or error identified in the bug-tracking system, or implement a new feature in response to a request, the log of the code contribution should indicate the specific bug, error or feature that the code change is intended to resolve. Thus an exhaustive and auditible record is kept of each problem identified and the changes to the code taken to resolve it.
 %
 \begin{table}[!t]
 \centering
@@ -206,7 +200,7 @@ workflows:
 %
 Quality Assurance is an aspect carefully and diligently considered 
 in the development of the \gls{acr:oqe}. There are a several 
-different reasons explaining the adoption of this approach.
+different reasons for the adoption of this approach.
 
 The first and most practical one is dictated by the development 
 process which involves experts from different disciplines (e.g. 
@@ -218,13 +212,13 @@ developed against the requirements defined by the scientific
 team and it is also a process through which it can be 
 demonstrated that the entire code fulfills minimum quality 
 criteria (e.g. the code comply with the
-\href{http://legacy.python.org/dev/peps/pep-0008/}{PEP 8 standard}, 
+\href{http://legacy.python.org/dev/peps/pep-0008/}{PEP 8 standard}\footnote{As Python is a rapidly advancing language, the Python Enhancement Proposal (PEP) is the mechanism through which new features in the language are proposed, debated and documented. Compliance with approved PEP standards ensures correctness of structure and implementation of code, thus providing clarity and facilitating continual compatibility with changes to the language.}, 
 the code before getting into the master repository is 
 revised by at least one one separate developer and is 
 clearly documented).
  
 The second motivation relates to the specific goal of building 
-a dynamical tool (i.e. offering a large flexibility and expandability) 
+a dynamic tool (i.e. offering a large flexibility and expandability) 
 while constantly assuring the stability and reliability of 
 the supported calculation workflows.
 
@@ -235,8 +229,7 @@ is fixed.
 This improves the overall robustness and reliability of the code
 and reduces drastically the possibility of regressions.
 
-Four are the approaches used to test the \gls{acr:oqe} behavior 
-and therefore provide high quality assurance standards. 
+The following approaches represent the four-level suite of tests applied to the \gls{acr:oqe} and therefore provide high quality assurance standards. Further information can be found in the \gls{acr:oqe} testing and quality assurance report \citep{pagani2014_oqtesting} 
 %
 \begin{description}
     \item [Unit-testing] A testing methodology which checks discrete 

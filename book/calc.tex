@@ -33,7 +33,7 @@ To investigate the effect of modelling earthquake ruptures with different inclin
 faulting style (rake angle), we compare here hazard map values for an area source generating only vertical,
 strike-slip ruptures and an area source generating dipping (dip=$50^{\circ}$), reverse (rake=$90^{\circ}$) ruptures.
 
-To investgate the potential dependence on the source seismic activity level, we compute hazard maps for
+To investigate the potential dependence on the source seismic activity level, we compute hazard maps for
 area sources having different Gutenberg-Richter a values ($a_{GR}$) equal to 3, 4 and 5, corresponding to
 annual occurrence rates above $M=5$ of 0.01, 0.1 and 1, respectively. Results are shown in Figure \ref{fig:dip_rake_area}. Sensitivity of rupture dip and faulting style clearly depends on the source activity level and on the GMPE model. Independently of the GMPE, the highest absolute difference in PGA is for the highest $a_{GR}$. Among the different GMPE models, \citet{campbell2008} shows the highest sensitivity (about 20 %
 increase in PGA at $a_{GR}=5$), while \citet{boore2008} shows the lowest sensitivity.
@@ -77,7 +77,7 @@ of sources. In the present case $N_{GR}=5$, $N_{MaxMag}=3$, $N_{S}=5$, and thus 
 The OQ-engine allows random sampling the logic tree to avoid calculating hazard results for all possible
 logic tree paths. Figure \ref{fig:logic_tree_curves} presents mean and quantile hazard curves
 as obtained from different numbers of samples (10, 100, 1000, 5000). It can be seen how, by increasing the number
-of samples, results tend to converge to similar values. Indeed, curves obtained from 1000 and 5000 samples are almost indistinguishable. The Monte Carlo sampling offers therefore an effective way to reduce the computational burden associated with a large logic tree and to still obtain reliable results. The results reliability can be controlled by perfoming a convergence analysis; that is by identifing the number of samples
+of samples, results tend to converge to similar values. Indeed, curves obtained from 1000 and 5000 samples are almost indistinguishable. The Monte Carlo sampling offers therefore an effective way to reduce the computational burden associated with a large logic tree and to still obtain reliable results. The results reliability can be controlled by performing a convergence analysis; that is by identifying the number of samples
 which are required to obtain values that are stable within a certain tolerance level.
 \begin{figure}
 \centering
@@ -88,7 +88,7 @@ which are required to obtain values that are stable within a certain tolerance l
 
 \section{Convergence between Classical and Event-based PSHA}
 The event based approach allows generating stochastic event sets and ground motion fields which can then
-be used to reproduce the classical results. We present here an event-based calculation for a location corresponding to the city of Seattle. The calculation is done using the 2008 seismic hazard model for conterminuos U.S. (\cite{petersen2008}). A stochastic event set corresponding to a duration of 10000
+be used to reproduce the classical results. We present here an event-based calculation for a location corresponding to the city of Seattle. The calculation is done using the 2008 seismic hazard model for conterminous U.S. (\cite{petersen2008}). A stochastic event set corresponding to a duration of 10000
 years is generated (Figure \ref{fig:seattle_ses}). The event set contains earthquake ruptures within a radius of
 200 km from the city of Seattle (longitude = 122.3W, latitude = 47.6N). The event set includes large subduction interface earthquakes generated in the Cascadia region, as well as deep intraslab and shallow active crust earthquakes. From each event, ground shaking values are simulated in the city of Seattle (considering the full set of GMPEs prescribed by the model). From ground motion values, the mean
 hazard curve (probability of exceedance in 50 years) for PGA is computed, and compared against the
