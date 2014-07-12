@@ -17,12 +17,12 @@
 % When you first open the template, compile it from the command line with the 
 % commands below to make sure your LaTeX distribution is configured correctly:
 %
-% 1) pdflatex oqhbt
-% 1a) pdflatex -shell-escape oqhbt
-% 2) makeindex oqhbt.idx -s StyleInd.ist
-% 3) biber oqhbt
-% 4  makeglossaries oqhbt
-% 4) pdflatex oqhbt x 2
+% 1) pdflatex qaoq
+% 1a) pdflatex -shell-escape qaoq
+% 2) makeindex qaoq.idx -s StyleInd.ist
+% 3) biber qaoq
+% 4  makeglossaries qaoq
+% 4) pdflatex qaoq x 2
 %
 % After this, when you wish to update the bibliography/index use the appropriate
 % command above and make sure to compile with pdflatex several times 
@@ -75,7 +75,9 @@
             doi=true,
             abbreviate=false,
             backref=true,
-            backend=biber]{biblatex}
+            backend=biber,
+	    uniquename=false,
+	    uniquelist=false]{biblatex}
 \addbibresource{./Bibliography/hazard.bib} % BibTeX bibliography file
 \defbibheading{bibempty}{}
 
@@ -238,30 +240,30 @@ component of the OpenQuake-engine\par % Book title
 %	APPENDIX 1
 %----------------------------------------------------------------------------------------
 \appendix
-\chapterimage{chapter_head_1.pdf} % Chapter heading image
-\chapter{The OQ-engine PEER acceptance tests}
-\label{sec:app1}
-\input{./qareport/app1.tex}
+%\chapterimage{chapter_head_1.pdf} % Chapter heading image
+%\chapter{The OQ-engine PEER acceptance tests}
+%\label{sec:app1}
+%\input{./qareport/app1.tex}
 %----------------------------------------------------------------------------------------
 %	APPENDIX 2
 %----------------------------------------------------------------------------------------
-\chapterimage{chapter_head_1.pdf} % Chapter heading image
-\chapter{The OQ-engine benchmark tests}
-\label{sec:app2}
-\input{./qareport/app2.tex}
+%\chapterimage{chapter_head_1.pdf} % Chapter heading image
+%\chapter{The OQ-engine benchmark tests}
+%\label{sec:app2}
+%\input{./qareport/app2.tex}
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
-\chapter*{Bibliography}
-\addcontentsline{toc}{chapter}{\textcolor{ocre}{Bibliography}}
-\section*{Books}
-\addcontentsline{toc}{section}{Books}
+\chapter{Bibliography}
+%\addcontentsline{toc}{chapter}{\textcolor{ocre}{Bibliography}}
+\section{Books}
+%\addcontentsline{toc}{section}{Books}
 \printbibliography[heading=bibempty,type=book]
-\section*{Articles}
-\addcontentsline{toc}{section}{Articles}
+\section{Articles}
+%\addcontentsline{toc}{section}{Articles}
 \printbibliography[heading=bibempty,type=article]
-\section*{Other Sources}
-\addcontentsline{toc}{section}{Reports}
+\section{Other Sources}
+%\addcontentsline{toc}{section}{Reports}
 \printbibliography[heading=bibempty,nottype=book,nottype=article]
 
 %----------------------------------------------------------------------------------------
