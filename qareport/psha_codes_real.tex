@@ -1,4 +1,4 @@
-In this chapter we present comparisons between seismic hazard results computed using OpenQuake and alternative software for real national/regional scale seismic hazard models. We present three cases: the seismic hazard model for the 2005 national building code of Canada (\cite{adams2003}, \cite{halchuk2008}), the 2008 U.S. national seismic hazard model (\cite{petersen2008}), and the 2012 national seismic hazard model for Australia (\cite{burbidge2012}). We refer the reader to the original reports for an in-depth description of each model. Here we present only the main features and the aspects of interest for the software implementation.
+In this chapter we present comparisons between seismic hazard results computed using OpenQuake and alternative software for real PSHA. We present three cases: the seismic hazard model for the 2005 national building code of Canada (\cite{adams2003}, \cite{halchuk2008}), the 2008 U.S. national seismic hazard model (\cite{petersen2008}), and the seismic hazard model for a nuclear power plan in South Africa (\cite{bommer2013}). We refer the reader to the original reports for an in-depth description of each model. Here we present only the main features and the aspects of interest for the software implementation.
 
 
 \section{The 2005 Canada national seismic hazard model}
@@ -67,9 +67,6 @@ The ground motion model specifies different sets of GMPEs for CEUS and WUS. For 
 \subsection{Reference site conditions}
 Hazard maps are computed for a reference site condition corresponding to the 'NEHRP B/C site' condition which is associated to a $V_{s30}$ value equal to 760.0 m/s. The GMPEs used for active shallow crust in WUS allows for a direct usage of the $V_{s30}$ value. For subduction GMPEs the 'rock' site class is selected instead. Some of the CEUS GMPEs do not support the B/C site conditions. Therefore a 'kappa' correction is applied to convert CEUS GMPEs from hard rock to firm rock condition.
 
-\subsection{Implementation of the model in the OpenQuake-engine}
-In the OpenQuake-engine implementation, gridded-seismicity models and uniform seismicity zones are defined as collections of point sources. Point source properties reflect model's specification. If the model defines uncertain ruptures strike, then each point source is associated to multiple strike values (between $0^{\circ}$ and $180^{\circ}$ for vertical ruptures and between $0^{\circ}$ and $360^{\circ}$ for dipping ruptures) otherwise a single strike is defined. For 'shallow' gridded seismicity models, the hypocentral depth is set to 7.5 km (equal to the depth of the centroid of dipping rupture planes (\cite{petersen2008})) and the lower seismogenic depth is set to 15 km. Deep seismicity is assumed to occur at an hypocentral depth of 50 km, and the seismogenic layer is assumed to extend between 50 and 100 km. Crustal faults are defined as simple fault sources (with discretization step of 4 km), while Cascadia subduction interface faults are defined as complex fault sources (with discretization stepf of 10 km). The magnitude-area scaling relationship of \cite{wells1994} is used for all models (gridded-seismicity and fault based) both in WUS and CEUS. In the current OQ-engine implementation, all source models are included except the cluster model for the New Madrid seismic zone (only the unclustered source model is considered). To combine models from different logic tree branches, we compute for each source a magnitude-frequency distribution whose occurrence rates are scaled by the branch weight. For each site, contributions coming from ruptures that are within 1000 km are considered for the CEUS and Cascadia models, and 200 km for the gridded-seismicity and the shallow crustal faults models in WUS. Ground motion distribution is truncated at three sigmas (\cite{petersen2008}). Epistemic uncertainties on GMPE median values for WUS active shallow crust are not yet implemented.
-
 \begin{figure}
 \centering
 \includegraphics[width=14cm]{./qareport/pictures/map_usa_PGA_0pt1_NSHMP.pdf}
@@ -85,7 +82,43 @@ In the OpenQuake-engine implementation, gridded-seismicity models and uniform se
 \label{fig:usa_475y_dmaps}
 \end{figure}
 
+\subsection{Implementation of the model in the OpenQuake-engine}
+In the OpenQuake-engine implementation, gridded-seismicity models and uniform seismicity zones are defined as collections of point sources. Point source properties reflect model's specification. If the model defines uncertain ruptures strike, then each point source is associated to multiple strike values (between $0^{\circ}$ and $180^{\circ}$ for vertical ruptures and between $0^{\circ}$ and $360^{\circ}$ for dipping ruptures) otherwise a single strike is defined. For 'shallow' gridded seismicity models, the hypocentral depth is set to 7.5 km (equal to the depth of the centroid of dipping rupture planes (\cite{petersen2008})) and the lower seismogenic depth is set to 15 km. Deep seismicity is assumed to occur at an hypocentral depth of 50 km, and the seismogenic layer is assumed to extend between 50 and 100 km. Crustal faults are defined as simple fault sources (with discretization step of 4 km), while Cascadia subduction interface faults are defined as complex fault sources (with discretization stepf of 10 km). The magnitude-area scaling relationship of \cite{wells1994} is used for all models (gridded-seismicity and fault based) both in WUS and CEUS. In the current OQ-engine implementation, all source models are included except the cluster model for the New Madrid seismic zone (only the unclustered source model is considered). To combine models from different logic tree branches, we compute for each source a magnitude-frequency distribution whose occurrence rates are scaled by the branch weight. For each site, contributions coming from ruptures that are within 1000 km are considered for the CEUS and Cascadia models, and 200 km for the gridded-seismicity and the shallow crustal faults models in WUS. Ground motion distribution is truncated at three sigmas (\cite{petersen2008}). Epistemic uncertainties on GMPE median values for WUS active shallow crust are not yet implemented.
+
+
 \subsection{Comparison against USA hazard map}
 The comparison between PGA hazard maps for $10\%$ probability of exceedance in 50 years produced by the USGS-NSHMP and by the OpenQuake-implementation is shown in Figure \ref{fig:usa_475y_hmaps}. The visual comparison shows an overall agreement. A more quantitative view on the differences between the two maps is given in Figure \ref{fig:usa_475y_dmaps}. Absolute differences range from -0.07 g to 0.12 g. For the vast majority of the sites, differences range from -0.01 g 0.02 g. Close to WUS crustal faults (except California) and in the Charlevoix (Quebec, Canada) zone the OQ-engine provides larger values. On the contrary, close to some southern California crustal faults and close to the New Madrid zone the OQ-engine provides lower values than the USGS-NSHMP. This is also visible in the percent difference map, where in a broad area around the New Madrid seismic zone differences range mostly from $0$ to $10\%$ with peak values up to $15\%$. Lower values in the OpenQuake-engine solutions are also visible close to the Charleston zone and in Oregon/Washington states (WUS).
 
 Differences in the New Madrid zone can be accounted for by the absence, in the OQ-engine implementation, of the clustered source model. Discrepancies in the WUS can be instead explained as due to the missing epistemic uncertainties in the GMPE median value for shallow crustal sources. In addition to that, differences can arise because of the different scaling relationship used. In California, the model of \cite{hanks2002} is used, while in the OpenQuake-engine calculation the model of \cite{wells1994} is adopted.
+
+\section{PSHA for the Thyspunt nuclear site in South Africa}
+\citet{bommer2013} describes the usage of the OpenQuake-engine for validating the logic-tree implementation in a PSHA carried out for the coastal site of Thyspunt, on the southern coast of South Africa, a location selected for the construction of a new nuclear power plan.
+
+The PSHA, done following the guidelines of a SSHAC level 3 project (\cite{budnitz1997}), required the calculation procedure, and in particular the implementation of the logic tree representing the full set of uncertainties, to be subject to Quality Assurance (QA). To provide QA checks, the logic tree was simultaneously implemented in two different, and entirely independent, software packages.
+
+The FRISK88 software was selected to perform the official seismic hazard calculations while the OpenQuake-engine was used as alternative software to verify the correctness of the logic tree implementation. The seismic source model consisted of five fault sources and five area source zones. Epistemic uncertainties were defined for alternative zone boundaries, recurrence parameters, fault-ruptures characteristics and maximum magnitude values. The final logic tree comprised more than 1000 branch combinations for each area and more than 800 for each fault. The ground motion model was based on adjusted forms of the GMPEs of \citet{abrahamson2008}, \citet{chiou2008}, and \citet{akkar_cagnan_2010} which in combination of various models for the sigma led to a total of 216 branches in the ground motion model logic tree. Considering both the source and ground motion model logic trees, the number of PSHA input combinations was of the order of 2 millions.
+
+\begin{figure}
+\centering
+\includegraphics[width=10cm]{./qareport/pictures/ThyspunktSourceModel.jpg}
+\caption{Seismic source model (area zones and faults) defined for the Thyspunkt site.}
+\label{fig:thyspunkt_source_model}
+\end{figure}
+
+Verification of the logic tree implementation was carried out by comparing mean hazard curves for each seismic source considering the full seismic source model logic tree, but only a single branch in the ground motion model logic tree. In order to increase the chance of identifying possible errors, all the three GMPE models were used and three different periods were selected. Hazard curves computed by the two software for fault and area sources are presented in Figures \ref{fig:thyspunkt_curves_fault} and \ref{fig:thyspunkt_curves_area} respectively.
+
+The level of agreement is in general very high considering the complexity in the seismic source model logic tree. For the two fault sources closest to the site, PLET and GAM the two pairs of hazard curves are almost identical. For the area sources, the agreement is generally even better, and neither of the hazard codes produces consistently higher or lower results.
+
+\begin{figure}
+\centering
+\includegraphics[width=10cm]{./qareport/pictures/ThyspunktCurvesFault.jpg}
+\caption{Mean hazard curves obtained for the fault sources using FRISK88 (solid curves) and the OpenQuake-engine (dashed curves)}
+\label{fig:thyspunkt_curves_fault}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=10cm]{./qareport/pictures/ThyspunktCurvesArea.jpg}
+\caption{Mean hazard curves obtained for the area sources using FRISK88 (solid curves) and the OpenQuake-engine (dashed curves)}
+\label{fig:thyspunkt_curves_area}
+\end{figure}
