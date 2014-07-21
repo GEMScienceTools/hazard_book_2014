@@ -1,23 +1,37 @@
-This chapter presents practical examples of PSHA done with the OQ-engine. By considering simple synthetic test cases, we illustrate the behaviour of a number of algorithms underlying the seismic source modelling
-and the logic tree processing. We also present examples of PSHA performed using the national seismic hazard model for U.S. (\cite{petersen2008}) to illustrate the capabilities of the OQ-engine when dealing with complex
-models.
+This chapter presents practical examples of PSHA done with the OQ-engine. By
+considering simple synthetic test cases, we illustrate the behaviour of a number
+of algorithms underlying the seismic source modelling and the logic tree
+processing. We also present examples of PSHA performed using the national
+seismic hazard model for U.S. (\cite{petersen2008}) to illustrate the
+capabilities of the OQ-engine when dealing with complex models.
 
-\section{Classical PSHA with an Area Source}
-We consider here the case of a single area source. The source has a circular shape of 200 km radius. The activity
-is described by a truncated Gutenberg-Richter magnitude frequency distribution, with minimum magnitude
-equal to 5 and maximum magnitude equal to 6.5. The \textit{a-value} is 5 (i.e. the source generates one
-event per year with $M \ge 5$) and \textit{b-value} is 1. The seismogenic layer extends from 0 to 20 km.
-Ruptures are associated to a single hypocentral depth (10 km) and nodal plane (strike 0, dip 90, rake 0).
+\section{Classical PSHA with an Area Source} We consider here the case of a
+single area source. The source has a circular shape of 200 km radius. The
+activity is described by a truncated Gutenberg-Richter magnitude frequency
+distribution, with minimum magnitude equal to 5 and maximum magnitude equal to
+6.5. The \textit{a-value} is 5 (i.e. the source generates one event per year
+with $M \ge 5$) and \textit{b-value} is 1. The seismogenic layer extends from 0
+to 20 km.  Ruptures are associated to a single hypocentral depth (10 km) and
+nodal plane (strike 0, dip 90, rake 0).
 
-\subsection{The area source discretization step}
-We study here the effect of the area source discretization step ($\Delta$) in the calculation of hazard map values. That is, we investigate the effect that the spacing used to discretize the region delimited by the area
-source boundary has on hazard levels corresponding to a given probability of exceedance. We thus compute
-hazard curves (for PGA) on a set of locations equally spaced by 10 km defing a profile crossing the centre of the area source, from east to west.
+\subsection{The area source discretization step} We study here the effect of the
+area source discretization step ($\Delta$) in the calculation of hazard map
+values. That is, we investigate the effect that the spacing used to discretize
+the region delimited by the area source boundary has on hazard levels
+corresponding to a given probability of exceedance. We thus compute hazard
+curves (for PGA) on a set of locations equally spaced by 10 km defing a profile
+crossing the centre of the area source, from east to west.
 
-We compute hazard curves using different GMPEs (\cite{boore2008}, \cite{chiou2008}, \cite{campbell2008} and \cite{abrahamson2008}) to investigate the potential dependence of the results accuracy on the ground motion model. From the hazard curves we extract PGA values corresponding to 10 \% in 50 years. Results for four discretization levels (20, 10, 5, and 2.5 km) are show in
-Figure \ref{fig:delta_area}. When using $\Delta=20$ km, the hazard map values show strong fluctuations
- (where the highest are for the \cite{boore2008} model) within the area region (that is in the distance
-range [-200, 200] km). For discretization steps equal to or smaller than 10 km, the different solutions converge instead to the same values.
+We compute hazard curves using different GMPEs (\cite{boore2008},
+\cite{chiou2008}, \cite{campbell2008} and \cite{abrahamson2008}) to investigate
+the potential dependence of the results accuracy on the ground motion model.
+From the hazard curves we extract PGA values corresponding to 10 \% in 50 years.
+Results for four discretization levels (20, 10, 5, and 2.5 km) are show in
+Figure \ref{fig:delta_area}. When using $\Delta=20$ km, the hazard map values
+show strong fluctuations (where the highest are for the \cite{boore2008} model)
+within the area region (that is in the distance range [-200, 200] km). For
+discretization steps equal to or smaller than 10 km, the different solutions
+converge instead to the same values.
 \begin{figure}
 \centering
 \includegraphics[width=7cm]{./Pictures/PGA_0pt1_source_model_a5_BA2008.pdf}

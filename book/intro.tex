@@ -11,17 +11,20 @@ The \gls{acr:oqe} is an open-source hazard and risk calculation engine
 developed by the 
 \href{http://globalquakemodel.org}{\gls{acr:gem}} initiative.
 %
-The \gls{acr:oqe} is part of OpenQuake, a suite of open-source software packages developed by 
-\href{http://globalquakemodel.org}{\gls{acr:gem}} (Figure \ref{fig:oq_platform}), which comprises the \gls{acr:oqe}, the OpenQuake-platform and a large set of tools of which 
-the most interesting from a hazard perspective are the hazard modellers' 
-toolkit (see \href{https://github.com/GEMScienceTools/hmtk}
+The \gls{acr:oqe} is part of OpenQuake, a suite of open-source software packages
+developed by \href{http://globalquakemodel.org}{\gls{acr:gem}} (Figure
+\ref{fig:oq_platform}), which comprises the \gls{acr:oqe}, the
+OpenQuake-platform and a large set of tools of which the most interesting from a
+hazard perspective are the hazard modellers' toolkit (see
+\href{https://github.com/GEMScienceTools/hmtk}
 {https://github.com/GEMScienceTools/hmtk}).
 
-The development of the engine - started in 2010 and currently in 
-progress - follows established standards adopted for the development 
-of open-source software such as open access of the source code though an easily accessible, website and transparency of the development process\footnote{See for 
-example the documentation available on the website 
-of the \href{http://opensource.org/osr}{Open-Source Initiative for a 
+The development of the engine - started in 2010 and currently in progress -
+follows established standards adopted for the development of open-source
+software such as open access of the source code though an easily accessible,
+website and transparency of the development process\footnote{See for example the
+    documentation available on the website of the
+    \href{http://opensource.org/osr}{Open-Source Initiative for a 
 more comprehensive description of the development standards commonly 
 adopted within the open-source software community}}.
 The engine was designed to operate on computational hardware with different properties
@@ -66,9 +69,11 @@ them.
 % ..............................................................................
 \section{Overview of the OpenQuake-engine development process}
 %
-The \gls{acr:oqe} is developed through a close and continuous collaboration 
-between the GEM scientific and IT teams. The development process is operates in the open in order to promote the
-participation of experts working in the disciplines of earthquake hazard and risk analysis, as well as those specialising in software development.
+The \gls{acr:oqe} is developed through a close and continuous collaboration
+between the GEM scientific and IT teams. The development process is operated in
+the open in order to promote the participation of experts working in the
+disciplines of earthquake hazard and risk analysis, as well as those
+specialising in software development.
 %
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 \subsection{Development tools}
@@ -76,14 +81,30 @@ participation of experts working in the disciplines of earthquake hazard and ris
 The \gls{acr:oqe} development process is based on a number of open-source
 tools, which guarantee an open and transparent process. 
 %
-For example, each new feature improvement or bug fix before being 
-implemented is described in a bug tracking system (in our case, 
-\href{https://launchpad.net/}{Launchpad}). Bug tracking systems such as Launchpad keep a log of bugs and errors identified by users of the software, in addition to requests for new features.
+For example, each new feature improvement or bug fix before being implemented is
+described in a bug tracking system (in our case,
+\href{https://launchpad.net/}{Launchpad} - see Table
+\ref{tab:development_tools}). 
+%
+Bug tracking systems such as Launchpad keep a log of bugs and errors identified
+by users of the software, in addition to requests for new features.
 
-The tools used to maintain and make publicly available the \gls{acr:oqe} 
-repository and to manage the continual improvement and enhancement 
-process are \href{http://git-scm.com/}{git} and a git-based repository 
-hosting service called \href{http://github.com/}{GitHub}. This process ensures comprehensive version control, facilitating the tracking of feature implementation and bug fixing. It also ensures that previous versions of the software can be easily retrieved. When a developer commits new code to the main repository the record of the change is kept. If the code is intended to resolve a bug or error identified in the bug-tracking system, or implement a new feature in response to a request, the log of the code contribution should indicate the specific bug, error or feature that the code change is intended to resolve. Thus an exhaustive and auditible record is kept of each problem identified and the changes to the code taken to resolve it.
+The tools used to maintain and make publicly available the \gls{acr:oqe}
+repository and to manage the continual improvement and enhancement process are
+\href{http://git-scm.com/}{git} and a git-based repository hosting service
+called \href{http://github.com/}{GitHub} (see Table
+\ref{tab:development_tools}). 
+This process ensures comprehensive version control, facilitating the tracking of
+feature implementation and bug fixing. It also ensures that previous versions of
+the software can be easily retrieved.  When a developer commits new code to the
+main repository the record of the change is kept. If the code is intended to
+resolve a bug or error identified in the bug-tracking system, or implement a new
+feature in response to a request, the log of the code contribution should
+indicate the specific bug, error or feature that the code change is intended to
+resolve. 
+%
+Thus an exhaustive and auditible record is kept of each problem
+identified and the changes to the code taken to resolve it.
 %
 \begin{table}[!t]
 \centering
@@ -145,8 +166,18 @@ also the associated epistemic uncertainties.
 %
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 \subsection{Calculation workflows}
+% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . > Figure
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=14cm]{./Pictures/intro/fig02.pdf}
+\caption{A schematic describing the main OpenQuake-engine calculation workflows 
+available in the hazard component.}
+\label{fig:oq_wf}
+\end{figure}
+% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . < Figure
+
 The hazard component of the \gls{acr:oqe} provides four main calculation 
-workflows:
+workflows (see Figure \ref{fig:oq_wf}):
 \begin{itemize}
 \item Classical \gls{acr:psha}. Calculates hazard curves, hazard maps, 
     and uniform hazard spectra by solving the PSHA integration procedure, 
@@ -206,30 +237,34 @@ The first and most practical one is dictated by the development
 process which involves experts from different disciplines (e.g. 
 seismic hazard and information technology). 
 %
-In this context the use of a formal testing process is a way 
-through which developers confirm the compliance of the tools 
-developed against the requirements defined by the scientific 
-team and it is also a process through which it can be 
-demonstrated that the entire code fulfills minimum quality 
+In this context the use of a formal testing process is a way through which
+developers confirm the compliance of the tools developed against the
+requirements defined by the scientific team and it is also a process through
+which it can be demonstrated that the entire code fulfills minimum quality
 criteria (e.g. the code comply with the
-\href{http://legacy.python.org/dev/peps/pep-0008/}{PEP 8 standard}\footnote{As Python is a rapidly advancing language, the Python Enhancement Proposal (PEP) is the mechanism through which new features in the language are proposed, debated and documented. Compliance with approved PEP standards ensures correctness of structure and implementation of code, thus providing clarity and facilitating continual compatibility with changes to the language.}, 
-the code before getting into the master repository is 
-revised by at least one one separate developer and is 
-clearly documented).
+\href{http://legacy.python.org/dev/peps/pep-0008/}{PEP 8 standard}\footnote{As
+Python is a rapidly advancing language, the Python Enhancement Proposal (PEP) is
+the mechanism through which new features in the language are proposed, debated
+and documented. Compliance with approved PEP standards ensures correctness of
+structure and implementation of code, thus providing clarity and facilitating
+continual compatibility with changes to the language.}, the code before getting
+into the master repository is revised by at least one one separate developer and
+is clearly documented).
  
-The second motivation relates to the specific goal of building 
-a dynamic tool (i.e. offering a large flexibility and expandability) 
-while constantly assuring the stability and reliability of 
-the supported calculation workflows.
+The second motivation relates to the specific goal of building a dynamic tool
+(i.e. offering a large flexibility and expandability) while constantly assuring
+the stability and reliability of the supported calculation workflows.
 
-The implementation of tests is usually done in parallel with code 
-development, but tests are also added for example every time a bug 
-is fixed.
+The implementation of tests is usually done in parallel with code development,
+but tests are also added for example every time a bug is fixed.
 %
-This improves the overall robustness and reliability of the code
-and reduces drastically the possibility of regressions.
+This improves the overall robustness and reliability of the code and reduces
+drastically the possibility of regressions.
 
-The following approaches represent the four-level suite of tests applied to the \gls{acr:oqe} and therefore provide high quality assurance standards. Further information can be found in the \gls{acr:oqe} testing and quality assurance report \citep{pagani2014_oqtesting} 
+The following approaches represent the four-level suite of tests applied to the
+\gls{acr:oqe} and therefore provide high quality assurance standards. Further
+information can be found in the \gls{acr:oqe} testing and quality assurance
+report \citep{pagani2014_oqtesting} 
 %
 \begin{description}
     \item [Unit-testing] A testing methodology which checks discrete 
