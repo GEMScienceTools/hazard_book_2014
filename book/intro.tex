@@ -2,8 +2,8 @@ This chapter provides an overview of the \gls{acr:oqe},
 its structure and the processes adopted for its development. 
 
 A particular emphasis is placed on transparency, reproducibility,
-community-based development and testing \parencite{pagani2014}, 
-the central tenets of the development process adopted since the early stages of the project. 
+community-based development and testing \parencite{pagani2014}, the central
+tenets of the development process adopted since the early stages of the project. 
 %
 % ..............................................................................
 \section{Overview of the OpenQuake-engine}
@@ -22,7 +22,7 @@ hazard perspective are the hazard modellers' toolkit (see
 
 The development of the engine - started in 2010 and currently in progress -
 follows established standards adopted for the development of open-source
-software such as open access of the source code though an easily accessible,
+software such as open access of the source code though an easily accessible
 website and transparency of the development process\footnote{See for example the
     documentation available on the website of the
     \href{http://opensource.org/osr}{Open-Source Initiative for a 
@@ -40,6 +40,7 @@ be found on the GEM area on github, accessible at the following link:
 \includegraphics[width=14cm]{./Pictures/intro/OQ-workflows.jpg}
 \caption{A schematic describing the OpenQuake suite.}
 \label{fig:oq_platform}
+\todo[inline]{Replace with a better quality image}
 \end{figure}
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . < Figure
 %
@@ -55,8 +56,9 @@ them.
         calculate seismic hazard disaggregation.
     \item [oq-risklib] Comprises the code used to describe exposure, 
         vulnerability and fragility curves, and for the computation of losses.
-    \item [oq-nrmllib] Includes the code relating to the reading, writing and validation of the full suite of \gls{acr:oqe} input and output files. The majority of these files 
-        are formatted according to a dialect of 
+    \item [oq-nrmllib] Includes the code relating to the reading, writing and
+        validation of the full suite of \gls{acr:oqe} input and output files.
+        The majority of these files are formatted according to a dialect of 
         \href{http://www.w3.org/XML/}{XML} called \gls{acr:nrml}. 
     \item [oq-commonlib] Includes common code for \gls{acr:oqe} applications,
         such as - for example - the code used to describe logic tree structures.
@@ -80,10 +82,10 @@ specialising in software development.
 \subsection{Development tools}
 %
 The \gls{acr:oqe} development process is based on a number of open-source
-tools, which guarantee an open and transparent process. 
+tools, which guarantee a clear and transparent process. 
 %
-For example, each new feature improvement or bug fix before being implemented is
-described in a bug tracking system (in our case,
+For example, each new feature improvement or bug fix before being implemented 
+is described in a bug tracking system (in our case,
 \href{https://launchpad.net/}{Launchpad} - see Table
 \ref{tab:development_tools}). 
 %
@@ -137,14 +139,14 @@ programming language extensively used in the scientific community
 which can run on almost all the operative systems currently available.
 %
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-\subsubsection{Main libraries to which the \gls{acr:oqe} depends upon}
-The engine relies in on a number of open-source libraries such as:
-\begin{description}
-    \item [\href{http://redis.io/}{Redis}] A key-value store
-    \item [\href{https://www.rabbitmq.com/}{RabbitMQ}] A messaging system
-    \item [\href{http://www.celeryproject.org/}{Celery}] An asynchronous 
-        task queue/job queue.
-\end{description}
+%\subsubsection{Main libraries to which the \gls{acr:oqe} depends upon}
+%The engine relies in on a number of open-source libraries such as:
+%\begin{description}
+%    \item [\href{http://redis.io/}{Redis}] A key-value store
+%    \item [\href{https://www.rabbitmq.com/}{RabbitMQ}] A messaging system
+%    \item [\href{http://www.celeryproject.org/}{Celery}] An asynchronous 
+%        task queue/job queue.
+%\end{description}
 %
 % ..............................................................................
 \section{The basics of the OpenQuake-engine hazard component}
@@ -163,7 +165,7 @@ and a calculator that using this information computes the hazard at the site.
 The \gls{acr:oqe} builds on top of oq-hazardlib and expands this 
 concept by taking into account not just the essential objects 
 needed to compute the hazard at a site discussed before but 
-also the associated epistemic uncertainties.
+also the parallelisation process used for large calculations.
 %
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 \subsection{Calculation workflows}
@@ -181,7 +183,7 @@ available in the hazard component.}
 The hazard component of the \gls{acr:oqe} provides four main calculation 
 workflows (see Figure \ref{fig:oq_wf}):
 \begin{itemize}
-\item Classical \gls{acr:psha}. Calculates hazard curves, hazard maps, 
+\item Classical \gls{acr:psha} calculates hazard curves, hazard maps, 
     and uniform hazard spectra by solving the PSHA integration procedure, 
     as proposed by \textcite{field2003}. 
     This is the usual approach adopted in regional/national-scale hazard 
@@ -196,14 +198,14 @@ workflows (see Figure \ref{fig:oq_wf}):
     overestimate losses at high return periods for portfolios of 
     structures and recommend the use of methods capable to account 
     for the spatial correlation of ground motion residuals.
-\item Event-based \gls{acr:psha}. Computes stochastic event sets (i.e., 
+\item Event-based \gls{acr:psha} computes stochastic event sets (i.e., 
     synthetic catalogs of earthquake ruptures) and ground-motion fields 
     for each rupture, possibly taking into account the spatial 
     correlation of within-event residuals. This is essentially a 
-    Monte Carlo–based PSHA calculator \parencite{musson2000}. The computed 
+    Monte Carlo–based PSHA calculator \parencite[e.g.][]{musson2000}. The computed 
     synthetic catalogs can be used for comparisons against a real 
     catalog, whereas hazard curves and hazard maps can be derived from 
-    post- processing the ground-motion fields \parencite{ebel1999}. 
+    post-processing the ground-motion fields \parencite{ebel1999}. 
     Ground-motion fields are essential input for loss estimations, 
     whereby loss exceedance curves and loss maps are calculated for 
     a collection of assets by combining a vulnerability and exposure
@@ -231,7 +233,7 @@ workflows (see Figure \ref{fig:oq_wf}):
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 \subsection{Testing and Quality Assurance}
 %
-Quality Assurance is an aspect carefully and diligently considered 
+Testing is an aspect carefully and diligently considered 
 in the development of the \gls{acr:oqe}. There are a several 
 different reasons for the adoption of this approach.
 
@@ -256,7 +258,7 @@ is clearly documented).
 The second motivation relates to the specific goal of building a dynamic tool
 (i.e. offering a large flexibility and expandability) while constantly assuring
 the stability and reliability of the supported calculation workflows.
-
+%
 The implementation of tests is usually done in parallel with code development,
 but tests are also added for example every time a bug is fixed.
 %
@@ -269,16 +271,15 @@ information can be found in the \gls{acr:oqe} testing and quality assurance
 report \citep{pagani2014_oqtesting} 
 %
 \begin{description}
-    \item [Unit-testing] A testing methodology which checks discrete 
-        units of code against associated control data, expected behaviors 
-        and operating procedures. A special set of unit-tests are the ones
-        systematically created for every \gls{acr:gsim} implemented 
-        (additional information about this specific topic is available within 
-        Chapter \ref{chap:gmpes})
-    \item [Testing against benchmark results] The results provided by the 
-        \gls{acr:oqe} are compared against benchmark results. Several of the 
-        tests defined by \textcite{thomas2010} are used to check the 
-        reliability and correctness of the results provided. 
+    \item [Unit-testing and Testing against benchmark results] 
+        A testing methodology which checks discrete units of code against
+        associated control data, expected behaviors and operating procedures. A
+        special set of unit-tests are the ones systematically created for every
+        \gls{acr:gsim} implemented (additional information about this specific
+        topic is available within Chapter \ref{chap:gmpes}).  The results
+        provided by the \gls{acr:oqe} are compared against benchmark results.
+        Several of the tests defined by \textcite{thomas2010} are used to check
+        the reliability and correctness of the results provided. 
     \item [Tests against provided by other PSHA codes: simple cases] 
         The result computed with the \gls{acr:oqe} for simple models (e.g. one
         area source) are compared against the results calculated using 
@@ -288,8 +289,6 @@ report \citep{pagani2014_oqtesting}
         using national or regional models are compared against the 
         results calculated using independent PSHA software.
 \end{description}
-\todo[inline]{Here we need to provide a description consistent with the
-structure of the document on testing}
 %
 % ..............................................................................
 %\section{Input and output description}
@@ -325,7 +324,7 @@ and we briefly summarize possible future developments.
  
 Logic trees are the subject of Chapter 5; in this part of the book we explain
 the modular structure designed to flexibly describe logic tree structures in the
-\gls{acr:oqe}, 
+\gls{acr:oqe}. 
  
 The last chapter outlines the result of some calculations completed using the
 different calculations workflows and source typologies discussed in Chapters
