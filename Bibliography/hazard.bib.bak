@@ -410,6 +410,7 @@
   Author                   = {Bommer, J. J. and Coppersmith, K. J. and Coppersmith, R. T. and Hanson, K. L. and Mangongolo, A. and Neveling, J. and Rathje, H. M. and Rodriguez-Marek, A. and Scherbaum, F. and Shelembe, R. and Stafford, P. J. and Strasser, F. O.},
   Journal                  = {Earthquake Spectra},
   Year                     = {2014},
+  Volume                   = {Accepted for publication},
 
   Owner                    = {mpagani},
   Timestamp                = {2014.07.23}
@@ -1406,7 +1407,7 @@
 }
 
 @TechReport{pagani2014_oqtesting,
-  Title                    = {Testing procedures adopted in the development of the hazard Component of the {O}pen{Q}auke-engine},
+  Title                    = {Testing procedures adopted in the development of the hazard Component of the {O}pen{Q}uake-engine},
   Author                   = {Pagani, M. and Monelli, D. and Weatherill, G. and Garcia, J.},
   Institution              = {GEM Technical Report},
   Year                     = {2014},

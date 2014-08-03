@@ -56,7 +56,7 @@ The \textit{Characteristic Fault} source can model both simple and complex
 geometries, but instead of simulating floating ruptures, each earthquake breaks
 the entire fault surface independently of the associated magnitude. The
 Characteristic Source typology can be used to model individual faults or fault
-segments that tend to produce essentialy same size earthquakes
+segments that tend to produce essentially same size earthquakes
 (\cite{schwartscoppersmith1984}).
 
 %-------- Common parameters -------%
@@ -92,9 +92,9 @@ the magnitude-frequency distribution, the OQ-engine provides a generic discrete
 annual occurrence rates, associated to an equally spaced set of magnitude
 values.
 %
-The OQ-hazardlib contains also a implementation of the \citetext{youngs1985}
-magnitude-frequency distribution. This distibution is currently non available in
-the \gls{acr:oqe}. With future releases, we plan to make this distribution
+The OQ-hazardlib contains also a implementation of the \textcite{youngs1985}
+magnitude-frequency distribution. This distribution is currently non available 
+in the \gls{acr:oqe}. With future releases, we plan to make this distribution
 available to the \gls{acr:oqe} users.
 
 In a PSHA, the magnitude-frequency distribution is subject to a discretization
@@ -412,11 +412,11 @@ strike direction is computed as:
 \begin{align}
 n_{strike} = \overline{L}_{edge} / \Delta + 1
 \end{align}
-Each edge is then resampled into $n_{strike}$ points. By connecting the different edges along
-nodes that are on the same positions, dipping lines can be constructed. By indicating with
-$\overline{W}_{fault}$ the average fault width computed from the set of dipping lines, the
-number of mesh points along dip is computed as:
-\begin{align}
+Each edge is then resampled into $n_{strike}$ points. By connecting the
+different edges along nodes that are on the same positions, dipping lines can be
+constructed. By indicating with $\overline{W}_{fault}$ the average fault width
+computed from the set of dipping lines, the number of mesh points along dip is
+computed as: \begin{align}
 n_{dip} = \overline{W}_{fault}/  \Delta + 1
 \end{align}
 Each dipping line is then resampled into $n_{dip}$ points. This completes the
@@ -463,14 +463,14 @@ event is depicted in the eastern part b) and in the western part c)}
 \section{The Characteristic Fault source}
 The \textit{Characteristic Fault} source is meant to represent individual faults
 or fault segments that tend to produce earthquakes
-(\cite{schwartscoppersmith1984}) of essentially the same size. To offer the
+\parencite{schwartscoppersmith1984} of essentially the same size. To offer the
 greatest flexibility in the definition of the associated geometry, a
 Characteristic Fault can be defined in terms of a simple fault geometry or as a
 complex fault geometry. A third option is available, that is a collection of
-planar ruptures, which can be used to model multi-segment ruptures for instance
-(Figure \ref{fig:CharacteristicFaultSource}). In a Characteristic fault,
-earthquake ruptures always break the entire fault surface, therefore the rupture
-floating mechanism is not needed.  
+planar ruptures, which can be used to model multi-segment ruptures for
+instance (Figure \ref{fig:CharacteristicFaultSource}). In a Characteristic
+fault, earthquake ruptures always break the entire fault surface, therefore the
+rupture floating mechanism is not needed.  
 \begin{figure}
 \centering
 \includegraphics[width=14cm]{./Pictures/CharacteristicFaultSource.pdf}
