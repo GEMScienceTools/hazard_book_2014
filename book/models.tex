@@ -71,6 +71,7 @@ following main parameters:
 \item upper seismogenic depth
 \item lower seismogenic depth
 \end{itemize}
+\todo[inline]{What about the temporal occurrence model?}
 %
 The magnitude-frequency distribution defines the total moment rate released by a
 source as well as the relative frequency of earthquakes of different magnitude
@@ -149,6 +150,8 @@ rupture width reaches the maximum allowed width, and the rupture aspect ratio
 starts deviating, that is increasing, from the original value.
 
 \section{The Point and Area sources}
+\index{Seismic source!Point}
+\index{Seismic source!Area}
 The parameters specific to the definition of Point and Area sources, and their
 associated function, are listed in Table \ref{table:point_area_tab}.
 \begin{table}
@@ -259,6 +262,7 @@ area source). This last strategy can be seen as a way to minimize the rupture
 extension outside of the area source.
 
 \section{The Simple Fault source}
+\index{Seismic source!Simple fault}
 Parameters required for the definition of a Simple Fault source are given in
 Table \ref{table:simple_fault_tab}.
 \begin{table}
@@ -355,6 +359,7 @@ The occurrence rate scaling factor is therefore magnitude dependent (in contrast
 with the Area Source where the scaling is constant for all magnitudes).
 % ------------------------------------------------------------------------------
 \section{The Complex Fault source}
+\index{Seismic source!Complex fault}
 Parameters required for the definition of a Complex Fault source are given in
 Table \ref{table:complex_fault_tab}.
 \begin{table}
@@ -414,71 +419,62 @@ number of mesh points along dip is computed as:
 \begin{align}
 n_{dip} = \overline{W}_{fault}/  \Delta + 1
 \end{align}
-Each dipping line is then resampled into $n_{dip}$ points. This completes the construction of
-the mesh which is therefore represented by $n_{strike} \times n_{dip}$ nodes. It is worth noticing
-how the resampling of the edges as well as of the dipping lines allows the construction of a rectangular
-mesh which is however non-uniform. The actual mesh spacing varies from values smaller than $\Delta$,
-in regions where the fault length or width is smaller than the corresponding average, to values larger than
-$\Delta$ where the opposite occurs. $\Delta$, which is basically used to compute the number of nodes along
-strike and dip, should therefore be considered as an \textit{average} mesh spacing.
+Each dipping line is then resampled into $n_{dip}$ points. This completes the
+construction of the mesh which is therefore represented by $n_{strike} \times
+n_{dip}$ nodes. It is worth noticing how the resampling of the edges as well as
+of the dipping lines allows the construction of a rectangular mesh which is
+however non-uniform. The actual mesh spacing varies from values smaller than
+$\Delta$, in regions where the fault length or width is smaller than the
+corresponding average, to values larger than $\Delta$ where the opposite occurs.
+$\Delta$, which is basically used to compute the number of nodes along strike
+and dip, should therefore be considered as an \textit{average} mesh spacing.
 
 \subsection{The rupture floating algorithm for a Complex Fault source}
-The non-uniformity of the mesh representing the fault surface makes the rupture floating algorithm for a Complex
-Fault source more problematic than for a Simple Fault source. Indeed, because of the variation of the actual mesh spacing, it is not possible to rely on the mesh spacing $\Delta$ to compute the number of nodes required by a rupture of a given magnitude (that is equation \ref{eq:rup_nodes}). For each possible rupture location, an optimization
-procedure is used instead which identifies the number of nodes along strike and dip which gives a mesh surface with an area that is the closest to the one predicted by the magnitude area scaling relationship. In other words, the rupture mesh is represented by a number of nodes which is not constant but that may vary along the fault surface. In this context, the rupture aspect ratio is used to define the length of the rupture top edge, while the rupture width results from the optimization procedure. Such optimization procedure is well exemplified in Figure \ref{fig:ComplexFaultSourcePanama}. The fault surface represents a southward dipping subduction fault located north of Panama defined
-in the model for South America developed by (\cite{petersen2010}). The figures shows how a $M=7.7$ event is modeled in two different parts of the fault surface. Where the fault is narrow (the western part) the rupture mesh
-contains a large number of nodes, separated by a small distance. Where the fault is large (the eastern part), the
-rupture mesh contains fewer nodes but separated by a larger distance.
+The non-uniformity of the mesh representing the fault surface makes the rupture
+floating algorithm for a Complex Fault source more problematic than for a Simple
+Fault source. Indeed, because of the variation of the actual mesh spacing, it is
+not possible to rely on the mesh spacing $\Delta$ to compute the number of nodes
+required by a rupture of a given magnitude (that is equation
+\ref{eq:rup_nodes}). For each possible rupture location, an optimization
+procedure is used instead which identifies the number of nodes along strike and
+dip which gives a mesh surface with an area that is the closest to the one
+predicted by the magnitude area scaling relationship. In other words, the
+rupture mesh is represented by a number of nodes which is not constant but that
+may vary along the fault surface. In this context, the rupture aspect ratio is
+used to define the length of the rupture top edge, while the rupture width
+results from the optimization procedure. Such optimization procedure is well
+exemplified in Figure \ref{fig:ComplexFaultSourcePanama}. The fault surface
+represents a southward dipping subduction fault located north of Panama
+defined in the model for South America developed by (\cite{petersen2010}). The
+figures shows how a $M=7.7$ event is modeled in two different parts of the fault
+surface. Where the fault is narrow (the western part) the rupture mesh contains
+a large number of nodes, separated by a small distance. Where the fault is large
+(the eastern part), the rupture mesh contains fewer nodes but separated by a
+larger distance.
 \begin{figure}
 \centering
 \includegraphics[width=14cm]{./Pictures/ComplexFaultPanama.pdf}
-\caption{a) Example of Complex Fault source representing subduction interface fault in North of Panama (\cite{petersen2010}). The mesh modeling a $M=7.7$ event is depicted in the eastern part b) and in the western part c)}
+\caption{a) Example of Complex Fault source representing subduction interface
+fault in North of Panama (\cite{petersen2010}). The mesh modeling a $M=7.7$
+event is depicted in the eastern part b) and in the western part c)}
 \label{fig:ComplexFaultSourcePanama}
 \end{figure}
 
 \section{The Characteristic Fault source}
-The \textit{Characteristic Fault} source is meant to represent individual faults or fault segments that tend to
-produce earthquakes (\cite{schwartscoppersmith1984}) of essentialy the same size. To offer the greatest flexibility
-in the definition of the associated geometry, a Characteristic Fault can be defined in terms of a simple fault
-geometry or as a complex fault geometry. A third option is available, that is a collection of planar ruptures,
-which can be used to model multi-segment ruptures for instance (Figure \ref{fig:CharacteristicFaultSource}). In a Characteristic fault, earthquake ruptures
-always break the entire fault surface, therefore the rupture floating mechanism is not needed.
+The \textit{Characteristic Fault} source is meant to represent individual faults
+or fault segments that tend to produce earthquakes
+(\cite{schwartscoppersmith1984}) of essentially the same size. To offer the
+greatest flexibility in the definition of the associated geometry, a
+Characteristic Fault can be defined in terms of a simple fault geometry or as a
+complex fault geometry. A third option is available, that is a collection of
+planar ruptures, which can be used to model multi-segment ruptures for instance
+(Figure \ref{fig:CharacteristicFaultSource}). In a Characteristic fault,
+earthquake ruptures always break the entire fault surface, therefore the rupture
+floating mechanism is not needed.  
 \begin{figure}
 \centering
 \includegraphics[width=14cm]{./Pictures/CharacteristicFaultSource.pdf}
-\caption{Example of Characteristic Fault sources defined through a collection of planar surfaces modeling a multi-segment rupture}
+\caption{Example of Characteristic Fault sources defined through a collection of
+planar surfaces modeling a multi-segment rupture}
 \label{fig:CharacteristicFaultSource}
 \end{figure}
-%
-% ..............................................................................
-%\section{Temporal occurrence model}
-%\subsection{The Poisson model}
-%\index{Temporal occurrence models!Poisson}
-%
-% ..............................................................................
-%\section{Seismic sources for distributed seismicity modelling}
-%\index{Distributed seismicity}
-%
-%Distributed seismicity is the seismicity can cannot be associated unambiguously
-%to a specific fault structure.
-
-%\subsection{The point source}
-%\index{Seismic source!Point}
-%
-%\subsection{Area source}
-%\index{Seismic source!Area}
-%
-% ..............................................................................
-%\section{Fault sources}
-%
-%\subsection{Simple fault}
-%\index{Seismic source!Simple fault}
-%
-%\subsection{Complex fault}
-%\index{Seismic source!Complex fault}
-%
-%\subsection{Characteristic fault}
-%\index{Seismic source!Characteristic fault}
-%
-%\section{Non-parametric sources}
-%\index{Seismic source!Non-parametric}
