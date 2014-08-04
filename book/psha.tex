@@ -1,41 +1,52 @@
-This chapter describes the mathematical framework for PSHA implemented by the OpenQuake-engine.
-Seismicity is assumed to be described as a time-independent Poissonian process. Seismicity modeling
-relies therefore on the following three assumptions:
+This chapter describes the mathematical framework for PSHA implemented by the
+OpenQuake-engine.  Seismicity is assumed to be described as a time-independent
+Poissonian process. Seismicity modeling relies therefore on the following three
+assumptions:
 \begin{itemize}
-	\item seismicity in a region is described by a collection of \textit{independent seismic sources}
-	(i.e. the occurrence of an earthquake rupture in a source does not affect the probability of
-	earthquake occurrence in the other sources)
-	\item each source generates \textit{independent earthquake ruptures} (i.e. the occurrence of an
-	earthquake rupture in a source does not affect the probability of occurrence of the other
-	potential earthquake ruptures in the same source)
-	\item the number of occurrences for each earthquake rupture in a source follows a \textit{Poissonian}
-	distribution
+    \item seismicity in a region is described by a collection of
+        \textit{independent seismic sources} (i.e. the occurrence of an
+        earthquake rupture in a source does not affect the probability of
+        earthquake occurrence in the other sources)
+    \item each source generates \textit{independent earthquake ruptures} (i.e.
+        the occurrence of an earthquake rupture in a source does not affect the
+        probability of occurrence of the other potential earthquake ruptures in
+        the same source)
+\todo[inline]{If we already think to expand the engine in order to accomodate
+mutually exclusive ruptures, I would move this condition below this list.}
+    \item the number of occurrences for each earthquake rupture in a source
+        follows a \textit{Poissonian} distribution
+\todo[inline]{Is this true now that we have also the non parametric source?}
 \end{itemize}
 
 \section{Basic concepts}
-The Classical, Event-Based, and Disaggregation analysis requires the definition of two main components:
-the \textit{seismic source model}, that is a collection of seismic sources describing the seismic activity in a
-region of interest, and the \textit{ground motion model}, that is a mathematical relationship defining the
-probability distribution of a ground motion parameter at a site given the occurrence of an earthquake
-rupture.
+The Classical, Event-Based, and Disaggregation analysis requires the definition
+of two main components: the \textit{seismic source model}, that is a collection
+of seismic sources describing the seismic activity in a region of interest, and
+the \textit{ground motion model}, that is a mathematical relationship defining
+the probability distribution of a ground motion parameter at a site given the
+occurrence of an earthquake rupture.
 
-The design of a seismic source model involves the specification of a number of sources whose main parameters
-are the geometry, constraining the earthquake rupture locations, and the \textit{magnitude-frequency
-distribution}, defining the average annual occurrence rate over a magnitude range. A seismic source model ($SSM$)
-can be therefore defined as a set of $I$ seismic sources ($Src$):
+The design of a seismic source model involves the specification of a number of
+sources whose main parameters are the geometry, constraining the earthquake
+rupture locations, and the \textit{magnitude-frequency distribution}, defining
+the average annual occurrence rate over a magnitude range. A seismic source
+model ($SSM$) can be therefore defined as a set of $I$ seismic sources
+($Src$):
 \begin{equation}
 SSM = \left\{Src_{1}, Src_{2}, ..., Src_{I}\right\}
 \end{equation}
-Chapter \ref{chap:ssm} provides
-a detailed description of the different source typologies supported by the OQ-engine. However, independently
-of the typology, in a PSHA each source undergoes a discretization process which effectively generates a
-number of distinct earthquake ruptures. A generic $i$-th source defines therefore a set of $J$ earthquake ruptures:
+Chapter \ref{chap:ssm} provides a detailed description of the different source
+typologies supported by the OQ-engine. However, independently of the typology,
+in a PSHA each source undergoes a discretization process which effectively
+generates a number of distinct earthquake ruptures. A generic $i$-th source
+defines therefore a set of $J$ earthquake ruptures:
 \begin{equation}
 Src_{i} = \left\{Rup_{i1}, Rup_{i2}, ..., Rup_{iJ}\right\}
 \end{equation}
 
-By indicating with $\nu_{ij}$ the average annual occurrence rate for the $j$-th rupture in the $i$-th source, the
-associated probability of occurring $k$ times in a time span $T$ can be written, accordingly with the Poissonian assumption,
+By indicating with $\nu_{ij}$ the average annual occurrence rate for the $j$-th
+rupture in the $i$-th source, the associated probability of occurring $k$ times
+in a time span $T$ can be written, accordingly with the Poissonian assumption,
 as:
 \begin{equation}
 \label{eq:poisson_pd}
@@ -43,55 +54,65 @@ P_{rup_{ij}}(k | T) = e^{-\nu_{ij} T} \frac{(\nu_{ij} T) ^ {k}}{k!}
 \end{equation}
 
 \section{Classical PSHA}
-The classical PSHA analysis allows calculating the probabilities of exceeding, at least once in a given time
-span, and at a given site, a set of ground motion parameter levels considering all possible earthquake ruptures
-defined in a seismic source model. Such a list of probability values is usually referred to as \textit{hazard curve}.
+The classical PSHA analysis allows calculating the probabilities of exceeding,
+at least once in a given time span, and at a given site, a set of ground motion
+parameter levels considering all possible earthquake ruptures defined in a
+seismic source model. Such a list of probability values is usually referred to
+as \textit{hazard curve}.
 
-We indicate with $P(X \ge x | T)$ the probability that a ground-motion parameter $X$ exceeds, at least once in
-a time span $T$, a level $x$. $P(X \ge x | T)$ can be computed as 1 minus the probability that none of the
-sources is causing a ground motion exceedance. By assuming \textit{independent sources}, the probability
-that none of the sources is causing an exceedance is equal to the product of the probabilities that each source
-does not cause an exceedance, that is:
+We indicate with $P(X \ge x | T)$ the probability that a ground-motion parameter
+$X$ exceeds, at least once in a time span $T$, a level $x$. $P(X \ge x | T)$ can
+be computed as 1 minus the probability that none of the sources is causing a
+ground motion exceedance. By assuming \textit{independent sources}, the
+probability that none of the sources is causing an exceedance is equal to the
+product of the probabilities that each source does not cause an exceedance, that
+is:
 \begin{align}
 \label{eq:hazard_eq}
 P(X \ge x | T) & =  1 - P_{src1}(X < x | T) * P_{src2}(X < x | T) * ... * P_{srcI}(X < x | T) \nonumber \\
 		      & =  1 - \prod_{i=1}^{I} P_{src_{i}}(X < x | T)
 \end{align}
-where $P_{src_{i}}(X < x | T)$ is the probability that the $i$-th source is not causing an exceedance and $I$ is the
-total number of sources in the source model.
+where $P_{src_{i}}(X < x | T)$ is the probability that the $i$-th source is not
+causing an exceedance and $I$ is the total number of sources in the source
+model.
 
-By further assuming each source generates \textit{independent
-earthquake ruptures}, we can compute $P_{src_{i}}(X < x | T)$ as the product of the probabilities that each rupture
-does not cause an exceedance, that is:
+By further assuming each source generates \textit{independent earthquake
+ruptures}, we can compute $P_{src_{i}}(X < x | T)$ as the product of the
+probabilities that each rupture does not cause an exceedance, that is:
 \begin{align}
 \label{eq:prup_noexceed_src}
 P_{src_{i}}(X < x | T) & = P_{rup_{i1}}(X < x | T) * P_{rup_{i2}}(X < x | T) * ... * P_{rup_{iJ}}(X < x | T) \nonumber \\
 			        & = \prod_{j=1}^{J_{i}} P_{rup_{ij}}(X < x | T)
 \end{align}
-where $P_{rup_{ij}}(X < x | T)$ is the probability that the $j$-th rupture in the $i$-th source is not causing an exceedance and $J_{i}$ is
-the total number of ruptures generated by the $i$-th source. Relying therefore on the assumptions of independent sources
-and independent earthquake ruptures generated by each source, we can write:
+where $P_{rup_{ij}}(X < x | T)$ is the probability that the $j$-th rupture in
+the $i$-th source is not causing an exceedance and $J_{i}$ is the total number
+of ruptures generated by the $i$-th source. Relying therefore on the assumptions
+of independent sources and independent earthquake ruptures generated by each
+source, we can write:
 \begin{align}
 \label{eq:hazard_eq_ind_srcs_rups}
 P(X \ge x | T) & =  1 - \prod_{i=1}^{I} \prod_{j=1}^{J_{i}} P_{rup_{ij}}(X < x | T)
 \end{align}
-Intuitively, the fact that a rupture does not cause any
-exceedance in a given time span T can be due to the fact that the rupture does not occur at all or that the
-rupture occurs once but without causing an exceedance, or that the rupture occurs twice but both times
-without causing an exceedance, and so on. Given that all these events are mutually exclusive, by using the
-total probability theorem we can write:
+Intuitively, the fact that a rupture does not cause any exceedance in a given
+time span T can be due to the fact that the rupture does not occur at all or
+that the rupture occurs once but without causing an exceedance, or that the
+rupture occurs twice but both times without causing an exceedance, and so on.
+Given that all these events are mutually exclusive, by using the total
+probability theorem we can write:
 \begin{align}
 \label{eq:prup_noexceed_rup}
 P_{rup_{ij}}(X < x | T) & = P_{rup_{ij}}(n = 0 | T) + P_{rup_{ij}}(n = 1 | T) * P(X < x | rup_{ij}) + \nonumber \\
                                 &\quad	P_{rup_{ij}}(n = 2 | T) * P(X < x | rup_{ij})^{2}  + ... \nonumber \\
 				 & = \sum_{k=0}^{\infty} P_{rup_{ij}}(k | T) * P(X < x | rup_{ij}) ^ {k} 
 \end{align}
-where $P_{rup_{ij}}(k | T)$ is the probability that the $j$-th rupture in the $i$-th source is occurring $k$ times in time span $T$ and
-$P(X < x | rup_{ij})$ is the conditional probability that parameter $X$ is not exceeding level $x$ given an
-occurrence of $rup_{ij}$.
+where $P_{rup_{ij}}(k | T)$ is the probability that the $j$-th rupture in the
+$i$-th source is occurring $k$ times in time span $T$ and $P(X < x | rup_{ij})$
+is the conditional probability that parameter $X$ is not exceeding level $x$
+given an occurrence of $rup_{ij}$.
 
-By now assuming that the \textit{number of occurrences of each rupture in a time span $T$ follows a Poissonian distribution}
-we can place equation \ref{eq:poisson_pd} in \ref{eq:prup_noexceed_rup} and thus write:
+By now assuming that the \textit{number of occurrences of each rupture in a time
+span $T$ follows a Poissonian distribution} we can place equation
+\ref{eq:poisson_pd} in \ref{eq:prup_noexceed_rup} and thus write:
 \begin{align}
 \label{eq:prup_noexceed_rup_pois_v0}
 P_{rup_{ij}}(X < x | T) & = \sum_{k=0}^{\infty} e^{-\nu_{ij} T} \frac{(\nu_{ij} T) ^ {k}}{k!} * P(X < x | rup_{ij}) ^ {k} \nonumber \\
@@ -108,8 +129,9 @@ P_{rup_{ij}}(X < x | T) & = e^{-\nu_{ij} T} e ^ {\nu_{ij} T * P(X < x | rup_{ij}
 				 & = e^{-\nu_{ij} T * (1 - P(X < x | rup_{ij}))} \nonumber \\
 				 & = e^{-\nu_{ij} T * P(X \ge x | rup_{ij})}
 \end{align}
-By now recognizing that, according to the Poissonian distribution, the probability of at least one occurrence
-(that is one or more) in a time span $T$ of $rup_{ij}$ is:
+By now recognizing that, according to the Poissonian distribution, the
+probability of at least one occurrence (that is one or more) in a time span $T$
+of $rup_{ij}$ is:
 \begin{equation}
 P_{rup_{ij}}(n \ge 1 | T) = 1 -  e^{-\nu_{ij} T}
 \end{equation}
@@ -124,11 +146,13 @@ write:
 \label{eq:hazard_eq_poiss}
 P(X \ge x | T) =  1 - \prod_{i=1}^{I} \prod_{j=1}^{J_{i}} (1 - P_{rup_{ij}}(n \ge 1 | T))^{P(X \ge x | rup_{ij})}
 \end{equation}
-Equation \ref{eq:hazard_eq_poiss} is used by the OQ-engine for the calculation of hazard curves when performing
-Classical PSHA. To our knowledge, this equation has been first proposed by \citet{field2003},
-derived from the traditional rate-based formulation converted in terms of probabilities (their equation A8).
-Instead, we derive it from the assumptions of a source model consisting of independent sources, independent
-earthquake ruptures generated by each source, and ruptures obeying to a Poissonian temporal occurrence model.
+Equation \ref{eq:hazard_eq_poiss} is used by the OQ-engine for the calculation
+of hazard curves when performing Classical PSHA. To our knowledge, this equation
+has been first proposed by \citet{field2003}, derived from the traditional
+rate-based formulation converted in terms of probabilities (their equation
+A8).  Instead, we derive it from the assumptions of a source model consisting of
+independent sources, independent earthquake ruptures generated by each source,
+and ruptures obeying to a Poissonian temporal occurrence model.
 
 \subsection{Equivalence with the rate-based equation}
 It is worth noticing how equation \ref{eq:hazard_eq_poiss} is equivalent to the more traditional rate-based
@@ -164,32 +188,41 @@ by replacing the discrete summation over ruptures with a continuous integral ove
 \begin{align}
 \nu = \sum_{i=1}^{I} \nu_{i} \iint f_{i}(m, r) P(X \ge x | m, r)\,dm \,dr
 \end{align}
-which is the traditional equation for calculating ground motion exceedance rates (\cite{mcguire1995}).
+which is the traditional equation for calculating ground motion exceedance rates
+\citep{mcguire1995}.
 
 \section{Event-based PSHA}
-The goal of an Event-based PSHA is to simulate seismicity in a region as described by a source model
-and to simulate ground shaking on a set of locations accordingly with a ground motion model. In both
-cases, simulation involves a Monte Carlo (i.e. random) sampling procedure.\\
-Seismicity is simulated by generating a \textit{stochastic event set} (also known as \textit{synthetic catalog})
-for a given time span $T$. For each rupture generated by a source,
-the number of occurrences in a time span $T$ is simulated by sampling the corresponding probability
-distribution as given in equation \ref{eq:poisson_pd}. A stochastic event set is therefore a \textit{sample}
-of the full population of ruptures as defined by a seismic source model. Each rupture is present zero, one or
-more times, depending on its probability. Symbolically, we can define a stochastic event set ($SES$) as:
-\begin{align}
-SES(T) = \left\{k \times rup,\;k\sim P_{rup}(k | T)\;\;\forall\;rup\;in\;Src\;\forall\;Src\;in\;SSM\right\}
-\end{align}
-where $k$, the number of occurrences, is a random sample of $P_{rup}(k | T)$, and $k \times rup$ means
-that rupture $rup$ is repeated $k$ times in the stochastic event set.
+\label{sec:event_based}
+The goal of an Event-based PSHA is to simulate seismicity in a region as
+described by a source model and to simulate ground shaking on a set of locations
+accordingly with a ground motion model. In both cases, simulation involves a
+Monte Carlo (i.e. random) sampling procedure.\\ Seismicity is simulated by
+generating a \textit{stochastic event set} (also known as \textit{synthetic
+catalog}) for a given time span $T$. For each rupture generated by a source, the
+number of occurrences in a time span $T$ is simulated by sampling the
+corresponding probability distribution as given in equation \ref{eq:poisson_pd}.
+A stochastic event set is therefore a \textit{sample} of the full population of
+ruptures as defined by a seismic source model. Each rupture is present zero, one
+or more times, depending on its probability. Symbolically, we can define a
+stochastic event set ($SES$) as: \begin{align} SES(T) = \left\{k \times
+rup,\;k\sim P_{rup}(k |
+T)\;\;\forall\;rup\;in\;Src\;\forall\;Src\;in\;SSM\right\} \end{align} where
+$k$, the number of occurrences, is a random sample of $P_{rup}(k | T)$, and $k
+\times rup$ means that rupture $rup$ is repeated $k$ times in the stochastic
+event set.
 
-Given an earthquake rupture, the simulation of ground shaking values on a set of locations ($\bm{x}=(x_{1}, x_{2}, ..., x_{N})$)
-forms a \textit{ground motion field}. In a Event-based PSHA, for each rupture in a stochastic event set,
-the ground motion field is obtained by sampling the probability distribution defined by the ground motion model.
-As described in Chapter \ref{chap:gmpes}, the ground motion distribution at a site is assumed to be a Normal
-distribution. The aleatory variability is described in terms of an \textit{inter-event} (also known as \textit{between-events})
-standard deviation ($\tau$) and \text{intra-event} (also known as \textit{within-event}) standard deviation ($\sigma$).
-The simulation of a ground motion field is therefore the result of the summation of three terms, the logarithmic mean of the
-ground motion distribution:
+Given an earthquake rupture, the simulation of ground shaking values on a set of
+locations ($\bm{x}=(x_{1}, x_{2}, ..., x_{N})$) forms a \textit{ground motion
+field}. In a Event-based PSHA, for each rupture in a stochastic event set, the
+ground motion field is obtained by sampling the probability distribution defined
+by the ground motion model.  As described in Chapter \ref{chap:gmpes}, the
+ground motion distribution at a site is assumed to be a Normal distribution. The
+aleatory variability is described in terms of an \textit{inter-event} (also
+known as \textit{between-events}) standard deviation ($\tau$) and
+\text{intra-event} (also known as \textit{within-event}) standard deviation
+($\sigma$).  The simulation of a ground motion field is therefore the result of
+the summation of three terms, the logarithmic mean of the ground motion
+distribution:
 \begin{equation}
 \bm\mu = (\mu_{1}, \mu_{2}, ..., \mu_{N})
 \end{equation}
@@ -211,18 +244,26 @@ where:
 \sigma_{N}\sigma_{1}\rho_{N1}&\sigma_{N}\sigma_{2}\rho_{N2}&\cdots &\sigma_{N}^2
 \end{bmatrix}
 \end{align}
+%
+It is worth noticing how the inter-event variability, uniform for all sites
+given an earthquake rupture, is drawn from an univariate normal distribution of
+mean 0 and standard deviation $\tau$, while the intra-event variability is a
+random sample of a multivariate normal distribution of mean $\bm{0}$ and
+covariance matrix $\bm\Sigma$.  $\bm\Sigma$ is a diagonal matrix when
+considering no correlation in the intra-event variability, while it has non-zero
+off-diagonal elements when considering a correlation model ($\rho$) for the
+intra-event aleatory variability.
 
-It is worth noticing how the inter-event variability, uniform for all sites given an earthquake rupture, is drawn
-from an univariate normal distribution of mean 0 and standard deviation $\tau$, while the intra-event variability
-is a random sample of a multivariate normal distribution of mean $\bm{0}$ and covariance matrix $\bm\Sigma$.
-$\bm\Sigma$ is a diagonal matrix when considering no correlation in the intra-event variability, while it has non-zero
-off-diagonal elements when considering a correlation model ($\rho$) for the intra-event aleatory variability.
-
+%
+%
 \subsection{Calculation of hazard curves from ground motion fields}
-The ground motion fields simulated for each rupture in a stochastic event set can be used to
-compute hazard curves. Indeed, indicating with $T_{0}$ the duration associated with a stochastic
-event set, and with $K$ the number of ground motion fields (and associated ruptures) simulated
-in time $T_{0}$, we can compute the rate of exceedance of a ground motion level $x$ at a site as (\cite{ebel1999}):
+%
+The ground motion fields simulated for each rupture in a stochastic event set
+can be used to compute hazard curves. Indeed, indicating with $T_{0}$ the
+duration associated with a stochastic event set, and with $K$ the number of
+ground motion fields (and associated ruptures) simulated in time $T_{0}$, we can
+compute the rate of exceedance of a ground motion level $x$ at a site as
+(\cite{ebel1999}):
 \begin{align}
 \label{eq:rate_from_gmfs}
 \nu = \frac{\sum_{k=1}^{K}H(x_{k} - x)}{T_{0}}

@@ -1,27 +1,37 @@
-\clearpage
 %
 % ..............................................................................
 \section{Future developments}
-This part will completed later.
 %
-% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-\subsection{Adjusted equations}
+Strong ground-motion seismology is an actively evolving discipline where
+new advancements are constantly introduced.  
 %
-% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-\subsection{Non-ergodic sigma}
-%
-% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-\subsection{Sigma adjustment}
-%
-% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-\subsection{Vs-Kappa correction}
-%
-% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-\subsection{Host-to-target adjustment}
-%
-% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-\subsection{Spatial cross correlation}
-%
-% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-\subsection{Near source directivity effects}
+The current implementation of GSIMs in the \gls{acr:oqe} offers advanced
+features but - according to our experience and the feedback we received
+from \gls{acr:oqe} users - it partially lacks of flexibility and should offer
+a less difficult process for the incorporation of new \glspl{acr:gsim} perhaps
+though tables. 
 
+A revision of the current scheme adopted for the implementation of new 
+\glspl{acr:gsim} will be therefore necessary in the future in order to add
+new features and most of all address the suggestions and feedback we received so
+far. 
+%
+An incomplete list of the possible improvements that might be introduced 
+is the following one:
+%
+\begin{itemize}
+\item Support for host-to-target adjustment \hfill \\
+    Within site specific hazard analyses \citep[see for example][]{bommer2014}
+    as well as within regional hazard studies in areas with scarce strong-motion
+    recordings it is common to adjust GMPEs in order to properly take into
+    account regional variations of parameters controlling ground-motion
+    properties such as stress drop, kappa and average shear wave velocity within
+    the uppermost 30 meters.
+\item Sigma adjustment, support for homoskedastic sigma \hfill \\ 
+
+\item Spatial cross correlation \hfill \\
+    
+\item Near source directivity effects \hfill \\
+
+\todo[inline]{This part needs to be expanded}
+\end{itemize}

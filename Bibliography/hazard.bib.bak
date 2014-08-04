@@ -140,6 +140,19 @@
   Timestamp                = {2011.11.06}
 }
 
+@Article{akkar_cagnan_2010,
+  Title                    = {{A local ground-motion predictive model for Turkey and its comparison with other regional and global ground-motion models}},
+  Author                   = {Akkar, S. and Cagnan, Z.},
+  Journal                  = {Bull. Seism. Soc. Am.},
+  Year                     = {2010},
+  Number                   = {6},
+  Pages                    = {2978-2995},
+  Volume                   = {100},
+
+  Date-added               = {2014-07-14 05:31:48 +0000},
+  Date-modified            = {2014-07-14 05:35:19 +0000}
+}
+
 @TechReport{akkar2013r,
   Title                    = {Define a Consistent Strategy to Model Ground Motion: Consistency in Model Parameters},
   Author                   = {Akkar, S. and Douglas, J. and Di Alessandro, C. and Campbell, K. W. and Somerville, P. G. and Cotton, F. and Silva, W. A. and Baker, J. W.},
@@ -357,6 +370,7 @@
   Url                      = {http://archive.euroscipy.org/talk/6634},
   Year                     = {2012},
 
+  Bdsk-url-1               = {http://archive.euroscipy.org/talk/6634},
   Owner                    = {mpagani},
   Timestamp                = {2014.06.10}
 }
@@ -391,6 +405,17 @@
   Timestamp                = {2011.08.18}
 }
 
+@Article{bommer2014,
+  Title                    = {A SSHAC Level 3 Probabilistic Seismic Hazard Analysis for a New-Build Nuclear Site in South Africa},
+  Author                   = {Bommer, J. J. and Coppersmith, K. J. and Coppersmith, R. T. and Hanson, K. L. and Mangongolo, A. and Neveling, J. and Rathje, H. M. and Rodriguez-Marek, A. and Scherbaum, F. and Shelembe, R. and Stafford, P. J. and Strasser, F. O.},
+  Journal                  = {Earthquake Spectra},
+  Year                     = {2014},
+  Volume                   = {Accepted for publication},
+
+  Owner                    = {mpagani},
+  Timestamp                = {2014.07.23}
+}
+
 @Article{bommer2008,
   Title                    = {The Use and Misuse of Logic Trees in Probabilistic Seismic Hazard Analysis},
   Author                   = {Bommer, J. J. and Scherbaum, F.},
@@ -414,6 +439,29 @@
 
   Owner                    = {damianomonelli},
   Timestamp                = {2011.10.18}
+}
+
+@Article{bommer2013,
+  Title                    = {{Quality Assurance for Logic-Tree Implementation in Probabilistic Seismic-Hazard Analysis for Nuclear Applications: A Practical Example}},
+  Author                   = {Bommer, J. J. and Strasser, F. O. and Pagani, M. and Monelli, D.},
+  Journal                  = {Seism. Res. Lett.},
+  Year                     = {2013},
+  Number                   = {6},
+  Pages                    = {938-945},
+  Volume                   = {84},
+
+  Date-added               = {2014-07-13 13:11:15 +0000},
+  Date-modified            = {2014-07-14 06:50:12 +0000}
+}
+
+@Article{boore2003,
+  Title                    = {Estimated Ground Motion From the 1994 Northridge, California, Earthquake at the Site of the Interstate 10 and La Cienega Boulevard Bridge Collapse, West Los Angeles, California},
+  Author                   = {Boore,},
+  Journal                  = {Bull. Seism. Soc. Am.},
+  Year                     = {2003},
+
+  Owner                    = {mpagani},
+  Timestamp                = {2014.07.22}
 }
 
 @Article{boore2010,
@@ -1264,6 +1312,16 @@
   Timestamp                = {2011.10.18}
 }
 
+@Article{monelli2014,
+  Title                    = {{Modeling Distributed Seismicity for Probabilistic Seismic-Hazard Analysis: Implementation and Insights with the OpenQuake Engine}},
+  Author                   = {Monelli, D. and Pagani, M. and Weatherill, G. and Danciu, L. and Garcia, J.},
+  Journal                  = {Bull. Seism. Soc. Am.},
+  Year                     = {2014},
+
+  Date-added               = {2014-07-09 07:50:08 +0000},
+  Date-modified            = {2014-07-09 10:16:16 +0000}
+}
+
 @Article{musson2012,
   Title                    = {On the Nature of Logic Trees in Probabilistic Seismic Hazard Assessment},
   Author                   = {Musson},
@@ -1346,6 +1404,16 @@
   Doi                      = {10.1785/0220130087},
   Owner                    = {mpagani},
   Timestamp                = {2014.05.15}
+}
+
+@TechReport{pagani2014_oqtesting,
+  Title                    = {Testing procedures adopted in the development of the hazard Component of the {O}pen{Q}uake-engine},
+  Author                   = {Pagani, M. and Monelli, D. and Weatherill, G. and Garcia, J.},
+  Institution              = {GEM Technical Report},
+  Year                     = {2014},
+
+  Owner                    = {GW},
+  Timestamp                = {2014.07.08}
 }
 
 @Article{pavlides,
@@ -1479,7 +1547,7 @@
 
 @Article{schwartscoppersmith1984,
   Title                    = {Fault behavior and characteristic earthquakes: Examples from the Wasatch and San Andreas Fault Zones},
-  Author                   = {Schwartz, D. P. and Coppersmith, K. J. },
+  Author                   = {Schwartz, D. P. and Coppersmith, K. J.},
   Journal                  = {Journal of Geophysical Research: Solid Earth},
   Year                     = {1984},
   Number                   = {B7},
@@ -1771,7 +1839,7 @@
 }
 
 @Article{wyss1979,
-  Title                    = {Estimating maximum expectable magnitude of earthquakes from fault dimensions},
+  Title                    = {Estimating maximumexpectable magnitude of earthquakes from fault dimensions},
   Author                   = {Wyss, M.},
   Journal                  = {Geology},
   Year                     = {1979},
@@ -1854,7 +1922,7 @@
 @comment{jabref-meta: selector_author:}
 
 @comment{jabref-meta: selector_journal:Bulletin of the Seismological S
- ociety of America;}
+  ociety of America;}
 
 @comment{jabref-meta: selector_keywords:}
 

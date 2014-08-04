@@ -20,21 +20,24 @@ standard deviation provided, the tectonic region where the use of the
 
 The main advantage of this approach is that \glspl{acr:gsim}, no matter 
 which are their specific properties or features, behave following 
-a common standard. 
+a common protocol. 
 %
 For example, this feature allowed the creation on top of the 
-\gls{acr:gsim} library of a universal testing procedure, a standard 
-applied to all the models implemented in the \gls{acr:oqe} which 
-guarantees a baseline uniform quality assurance level. 
+\gls{acr:gsim} library of a universal testing procedure, which is
+applied to all the models implemented in the \gls{acr:oqe} in order to  
+guarantee a uniform testing level (see following section for
+additional information on this topic). 
 
-A second advantage of the developed library relates to its flexibility 
-and modularity. Once the properties of main objects are defined, 
+A second advantage of the developed library relates to its flexibility and
+modularity. Once the properties of the main objects are defined,
 \glspl{acr:gsim} can be used interchangeably. 
 %
-For example, the OpenQuake Ground Motion Toolkit 
-\parencite{weatherill2014} builds on top of this library and 
-includes tools for computing residuals given a dataset 
-of recordings, or for the calculation of trellis plots that compare the scaling of multiple GMPEs side by side in terms of magnitude, distance, site-condition, spectra etc..
+For example, the OpenQuake Ground Motion Toolkit \parencite{weatherill2014}
+\todo[inline]{check citation}
+builds on top of this library and provides tools for computing residuals given a
+dataset of recordings, or for the calculation of trellis plots that compare the
+scaling of multiple GMPEs side by side in terms of magnitude, distance,
+site-condition, spectra etc..
 %
 Figure \ref{fig:gsim_mag_scaling} shows the scaling of ground-motion 
 versus magnitude for some of the \glspl{acr:gsim} implemented in the 
@@ -45,9 +48,10 @@ about 33 km with V$_{S,30}$ equal to 760 m/s from a rupture with a
 strike of dip of 45 degrees toward south for two different values 
 of rake (i.e. rupture mechanism). The upper panel of Figure 
 \ref{fig:gsim_mag_scaling} shows the position of the site and 
-the rupture.
+the rupture. Note that the three GSIMs selected use different 
+rupture-site metrics.
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . > Figure
-\begin{figure}[hb]
+\begin{figure}[!ht]
 \centering
 % left bottom right top
 \includegraphics[width=10cm]{./Pictures/gsim/rupture_plot.pdf}
@@ -73,7 +77,7 @@ the rupture.
 The progressively increasing complexity of 
 \glspl{groundshakingintensitymodel}
 is giving more and more emphasis and relevance to the validation 
-of results provided by the \gls{acr:gsim} implemented within 
+of results provided by the \glspl{acr:gsim} implemented within 
 \gls{acr:psha} codes and the results of original \gls{acr:gsim} 
 implementations as described in the scientific literature 
 (or directly provided by the authors).
@@ -86,7 +90,7 @@ number of combinations of the predictor variables.
 %
 Table \ref{tab:verification} shows a simplified example of a 
 \gls{acr:gsim} verification table; it consists of: a header 
-line with (standard) names for each of the column, a number
+line with (standard) names for each column and a number
 of lines each one containing values of the predictor variables
 plus the computed values of ground-motion intensity or standard
 deviation.
@@ -108,7 +112,7 @@ val$_{2,1}$ & val$_{2,2}$ & val$_{2,3}$ & val$_{2,4}$ & val$_{2,5}$ & \\
 \label{tab:verification}
 \end{table}
 % ---------------------------------------------------------------------<<< Table
-Examples of verification tables are available on the OpenQuake-hazardlib Github
+Examples of verification tables are available in the OpenQuake-hazardlib Github
 repository\footnote{
 \href{https://github.com/gem/oq-hazardlib/tree/master/openquake/hazardlib/tests/gsim/data}{
 https://github.com/gem/oq-hazardlib/tree/master/openquake/hazardlib/tests/gsim/data}
@@ -119,17 +123,19 @@ in the \gls{acr:oqe}, it is possible to verify the consistency between
 the original results and the corresponding values computed with the 
 version of the \gls{acr:gsim} implemented. 
 %
-On average we accept \gls{acr:oqe}
+On average we accept discrepancies between the original implementation and the
+version included in the \gls{acr:oqe} lower than five percent.
+\todo[inline]{This percentage must be checked}
 
-GEM recommends contextually to the publication of \gls{acr:gsim}
-distributing as an electronic attachment the table of coefficients as well 
-as of a set of verification tables (or a software which allows the generation 
-of these tables). This can certainly improve the reproducibility of the 
-new models proposed and most of all would improve the quality and 
-robustness of the computed hazard.
+GEM recommends that contextually to the publication of \glspl{acr:gsim} the
+table of coefficients as well as of a set of verification tables (or a software
+which allows the generation of these tables) are published as an electronic
+supplement. This can certainly improve the reproducibility of the models
+proposed and most of all would increase the quality and robustness of the
+computed hazard.
 %
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-\subsection{Selection criteria}
+%\subsection{Selection criteria}
 %The \gls{acr:oqe} does not provide tools supporting a formal \gls{acr:gsim}
 %selection process, which is now common practice in a PSHA model building 
 %process \parencite[see for example][]{delavaud2012}. 
@@ -137,8 +143,18 @@ robustness of the computed hazard.
 %Nevertheless, in order to ensure the higher level of consistency between 
 %the selection procedure and the calculation of hazard it is recommendable 
 %to use in both the phases the same \gls{acr:gsim}. 
-This section will be completed later.
+%This section will be completed later.
 %
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 \subsection{Spatial correlation of ground motion}
-This section will be completed later.
+%
+The OpenQuake-engine supports the calculation of ground-motion fields taking
+into account the spatial correlation of the within-event residuals
+\citep{boore2003}.
+%
+The OpenQuake-engine supports correlation models developed according to a
+default scheme. Currently the OQ-engine provides only one correlation model, the
+one proposed by \citet{jayaram2009}.
+
+The calculation of spatially correlated ground motion fields is summarized at
+page \pageref{sec:event_based}.
