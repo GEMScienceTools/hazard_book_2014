@@ -51,15 +51,14 @@ completed using a zonation map called tectonic regionalisation
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 \subsection{Main predictor variables}
 \index{Ground-motion prediction equation!Predictor variables}
-In the current section we give a brief overview of the most 
+In the current section we offer a brief overview of the most 
 important predictor variables supported by the \gls{acr:oqe}
-\parencite[for general a summary, see][]{akkar2013r}; 
-currently they are organized into three main categories: variables 
-describing the rupture properties, variables describing the rupture\--site 
-path and variables used to characterize the site conditions. 
-%
-Table \ref{tab:parameters} contains a summary of the variables
-assigned to the three groups.
+\parencite[for general a summary, see][]{akkar2013r}. 
+
+The main predictor variables are organized into three categories as indicated in
+Table \ref{tab:parameters}: variables describing the rupture properties,
+variables describing the rupture\--site path and variables used to characterize
+the site conditions. 
 % --------------------------------------------------------------------->>> Table
 \begin{table}[!h]
 \centering
@@ -94,7 +93,12 @@ The \gls{acr:oqe}, however, does not assume a predefined magnitude typology.
 It is up to the user to ensure that the magnitude used to define earthquake 
 occurrence in the \gls{seismicsourcemodel} is consistent with the one used 
 in the selected \glspl{groundshakingintensitymodel}.
-
+%
+\subsubsection{Dip}
+This is a parameter normally obtained from the source since it must be specified
+by default for the creation of almost all the source typologies supported by the
+\gls{acr:oqe}. 
+%
 \subsubsection{Distance}
 \index{Ground-motion prediction equation!predictor variables!Source-site 
 distance}
@@ -152,7 +156,7 @@ In the \gls{acr:oqe} the rupture mechanism is specified
 in terms of the rake angle (defined according to \cite{aki2002}). 
 %
 Since the rake is not used directly as a predictor variable,
-most of the \glspl{acr:gsim} implemented in the \gls{acr:oqe} contains 
+most of the \glspl{acr:gsim} implemented in the \gls{acr:oqe} contain 
 a mapping between the rake angle and the rupture mechanism classes 
 supported by each specific model (for a review see 
 \cite[page 24 of][]{akkar2013r}).
@@ -188,7 +192,7 @@ to capture the influence of the deeper local geological structure.
 \index{Ground-motion prediction equation!Rupture mechanism!Depth to the top of
 rupture}
 The depth to the top of rupture is a parameter introduced in some of the NGA
-West 1 \gls{acr:gsim} such as the \textcite{chiou2008} and the
+West 1 \glspl{acr:gsim} such as the \textcite{chiou2008} and the
 \textcite{abrahamson2008} in order to account for a supposed dependence
 of the shaking intensity to the depth of the source, as suggested by
 \textcite{somerville2006a}.

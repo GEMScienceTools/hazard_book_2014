@@ -25,7 +25,7 @@ a common protocol.
 For example, this feature allowed the creation on top of the 
 \gls{acr:gsim} library of a universal testing procedure, which is
 applied to all the models implemented in the \gls{acr:oqe} in order to  
-guarantee a uniform quality assurance level (see following section for
+guarantee a uniform testing level (see following section for
 additional information on this topic). 
 
 A second advantage of the developed library relates to its flexibility and
@@ -33,6 +33,7 @@ modularity. Once the properties of the main objects are defined,
 \glspl{acr:gsim} can be used interchangeably. 
 %
 For example, the OpenQuake Ground Motion Toolkit \parencite{weatherill2014}
+\todo[inline]{check citation}
 builds on top of this library and provides tools for computing residuals given a
 dataset of recordings, or for the calculation of trellis plots that compare the
 scaling of multiple GMPEs side by side in terms of magnitude, distance,
@@ -76,7 +77,7 @@ rupture-site metrics.
 The progressively increasing complexity of 
 \glspl{groundshakingintensitymodel}
 is giving more and more emphasis and relevance to the validation 
-of results provided by the \gls{acr:gsim} implemented within 
+of results provided by the \glspl{acr:gsim} implemented within 
 \gls{acr:psha} codes and the results of original \gls{acr:gsim} 
 implementations as described in the scientific literature 
 (or directly provided by the authors).
@@ -111,7 +112,7 @@ val$_{2,1}$ & val$_{2,2}$ & val$_{2,3}$ & val$_{2,4}$ & val$_{2,5}$ & \\
 \label{tab:verification}
 \end{table}
 % ---------------------------------------------------------------------<<< Table
-Examples of verification tables are available on the OpenQuake-hazardlib Github
+Examples of verification tables are available in the OpenQuake-hazardlib Github
 repository\footnote{
 \href{https://github.com/gem/oq-hazardlib/tree/master/openquake/hazardlib/tests/gsim/data}{
 https://github.com/gem/oq-hazardlib/tree/master/openquake/hazardlib/tests/gsim/data}
@@ -122,17 +123,16 @@ in the \gls{acr:oqe}, it is possible to verify the consistency between
 the original results and the corresponding values computed with the 
 version of the \gls{acr:gsim} implemented. 
 %
-On average we accept \gls{acr:oqe} discrepancies between the original
-implementation and the version included in the \gls{acr:oqe} lower than five
-percent.
+On average we accept discrepancies between the original implementation and the
+version included in the \gls{acr:oqe} lower than five percent.
 \todo[inline]{This percentage must be checked}
 
-GEM recommends contextually to the publication of \glspl{acr:gsim}
-distributing as an electronic attachment the table of coefficients as well 
-as of a set of verification tables (or a software which allows the generation 
-of these tables). This can certainly improve the reproducibility of the 
-new models proposed and most of all would increase the quality and 
-robustness of the computed hazard.
+GEM recommends that contextually to the publication of \glspl{acr:gsim} the
+table of coefficients as well as of a set of verification tables (or a software
+which allows the generation of these tables) are published as an electronic
+supplement. This can certainly improve the reproducibility of the models
+proposed and most of all would increase the quality and robustness of the
+computed hazard.
 %
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 %\subsection{Selection criteria}
@@ -153,7 +153,7 @@ into account the spatial correlation of the within-event residuals
 \citep{boore2003}.
 %
 The OpenQuake-engine supports correlation models developed according to a
-default scheme. Currently the OQ-engine supports only one correlation model, the
+default scheme. Currently the OQ-engine provides only one correlation model, the
 one proposed by \citet{jayaram2009}.
 
 The calculation of spatially correlated ground motion fields is summarized at
