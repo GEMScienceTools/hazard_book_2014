@@ -6,17 +6,18 @@ OpenQuake-engine.
 An \gls{acr:oqe} input model always contains a logic tree structure 
 describing the epistemic uncertainties associated with the construction 
 of the seismic source model and a logic-tree used to formally specify 
-epistemic uncertainties related to the \gls{acr:gsim} models used in 
+the epistemic uncertainties related to the \gls{acr:gsim} models used in 
 different tectonic regions for the calculation of hazard.
 
-The definition of logic trees in the OpenQuake-engine is based on
-the combination of predefined modules, each one modelling a specific 
-epistemic uncertainty.
+The definition of logic trees in the OpenQuake-engine is based on the
+combination of a number of predefined modules, each one modelling a specific
+epistemic uncertainty (see Figure \ref{fig:logic_tree}
+for a schematic describing this particular feature). 
 %
-There are are the main advantages of this approach. The first and most obvious  
+This approach brings a number of advantages. The first and most obvious  
 is that the user is not forced to use a predefined logic tree structure and
 - instead - can create a tailored logic tree which integrally 
-reflects the specific uncertainties he or she wants to model. 
+reflects the specific uncertainties they want to model. 
 %
 The second is that the logic tree structure becomes an integral part of  
 a PSHA input model definition. The hazard calculations based on this approach
@@ -41,7 +42,7 @@ as well as for the creation of state\--of\--the\--art national and
 regional \gls{acr:psha} input models. 
 
 The interpretation of the branches in a logic tree structure, of their 
-corresponding weights and of the following results is still the subject 
+corresponding weights and of the related results is still the subject 
 of an intense scientific debate going on in the literature since 2005 
 \parencite{abrahamson2005,mcguire2005,scherbaum2011,musson2012}.
 %
@@ -67,8 +68,8 @@ model uncertainty, knowledge that cannot be assumed \textit{a priori}.
 \includegraphics[width=\textwidth]{./Pictures/lts/logic_tree.pdf}
 \caption{An example of modular logic tree structure supported by the
     \gls{acr:oqe}. The upper part of the figure contains two modules, one
-    modelling the epistemic uncertainty on the dip angle of a fault, the 
-    other modelling the uncertainty on faults upper seismogenic depth.}
+    modeling the epistemic uncertainty on the dip angle of a fault, the 
+    other modeling the uncertainty on faults upper seismogenic depth.}
 \label{fig:logic_tree}
 \end{figure}
 % --------------------------------------------------------------------<<< Figure
@@ -111,7 +112,7 @@ A \gls{branchset} can applied to all the sources included in the initial
 seismic source model, to a subset of sources, to a branch included in a 
 branch set occurring before in the logic tree structure or even just to 
 a single source. 
-
+%
 Currently, the rules controlling the application of a branch set 
 incorporated into the \gls{acr:oqe} are the following:
 \begin{itemize}
@@ -121,12 +122,12 @@ incorporated into the \gls{acr:oqe} are the following:
         unique ID;
     \item \emph{applyToSources} \hfill \\
         The current branch set is applied to one or more sources 
-        included in the initial seismic source model designated 
+        included in one of the initial seismic source models and designated 
         through their unique ID;
     \item \emph{applyToSourceType} \hfill \\
         The current branch set is applied to all the sources of a 
-        specific type (e.g. simple fault sources) included in the 
-        initial seismic source model;
+        specific type (e.g. simple fault sources) included in one of the 
+        initial seismic source models;
     \item \emph{applyToTectonicRegionType} \hfill \\
         The current branch set is applied to all the sources belonging 
         to a selected tectonic region type (e.g. stable continental).
@@ -178,8 +179,8 @@ seismic source model.
         This branch set adds (or subtracts) a delta to the b-value of the 
         double truncated Gutenberg-Richter relationship.
     \item \emph{Uncertainty on the a-value of the double 
-        truncated Gutenberg-Richter relationship} \hfill \\ 
-        This branch set assigns a value to the a-value of the double truncated 
+        truncated Gutenberg-Richter relationship} \hfill \\ This branch set
+        assigns a specific value of the a-value of the double truncated
         Gutenberg-Richter relationship.
     \item \emph{Uncertainty on the maximum magnitude of a double 
         truncated Gutenberg-Richter distribution} \hfill \\ 
@@ -192,7 +193,7 @@ seismic source model.
         This branch set considers the epistemic uncertainty on the maximum 
         value of magnitude used to define a double truncated Gutenberg-Richter 
         distribution. The application of this branch set  
-        assigns a value to the maximum magnitude of a double truncated 
+        assigns a specific value of the maximum magnitude of a double truncated 
         Gutenberg-Richter.
 \end{itemize}
 %
@@ -205,7 +206,9 @@ logic tree. (lower panel) Example of ground-motion logic tree processing.
 The initial seismic source model, on the left,  is propagated through a simple 
 logic tree structure following the path indicated by the black dashed line.
 Model information is added incrementally as the input models propagate 
-through the tree structure.}
+through the tree structure. In this example hazard is compute using GSIM A
+for the sources in active shallow tectonic region and GSIM Y for sources in
+stable continental region}
 \label{fig:logic_tree_gsim}
 \end{figure}
 % --------------------------------------------------------------------<<< Figure
@@ -219,21 +222,21 @@ simple and designed to support just the use of alternative
 %
 \subsubsection{Supported epistemic uncertainties}
 The epistemic uncertainty allowed for the \gls{acr:gsim} 
-logic-tree are the following:
+logic-tree is the following:
 \begin{itemize}
     \item \emph{Ground shaking intensity models} \hfill \\
         This module assigns to each tectonic region one or many 
         \glspl{acr:gsim}. This branch set implicitly contains a 
         filter since it is applied only to the seismic sources 
         belonging to the corresponding tectonic region. The  
-        example within Figure \ref{fig:logic_tree_gsim}) illustrates
+        example within Figure \ref{fig:logic_tree_gsim} illustrates
         the common processing of the ground-motion logic tree operated
-        by the\gls{acr:oqe}. In this example the source model 
+        by the \gls{acr:oqe}. In this example the source model 
         contains seismic sources included in two tectonic domains:
         active tectonics and stable continental. The branch set defined 
-        for 'active shallow' is then applied just to sources 'S1 and 'S3' 
+        for 'active shallow' is therefore applied just to sources 'S1 and 'S3' 
         while the branch set for sources in stable continental regions
-        is utilised only for source 'S3'.
+        is utilized only for source 'S3'.
 \end{itemize}
 % ..............................................................................
 \section{Logic tree processing}
@@ -374,10 +377,10 @@ In case of a logic tree processing based on a Monte Carlo sampling the
 quantiles are computed from this set of probabilities using standard
 methodologies.
 %
-\clearpage
 % ..............................................................................
 \section{Future developments}
-This part will completed later.
 %
-% . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-\subsection{Logic tree pruning/collapsing}
+The most urgent development with respect to this topic is the expansion of the
+modules provided to model epistemic uncertainties at the level of the seismic
+source modeling as well as for the description of epistemic uncertainties
+involving the ground motion model.
