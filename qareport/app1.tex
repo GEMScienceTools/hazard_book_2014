@@ -1,15 +1,15 @@
 %
-In 2001 the \gls{acr:peer} started a project aimed at validating
-and comparing results provided by a number of public and private 
+In 2001 the \gls{acr:peer} started a project aimed at comparing and validating
+results provided by a number of public and private 
 \gls{acr:psha} codes \parencite[for a comprehensive list see][]{thomas2010}.
 %
-For this purpose two set cases were created to check the way 
+For this purpose two sets of tests were created to check the way 
 codes were implementing fundamental steps in the \gls{acr:psha}
 calculation mechanics.
 %
 The major differences observed were appointed to differences in 
 the numerical procedures adopted in the different software.
-% 
+
 The test acceptance level adopted corresponds to 10 percent in 
 probability for a chosen value of ground motion intensity.
 %
@@ -41,16 +41,16 @@ Below we provide a brief description for each of them.
 \begin{description}
     \clearpage
     \item [Test case 2] 
-        This test considers uniform slip and considers a 
+        This test considers uniform slip and a 
         single rupture with an extension smaller than the whole surface 
         of the hosting fault. The goal is to test results also considering
         possible edge effects. 
         %
         The fault is a vertical strike-slip fault with a Gutenberg-Richter
         b-value equal to 0.9 and a slip rate of 2 mm/yr giving an annual 
-        recurrance of 0.0160425 $yr^{-1}$. 
+        recurrence of 0.0160425 $yr^{-1}$. 
         %
-        The \gls{acr:mfd} is a degenerate distribution localized at 
+        The \gls{acr:mfd} is a degenerated distribution centered at 
         magnitude 6 while the \gls{acr:gmpe} is the \textcite{sadigh1997} 
         one with $\sigma^B=0$.
 
@@ -66,10 +66,12 @@ Below we provide a brief description for each of them.
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . > Figure
 \begin{figure}[!ht]
 \centering
-%\includegraphics[width=14cm]{./Pictures/qa/test2_set1.png}
+\includegraphics[width=14cm]{./Pictures/qa/test02_set1.png}
 \caption{Comparison between the results provided by \textcite{thomas2010}
 for the test case 2 set 1 (grey dashed lines) and the \gls{acr:oqhl} 
-(green dots). }
+(green dots). The panels show the comparison between the reference curves and 
+the computed curves at points 1, 2, 3, 4, 5 and 6 
+(see Figure \ref{fig:peer_sources})}
 \label{fig:peer_set1_test2}
 \end{figure}
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . < Figure
@@ -97,7 +99,7 @@ for the test case 5 set 1 (grey dashed lines) and the \gls{acr:oqhl}
     \item [Test case 10]
         This test considers one uniform area source with a truncated exponential 
         model with $M_{min}$ of 5.0, $M_{max}$ 6.5, b-value of 0.9 and an annual 
-        rate $M_W \geq M_{min}$ of 0.0395. As OpenQuake defines finite rupture 
+        rate $M_W \geq M_{min}$ of 0.0395. As OpenQuake-engine defines finite rupture 
         planes for each of the points considered in the area source, the scaling
         relation was fixed such that the area of the finite rupture was equal to 
         1.0 km. Hypocentral depth is fixed at 5 km. 
