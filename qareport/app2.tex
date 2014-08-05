@@ -41,7 +41,7 @@ Assuming ground motion distribution to follow (in log scale) a truncated normal
 distribution, we can compute $P(IM\geq x | m,r)$ as:
 \begin{equation}
 \label{cpoe}
-P(IM\geq x | m,r) = 1 - \frac{\Phi(\frac{ln(x) - \overline{ln(IM;m,r)}} {\sigma}) - \Phi(-n_{trunc})}
+P(IM\geq x | m,r) = 1 - \frac{\Phi(\frac{\ln(x) - \overline{\ln(IM;m,r)}} {\sigma}) - \Phi(-n_{trunc})}
 					{\Phi(n_{trunc}) - \Phi(-n_{trunc})}
 \end{equation}
 where $\Phi$ is the normal cumulative distribution function. In the following
@@ -51,15 +51,16 @@ $\Phi(2)=0.9772$, $\Phi(-2)=0.0228$, and $\Phi(2) - \Phi(-2)=0.9545$.
 So we can rewrite equation \ref{cpoe} as: 
 \label{cpoe2}
 \begin{equation}
-P(IM\geq x | m,r) = 1 - \frac{\Phi(\frac{ln(x) - \overline{ln(IM;m,r)}} {\sigma}) -0.0228}
+P(IM\geq x | m,r) = 1 - \frac{\Phi(\frac{\ln(x) - \overline{\ln(IM;m,r)}} {\sigma}) -0.0228}
 					{0.9545}
 \end{equation}
 In case a truncation level of 0 is considered, we can write $P(IM\geq x | m,r)$ as:
 \begin{equation}
 \label{cpoe_0_trunc}
-P(IM\geq x | m,r) = H(\overline{ln(IM;m,r)} - ln(x))
+P(IM\geq x | m,r) = H(\overline{\ln(IM;m,r)} - \ln(x))
 \end{equation}
-where $H$ is the Heaviside (or step) function. That is $P(IM\geq x | m,r)=1$ if $\overline{ln(IM;m,r)} \geq ln(x)$ and $0$
+where $H$ is the Heaviside (or step) function. That is $P(IM\geq x | m,r)=1$ if
+$\overline{\ln(IM;m,r)} \geq \ln(x)$ and $0$
 otherwise.
 %...............................................................................
 \subsection{GMPE}
@@ -69,7 +70,7 @@ equal to 6.5. The mean of the logarithm of PGA is predicted by the following
 equation:
 \begin{equation}
 \label{meanPGA}
-\overline{ln(IM;m,r)} = -0.624 + m - 2.1 ln(r + exp(1.29649 + 0.25 m))
+\overline{\ln(IM;m,r)} = -0.624 + m - 2.1 \ln(r + \exp(1.29649 + 0.25 m))
 \end{equation}
 where $r$ is the closest distance to the rupture. The standard deviation is given by:
 \begin{equation}
@@ -133,7 +134,7 @@ $M_{min}=4$,  $\lambda_{i}(m\geq M_{min}) = \lambda(m=4) = 1$, equation
 The mean of the logarithm of PGA, as predicted by equation \ref{meanPGA} is
 (rounded to 4 digits):
 \begin{equation}
-\overline{ln(IM;m,r)} = -0.624 + 4.0 - 2.1\ln(3.5 + \exp(1.29649 + 0.25 * 4.0)) = -2.0802
+\overline{\ln(IM;m,r)} = -0.624 + 4.0 - 2.1\ln(3.5 + \exp(1.29649 + 0.25 * 4.0)) = -2.0802
 \end{equation}
 and the corresponding standard deviation (as from eq. \ref{sigmaPGA}) is:
 \begin{equation}
@@ -195,7 +196,7 @@ f(r) = \delta(r)
 The probability density function for a truncated GR can be written as:
 \begin{equation}
 \label{tGRpdf}
-f(m) = \frac{b \,ln(10) 10^{-b(m-M_{min})}}{1 - 10^{-b(M_{max} - M_{min})}}
+f(m) = \frac{b \,\ln(10) 10^{-b(m-M_{min})}}{1 - 10^{-b(M_{max} - M_{min})}}
 \end{equation}
 Using a truncation level equal to 0, the probability of the logarithm of PGA
 exceeding a level $x$ can be computed using equation \ref{cpoe_0_trunc}.
@@ -204,28 +205,33 @@ equation \ref{are}, and considering that the source model consists of only one
 source, we can write:
 \begin{eqnarray}
     \label{aret2}
-    \lambda(PGA \geq x) =  \lambda(m\geq M_{min}) \int_{M_{min}}^{M_{max}} H(-0.624 + m - 2.1 (1.29649 + 0.25 m) - ln(x)) \nonumber \\
-    \frac{b \,ln(10) 10^{-b(m-M_{min})}}{1 - 10^{-b(M_{max} - M_{min})}} dm =\nonumber \\
-     \lambda(m\geq M_{min})\, \frac{b \,ln(10)}{1 - 10^{-b(M_{max} - M_{min})}} \int_{M_{min}}^{M_{max}} H(0.475m - 3.346629 - ln(x)) 10^{-b(m-M_{min})} dm =\nonumber \\
-      \lambda(m\geq M_{min})\, \frac{b \,ln(10)}{1 - 10^{-b(M_{max} - M_{min})}} \left[ -\frac{10^{-b(m - M_{min}})}{b\,ln(10)} \right]_{max\{ M_{min, \frac{3.346629 + ln(x)}{0.475}} \}}^{M_{max}}
+    \lambda(PGA \geq x) =  \lambda(m\geq M_{min}) \int_{M_{min}}^{M_{max}}
+    H(-0.624 + m - 2.1 (1.29649 + 0.25 m) - \ln(x)) \nonumber \\
+    \frac{b \,\ln(10) 10^{-b(m-M_{min})}}{1 - 10^{-b(M_{max} - M_{min})}} dm =\nonumber \\
+     \lambda(m\geq M_{min})\, \frac{b \,\ln(10)}{1 - 10^{-b(M_{max} - M_{min})}}
+     \int_{M_{min}}^{M_{max}} H(0.475m - 3.346629 - \ln(x)) 10^{-b(m-M_{min})} dm =\nonumber \\
+      \lambda(m\geq M_{min})\, \frac{b \,\ln(10)}{1 - 10^{-b(M_{max} -
+      M_{min})}} \left[ -\frac{10^{-b(m - M_{min}})}{b\,\ln(10)} \right]_{max\{
+      M_{min, \frac{3.346629 + \ln(x)}{0.475}} \}}^{M_{max}}
 \end{eqnarray}
 %
-if $M_{max} \leq  \frac{3.346629 + ln(x)}{0.475}$, otherwise the result of the
-equation is 0.\\ if $M_{min} \geq  \frac{3.346629 + ln(x)}{0.475}$, we can
+if $M_{max} \leq  \frac{3.346629 + \ln(x)}{0.475}$, otherwise the result of the
+equation is 0.\\ if $M_{min} \geq  \frac{3.346629 + \ln(x)}{0.475}$, we can
 simplify equation \ref{aret2} as:
 %
 \begin{equation}
 \label{aret2simple}
 \lambda(PGA \geq x) =  \frac{\lambda(m\geq M_{min})}{1 - 10^{-b(M_{max} - M_{min})}} (1 - 10^{-b(M_{max} - M_{min})})
 \end{equation}
-if $M_{min} \leq  \frac{3.346629 + ln(x)}{0.475}$, we can write equation \ref{aret2} as:
+if $M_{min} \leq  \frac{3.346629 + \ln(x)}{0.475}$, we can write equation \ref{aret2} as:
 \begin{equation}
 \label{aret2simple2}
-\lambda(PGA \geq x) =  \frac{\lambda(m\geq M_{min})}{1 - 10^{-b(M_{max} - M_{min})}} (10^{-b( \frac{3.346629 + ln(x)}{0.475} - M_{min})} - 10^{-b(M_{max} - M_{min})})
+\lambda(PGA \geq x) =  \frac{\lambda(m\geq M_{min})}{1 - 10^{-b(M_{max} -
+M_{min})}} (10^{-b( \frac{3.346629 + \ln(x)}{0.475} - M_{min})} - 10^{-b(M_{max} - M_{min})})
 \end{equation}
 %
 The rate of exceedance for PGA level equal to 0.1 is (considering that
-$(3.346629 +ln(0.1)) / 0.475 \approx 2.2...$ and therefore using equation
+$(3.346629 +\ln(0.1)) / 0.475 \approx 2.2...$ and therefore using equation
 \ref{aret2simple}):
 %
 \begin{equation}
@@ -233,30 +239,32 @@ $(3.346629 +ln(0.1)) / 0.475 \approx 2.2...$ and therefore using equation
 \end{equation}
 and the corresponding probability of exceedance in a time period of 1 year is (rounding to 5 digits):
 \begin{equation}
-P(PGA \geq 0.1) = 1 - exp(- 10^{-2} * 1.0) = 0.00995
+P(PGA \geq 0.1) = 1 - \exp(- 10^{-2} * 1.0) = 0.00995
 \end{equation}
-The rate of exceedance for PGA level equal to 0.4 is (considering that  $(3.346629 +ln(0.4)) / 0.475 = 5.11650$ and therefore using equation \ref{aret2simple2}):
+The rate of exceedance for PGA level equal to 0.4 is (considering that
+$(3.346629 +\ln(0.4)) / 0.475 = 5.11650$ and therefore using equation \ref{aret2simple2}):
 \begin{equation}
 \lambda(PGA \geq 0.4) =  \frac{10^{-2}}{1 - 10^{-3}} (10^{-(5.11650 - 4.0)} - 10^{-3}) = 0.00076
 \end{equation}
 and the corresponding probability of exceedance in a time period of 1 year is (rounding to 5 digits):
 \begin{equation}
-P(PGA \geq 0.4) = 1 - exp(- 0.00076 * 1.0) = 0.00076
+P(PGA \geq 0.4) = 1 - \exp(- 0.00076 * 1.0) = 0.00076
 \end{equation}
-The rate of exceedance for PGA level equal to 0.6 is (considering that  $(3.346629 +ln(0.6)) / 0.475 = 5.97011$ and therefore using equation \ref{aret2simple2}):
+The rate of exceedance for PGA level equal to 0.6 is (considering that
+$(3.346629 +\ln(0.6)) / 0.475 = 5.97011$ and therefore using equation \ref{aret2simple2}):
 \begin{equation}
 \lambda(PGA \geq 0.6) =  \frac{10^{-2}}{1 - 10^{-3}} (10^{-(5.97011 - 4.0)} - 10^{-3}) = 9.7 \cdot 10^{-5}
 \end{equation}
 and the corresponding probability of exceedance in a time period of 1 year is (rounding to 5 digits):
 \begin{equation}
-P(PGA \geq 0.6) = 1 - exp(- 9.7 \cdot 10^{-5} * 1.0) = 9.7 \cdot 10^{-5}
+P(PGA \geq 0.6) = 1 - \exp(- 9.7 \cdot 10^{-5} * 1.0) = 9.7 \cdot 10^{-5}
 \end{equation}
 The rate of exceedance for PGA level equal to 1.0 is 0, considering that  
-$(3.346629 +ln(1.0)) / 0.475 = 7.045531$ and therefore greater than the 
+$(3.346629 +\ln(1.0)) / 0.475 = 7.045531$ and therefore greater than the 
 considered maximum magnitude and the corresponding probability of 
 exceedance in a time period of 1 year is also 0:
 \begin{equation}
-P(PGA \geq 1.0) = 1 - exp(- 0 * 1.0) = 0
+P(PGA \geq 1.0) = 1 - \exp(- 0 * 1.0) = 0
 \end{equation}
 %
 \clearpage
@@ -299,51 +307,60 @@ Assuming a truncation level equal to 0, we can write equation \ref{are} (conside
 \begin{eqnarray}
     \label{aret3}
     \lambda(IM \geq x) = \int_{0}^{R-\frac{l}{2}}\left[\frac{2r}{R^{2}} +
-    \frac{l}{2R^{2}}\right] H(-0.624 + 4.0 - 2.1 ln(r + exp(1.29649 + 0.25 \cdot
+    \frac{l}{2R^{2}}\right] H(-0.624 + 4.0 - 2.1 \ln(r + \exp(1.29649 + 0.25 \cdot
     4.0)) \nonumber \\
-    - ln(x))dr + \frac{1}{R}\int_{R - \frac{l}{2}}^{R}H(-0.624 + 4.0 - 2.1 ln(r
-    + exp(1.29649 + 0.25 \cdot 4.0)) - ln(x))dr \nonumber \\
+    - \ln(x))dr + \frac{1}{R}\int_{R - \frac{l}{2}}^{R}H(-0.624 + 4.0 - 2.1 \ln(r
+    + \exp(1.29649 + 0.25 \cdot 4.0)) - \ln(x))dr \nonumber \\
 \end{eqnarray}
-The Heaviside function is non-zero if and only if $-0.624 + 4.0 - 2.1 ln(r + exp(1.29649 + 0.25 \cdot 4.0)) - ln(x) \geq 0$, that is $r \leq e^{\frac{3.376 - ln(x)}{2.1}} - e^{2.29649}$.
-If $R\leq e^{\frac{3.376 - ln(x)}{2.1}} - e^{2.29649}$, then we can solve equation \ref{aret3} as:
+The Heaviside function is non-zero if and only if $-0.624 + 4.0 - 2.1 \ln(r +
+\exp(1.29649 + 0.25 \cdot 4.0)) - \ln(x) \geq 0$, that is $r \leq e^{\frac{3.376
+- \ln(x)}{2.1}} - e^{2.29649}$.
+If $R\leq e^{\frac{3.376 - \ln(x)}{2.1}} - e^{2.29649}$, then we can solve equation \ref{aret3} as:
 \begin{eqnarray}
 \label{aret3case1}
 \lambda(IM \geq x) = \frac{1}{R^{2}}(R - \frac{l}{2})^{2} + \frac{l}{2R^{2}}(R - \frac{l}{2}) + \frac{l}{2R}
 \end{eqnarray}
-if $R-\frac{l}{2}< e^{\frac{3.376 - ln(x)}{2.1}} - e^{2.29649} < R$, then we can solve equation \ref{aret3} as:
+if $R-\frac{l}{2}< e^{\frac{3.376 - \ln(x)}{2.1}} - e^{2.29649} < R$, then we can solve equation \ref{aret3} as:
 \begin{eqnarray}
 \label{aret3case2}
-\lambda(IM \geq x) = \frac{1}{R^{2}}(R - \frac{l}{2})^{2} + \frac{l}{2R^{2}}(R - \frac{l}{2}) + \frac{1}{R}(e^{\frac{3.376 - ln(x)}{2.1}} - e^{2.29649} - R + \frac{l}{2})
+\lambda(IM \geq x) = \frac{1}{R^{2}}(R - \frac{l}{2})^{2} + \frac{l}{2R^{2}}(R -
+\frac{l}{2}) + \frac{1}{R}(e^{\frac{3.376 - \ln(x)}{2.1}} - e^{2.29649} - R + \frac{l}{2})
 \end{eqnarray}
-if $0 < e^{\frac{3.376 - ln(x)}{2.1}} - e^{2.29649} < R - \frac{l}{2} $, then we can solve equation \ref{aret3} as:
+if $0 < e^{\frac{3.376 - \ln(x)}{2.1}} - e^{2.29649} < R - \frac{l}{2} $, then we can solve equation \ref{aret3} as:
 \begin{equation}
 \label{aret3case3}
-\lambda(IM \geq x) = \frac{1}{R^{2}} (e^{\frac{3.376 - ln(x)}{2.1}} - e^{2.29649})^{2} + \frac{l}{2R^{2}}(e^{\frac{3.376 - ln(x)}{2.1}} - e^{2.29649})
+\lambda(IM \geq x) = \frac{1}{R^{2}} (e^{\frac{3.376 - \ln(x)}{2.1}} -
+e^{2.29649})^{2} + \frac{l}{2R^{2}}(e^{\frac{3.376 - \ln(x)}{2.1}} - e^{2.29649})
 \end{equation}
-The rate of exceedance of PGA value equal to 0.1 is (considering that  $R = 5 < e^{\frac{3.376 - ln(0.1)}{2.1}} - e^{2.29649} = 5.00145$, and therefore using
+The rate of exceedance of PGA value equal to 0.1 is (considering that  $R = 5 <
+e^{\frac{3.376 - \ln(0.1)}{2.1}} - e^{2.29649} = 5.00145$, and therefore using
 equation \ref{aret3case1}) :
 \begin{equation}
 \lambda(IM \geq 0.1) = \frac{1}{5^{2}}(5 - 0.5)^{2} + \frac{1}{2\cdot5^{2}}(5 - 0.5) + \frac{1}{2\cdot5} = 1.0
 \end{equation}
 and the corresponding probability of exceedance in a time span of 1 year is:
 \begin{equation}
-P(IM \geq 0.1) = 1 - exp(-1 \cdot 1) = 0.63212
+P(IM \geq 0.1) = 1 - \exp(-1 \cdot 1) = 0.63212
 \end{equation}
-The rate of exceedance of PGA value equal to 0.12 is (considering that $e^{\frac{3.376 - ln(0.12)}{2.1}} - e^{2.29649} = 3.75902 < R - \frac{l}{2} = 4.5$ and therefore using equation \ref{aret3case3}):
+The rate of exceedance of PGA value equal to 0.12 is (considering that
+$e^{\frac{3.376 - \ln(0.12)}{2.1}} - e^{2.29649} = 3.75902 < R - \frac{l}{2} = 4.5$ and therefore using equation \ref{aret3case3}):
 \begin{equation}
-\lambda(IM \geq 0.12) = \frac{1}{5^{2}} (e^{\frac{3.376 - ln(0.12)}{2.1}} - e^{2.29649})^{2} + \frac{1}{2\cdot 5^{2}}(e^{\frac{3.376 - ln(0.12)}{2.1}} - e^{2.29649}) = 0.640389
-\end{equation}
-and the corresponding probability of exceedance in a time span of 1 year is:
-\begin{equation}
-P(IM \geq 0.12) = 1 - exp(-0.640389 \cdot 1) = 0.47291
-\end{equation}
-The rate of exceedance of PGA value equal to 0.2 is (considering that $e^{\frac{3.376 - ln(0.2)}{2.1}} - e^{2.29649} = 0.80123 < R - \frac{l}{2} = 4.5$ and therefore using equation \ref{aret3case3}):
-\begin{equation}
-\lambda(IM \geq 0.2) = \frac{1}{5^{2}} (e^{\frac{3.376 - ln(0.2)}{2.1}} - e^{2.29649})^{2} + \frac{1}{2\cdot 5^{2}}(e^{\frac{3.376 - ln(0.2)}{2.1}} - e^{2.29649}) = 0.04170
+\lambda(IM \geq 0.12) = \frac{1}{5^{2}} (e^{\frac{3.376 - \ln(0.12)}{2.1}} -
+e^{2.29649})^{2} + \frac{1}{2\cdot 5^{2}}(e^{\frac{3.376 - \ln(0.12)}{2.1}} - e^{2.29649}) = 0.640389
 \end{equation}
 and the corresponding probability of exceedance in a time span of 1 year is:
 \begin{equation}
-P(IM \geq 0.2) = 1 - exp(-0.04170 \cdot 1) = 0.04084
+P(IM \geq 0.12) = 1 - \exp(-0.640389 \cdot 1) = 0.47291
+\end{equation}
+The rate of exceedance of PGA value equal to 0.2 is (considering that
+$e^{\frac{3.376 - \ln(0.2)}{2.1}} - e^{2.29649} = 0.80123 < R - \frac{l}{2} = 4.5$ and therefore using equation \ref{aret3case3}):
+\begin{equation}
+\lambda(IM \geq 0.2) = \frac{1}{5^{2}} (e^{\frac{3.376 - \ln(0.2)}{2.1}} -
+e^{2.29649})^{2} + \frac{1}{2\cdot 5^{2}}(e^{\frac{3.376 - \ln(0.2)}{2.1}} - e^{2.29649}) = 0.04170
+\end{equation}
+and the corresponding probability of exceedance in a time span of 1 year is:
+\begin{equation}
+P(IM \geq 0.2) = 1 - \exp(-0.04170 \cdot 1) = 0.04084
 \end{equation}
 %
 \clearpage
@@ -366,7 +383,7 @@ MFD ($M=4$) with annual occurrence rate ($\lambda(m=4)$) equal to 1. The fault
 source has an upper seismogenic depth of 0 km, and a lower seismogenic depth of
 1 km.  Dip is 90 degrees. Aspect ratio is assumed 1.\\ Under these assumptions
 the probability density function for magnitude is given by equation
-\label{t1pdfm}, while the probability density function for the closest distance
+\ref{t1pdfm}, while the probability density function for the closest distance
 to the rupture (assuming the site to be in the middle point of the fault trace)
 is:
 \begin{equation}
@@ -377,34 +394,37 @@ f(r) =
 \end{cases}
 \end{equation}
 where $l$ is the rupture length, and $L$ is the fault length.\\
-Assuming truncation level equal to 0, we can compute the rate of exceedance of an intensity measure level as:
+\todo[inline]{this is not clear. What's r?}
+Assuming truncation level equal to 0, we can compute the rate of exceedance of
+an intensity measure level as:
 \begin{equation}
-\lambda(PGA \geq x) = \frac{l}{L-l} + \frac{2}{L-l}min(\frac{L}{2} - l, e^{\frac{3.376 - ln(x)}{2.1}} - e^{2.29649})
+\lambda(PGA \geq x) = \frac{l}{L-l} + \frac{2}{L-l}min(\frac{L}{2} - l,
+e^{\frac{3.376 - \ln(x)}{2.1}} - e^{2.29649})
 \end{equation}
 Assuming L = 10, and given that the rupture length $l=1$ (because aspect ratio is 1), for x = 0.1, the rate of exceedance is,
-considering that $\frac{L}{2} - l = 4 < e^{\frac{3.376 - ln(0.1)}{2.1}} - e^{2.29649} = 5.00145$:
+considering that $\frac{L}{2} - l = 4 < e^{\frac{3.376 - \ln(0.1)}{2.1}} - e^{2.29649} = 5.00145$:
 \begin{equation}
-\lambda(PGA \geq 0.1) = \frac{}{1/9} + \frac{2}{9}4 = 1
+\lambda(PGA \geq 0.1) = \frac{1}{9} + \frac{2}{9}4 = 1
 \end{equation}
 and therefore the probability of exceedance in 1 year is:
 \begin{equation}
-P(PGA \geq 0.1) = 1 - exp(- 1\cdot 1) = 0.63212
+P(PGA \geq 0.1) = 1 - \exp(- 1\cdot 1) = 0.63212
 \end{equation}
-The rate of exceedance for x = 0.12 ($\frac{L}{2} - l = 4 > e^{\frac{3.376 - ln(0.12)}{2.1}} - e^{2.29649} = 3.7590$) is:
+The rate of exceedance for x = 0.12 ($\frac{L}{2} - l = 4 > e^{\frac{3.376 - \ln(0.12)}{2.1}} - e^{2.29649} = 3.7590$) is:
 \begin{equation}
 \lambda(PGA \geq 0.12) = \frac{1}{9} + \frac{2}{9}3.7590 = 0.9464
 \end{equation}
 and the corresponding probability of exceedance in 1 year is:
 \begin{equation}
-P(PGA \geq 0.12) = 1 - exp(- 0.9464 \cdot 1) = 0.61186
+P(PGA \geq 0.12) = 1 - \exp(- 0.9464 \cdot 1) = 0.61186
 \end{equation}
-The rate of exceedance for x = 0.2 ($\frac{L}{2} - l = 4 > e^{\frac{3.376 - ln(0.2)}{2.1}} - e^{2.29649} = 0.801227$) is:
+The rate of exceedance for x = 0.2 ($\frac{L}{2} - l = 4 > e^{\frac{3.376 - \ln(0.2)}{2.1}} - e^{2.29649} = 0.801227$) is:
 \begin{equation}
 \lambda(PGA \geq 0.2) = \frac{1}{9} + \frac{2}{9}0.801227 = 0.28916
 \end{equation}
 and the corresponding probability of exceedance in 1 year is:
 \begin{equation}
-P(PGA \geq 0.2) = 1 - exp(- 0.28916 \cdot 1) = 0.25110
+P(PGA \geq 0.2) = 1 - \exp(- 0.28916 \cdot 1) = 0.25110
 \end{equation}
 %
 \clearpage
@@ -421,68 +441,79 @@ calculator (both classical and event-based) with a complex fault source}\footnot
 
 This test assumes a complex fault source composed of top and bottom edges. Both
 the top and bottom edges have the same length, and same latitudes and
-longitudes, but they are shifted in depth. Both the two edges consist of two
-line segments, one horizontal ($L_{1}$), and a second , of length $L_{2}$,
-inclined of an angle $\alpha$ with respect to the earth surface. The shift in
-depth between the top and bottom edges is of 1 km.\\ The source is associated to
-a single magnitude MFD, defining a single magnitude value equal to 4, and with
-corresponding annual rate $\lambda(m=4)$, equal to 1. The aspect ratio is
-assumed 1. The rupture area is 1 squared km (as predicted by equation
-\ref{msr}). Ruptures floating along the first section have a square shape, but
-as soon as they start propagating along the inclined section, they start
-acquiring the shape of a parallelogram.  This means that while on the first
-section the rupture length is 1 km, on the second section the rupture length is
-$l=\frac{A}{w\cdot sin(90 - \alpha)}$, where A is the rupture area, $w$ is the
-fault width (that is the shift between top and bottom edges), and $\alpha$ is
-the inclination of the second section with respect to the horizontal
-direction.\\ The probability density function for magnitude is given by equation
+longitudes, but they are shifted in depth. 
+Both the two edges consist of two line segments, one horizontal ($L_{1}$), and a
+second , of length $L_{2}$, inclined of an angle $\alpha$ with respect to the
+earth surface. The shift in depth between the top and bottom edges is of 1 km.
+
+The source has a magnitude MFD characterized by a single magnitude
+value equal to 4, and a corresponding annual rate $\lambda(m=4)$, equal to 1.
+The aspect ratio is assumed 1. The rupture area is 1 squared km (as predicted
+by equation \ref{msr}). Ruptures floating along the first section have a square
+shape, but as soon as they start propagating along the inclined section, they
+start acquiring the shape of a parallelogram.  
+%
+This means that while on the first section the rupture length is 1 km, on the
+second section the rupture length is $l=\frac{A}{w\cdot sin(90 - \alpha)}$,
+where A is the rupture area, $w$ is the fault width (that is the shift between
+top and bottom edges), and $\alpha$ is the inclination of the second section
+with respect to the horizontal direction.
+
+The probability density function for magnitude is given by equation
 \ref{t1pdfm}. Assuming a site located at the beginning of the first segment (and
 assuming the first segment of the top edge starting at the earth surface), the
 probability density function for the closest distance to the rupture is:
 %
 \begin{equation} f(r) = \begin{cases} \frac{1}{L_{1} + L_{2} - l}    &
 \text{if } 0 \leq r \leq L_{1} \\ \frac{r}{(L_{1} + L_{2} -
-l)\sqrt{L_{1}^{2}cos^{2}\alpha - L_{1}^{2} + r^{2}}}                 &
+l)\sqrt{L_{1}^{2}\cos^{2}\alpha - L_{1}^{2} + r^{2}}}                 &
     \text{if } L_{1} < r \leq r_{max} \\ \end{cases} \end{equation} where:
 \begin{equation} 
-    r_{max} = \sqrt{(L_{2} - l)^{2} + L_{1}^{2} + 2L_{1}(L_{2} - l)cos\alpha} 
+    r_{max} = \sqrt{(L_{2} - l)^{2} + L_{1}^{2} + 2L_{1}(L_{2} - l)\cos\alpha} 
 \end{equation} 
 Assuming $L_{1}=3.0$ km, $L_{2}=3.0$ km,
 $\alpha=30.0$ degrees, and $w=1$, the maximum closest distance to the rupture is
 4.68973.\\ Assuming truncation level = 0, the rate of exceedance of a PGA level
-x is (from equation \ref{are}): \begin{equation} \lambda(PGA \geq x) =
-\int_{0}^{min(r_{max}, e^{\frac{3.376 - ln(x)}{2.1}} - e^{2.29649})} f(r)dr
+x is (from equation \ref{are}): 
+\begin{equation} \lambda(PGA \geq x) =
+\int_{0}^{min(r_{max}, e^{\frac{3.376 - \ln(x)}{2.1}} - e^{2.29649})} f(r)dr
 \end{equation} Considering x = 0.1, $r_{max} = 4.68973 < e^{\frac{3.376 -
-ln(0.1)}{2.1}}  - e^{2.29649} = 5.00145$, and therefore: \begin{eqnarray}
-    \lambda(PGA \geq 0.1) = \frac{L_{1}}{L_{1}+L_{2}-l} +
-    \frac{1}{L_{1}+L_{2}-l}\left[ \sqrt{L_{1}^{2}cos^{2}\alpha-L_{1}^{2}+r^{2}}
-    \right]_{L_{1}}^{r_{max}} =\nonumber \\ \frac{L_{1}}{L_{1}+L_{2}-l} +
-    \frac{1}{L_{1}+L_{2}-l}\left[ \sqrt{L_{1}^{2}cos^{2}\alpha - L_{1}^{2} +
-    (L_{2}-l)^{2} + L_{1}^{2} + 2L_{1}(L_{2} - l)cos\alpha} - L_{1}cos\alpha
-\right]=\nonumber \\ \frac{L_{1}}{L_{1}+L_{2}-l} + \frac{1}{L_{1}+L_{2}-l}\left[
-\sqrt{(L_{1}cos\alpha + (L_{2}-l))^{2}} - L_{1}cos\alpha \right]=\nonumber \\
-\frac{L_{1}}{L_{1}+L_{2}-l} + \frac{1}{L_{1}+L_{2}-l}\left[ L_{1}cos\alpha
-+L_{2} - l -L_{1}cos\alpha \right] = 1 \end{eqnarray}
-The corresponding probability of exceedance in 1 year is therefore:
-\begin{equation}
-P(PGA \geq 0.1) = 1 - exp(-1\cdot 1) = 0.632120
-\end{equation}
-Considering x = 0.12, $r_{max} = 4.68973 > e^{\frac{3.376 - ln(0.12)}{2.1}} - e^{2.29649} = 3.7590 > L_{1} = 3.0$, and therefore:
+\ln(0.1)}{2.1}}  - e^{2.29649} = 5.00145$, and therefore: 
 \begin{eqnarray}
-\lambda(PGA \geq 0.12) = \frac{L_{1}}{L_{1}+L_{2}-l} + \frac{1}{L_{1}+L_{2}-l}\left[ \sqrt{L_{1}^{2}cos^{2}\alpha - L_{1}^{2} + 3.7590^{2}}-L_{1}cos\alpha \right]=\nonumber \\
-\frac{3}{3+3-\frac{2}{\sqrt{3}}} + \frac{1}{3+3-\frac{2}{\sqrt{3}}}\left[ \sqrt{9\cdot\frac{3}{4} - 9 + 3.7590^{2}} -\frac{3\sqrt{3}}{2}\right] = 0.79431
+    \lambda(PGA \geq 0.1) = \frac{L_{1}}{L_{1}+L_{2}-l} +
+    \frac{1}{L_{1}+L_{2}-l}\left[ \sqrt{L_{1}^{2}\cos^{2}\alpha-L_{1}^{2}+r^{2}}
+    \right]_{L_{1}}^{r_{max}} =\nonumber \\ \frac{L_{1}}{L_{1}+L_{2}-l} +
+    \frac{1}{L_{1}+L_{2}-l}\left[ \sqrt{L_{1}^{2}\cos^{2}\alpha - L_{1}^{2} +
+    (L_{2}-l)^{2} + L_{1}^{2} + 2L_{1}(L_{2} - l)\cos\alpha} - L_{1}\cos\alpha
+\right]=\nonumber \\ \frac{L_{1}}{L_{1}+L_{2}-l} + \frac{1}{L_{1}+L_{2}-l}\left[
+\sqrt{(L_{1}\cos\alpha + (L_{2}-l))^{2}} - L_{1}\cos\alpha \right]=\nonumber \\
+\frac{L_{1}}{L_{1}+L_{2}-l} + \frac{1}{L_{1}+L_{2}-l}\left[ L_{1}\cos\alpha
++L_{2} - l -L_{1}\cos\alpha \right] = 1 \nonumber \\
 \end{eqnarray}
 The corresponding probability of exceedance in 1 year is therefore:
 \begin{equation}
-P(PGA\geq0.12) = 1 -exp(-0.79431 \cdot 1) = 0.54811
+P(PGA \geq 0.1) = 1 - \exp(-1\cdot 1) = 0.632120
 \end{equation}
-Considering x = 0.2, $r_{max} = 4.68973 > e^{\frac{3.376 - ln(0.2)}{2.1}} - e^{2.29649} = 0.801227 < L_{1} = 3.0$, and therefore:
+Considering x = 0.12, $r_{max} = 4.68973 > e^{\frac{3.376 - \ln(0.12)}{2.1}} - e^{2.29649} = 3.7590 > L_{1} = 3.0$, and therefore:
+\begin{eqnarray}
+\lambda(PGA \geq 0.12) = \frac{L_{1}}{L_{1}+L_{2}-l} +
+\frac{1}{L_{1}+L_{2}-l}\left[ \sqrt{L_{1}^{2}\cos^{2}\alpha - L_{1}^{2} +
+3.7590^{2}}-L_{1}\cos\alpha \right]=\nonumber \\
+\frac{3}{3+3-\frac{2}{\sqrt{3}}} + \frac{1}{3+3-\frac{2}{\sqrt{3}}}\left[
+\sqrt{9\cdot\frac{3}{4} - 9 + 3.7590^{2}} -\frac{3\sqrt{3}}{2}\right] = 0.79431
+\nonumber \\
+\end{eqnarray}
+The corresponding probability of exceedance in 1 year is therefore:
+\begin{equation}
+P(PGA\geq0.12) = 1 -\exp(-0.79431 \cdot 1) = 0.54811
+\end{equation}
+Considering x = 0.2, $r_{max} = 4.68973 > e^{\frac{3.376 - \ln(0.2)}{2.1}} - e^{2.29649} = 0.801227 < L_{1} = 3.0$, and therefore:
 \begin{equation}
 \lambda(PGA \geq 0.2) = \frac{0.801227}{L_{1} + L_{2} - l} = \frac{0.801227}{3 + 3 - \frac{2}{\sqrt{3}}} = 0.16536
 \end{equation}
 The corresponding probability of exceedance in 1 year is therefore:
 \begin{equation}
-P(PGA \geq 0.2) = 1 - exp(- 0.16536 \cdot 1) = 0.15241
+P(PGA \geq 0.2) = 1 - \exp(- 0.16536 \cdot 1) = 0.15241
 \end{equation}
 %
 \clearpage
@@ -511,9 +542,9 @@ a source model consisting of the two above mentioned sources are: (1+1)=2.0,
 (0.9464 + 0.79431) = 1.74071, (0.28916+0.16536) = 0.45452. The corresponding
 probabilities of exceedance in a period of 1 year are:
 \begin{eqnarray}
-P(PGA \geq 0.10) &=& 1 - exp(- 2 \cdot 1) = 0.86466 \nonumber \\
-P(PGA \geq 0.12) &=& 1 - exp(- 1.74071 \cdot 1) = 0.82460 \nonumber \\
-P(PGA \geq 0.20) &=& 1 - exp(- 0.45452 \cdot 1) = 0.36525 \nonumber \\
+P(PGA \geq 0.10) &=& 1 - \exp(- 2 \cdot 1) = 0.86466 \nonumber \\
+P(PGA \geq 0.12) &=& 1 - \exp(- 1.74071 \cdot 1) = 0.82460 \nonumber \\
+P(PGA \geq 0.20) &=& 1 - \exp(- 0.45452 \cdot 1) = 0.36525 \nonumber \\
 \end{eqnarray}
 %
 \clearpage
@@ -804,7 +835,7 @@ type.}\footnote{
 
 This test considers a source model consisting of two point sources. The
 first point source is the one described in test 1, and the associated rates of
-exceedance (using Sadight et al 1997 as GMPE, and truncation level equal to 2)
+exceedance (using \textcite{sadigh1997} and truncation level equal to 2)
 are:
  \begin{eqnarray}
 \lambda(PGA \geq 0.1) & = & 0.6107 \nonumber \\
@@ -817,12 +848,12 @@ aspect ratio is assumed equal to 1, and the area predicted by the Peer scaling
 relationship is therefore $10^{0.5}$. The rupture length and width are equal to
 $10^{0.25}$. The rupture is assumed vertical ($dip = 90.0$) and the hypocenter
 is set at $\frac{10^{0.25}}{2}$, so that the rupture reaches the surface.  This
-rupture is associated to the Boore and Atkinson 2008 GMPE, which uses $R_{JB}$.
+rupture is associated to the \textcite{boore2008} GMPE, which uses $R_{JB}$.
 Assuming the site of interest to be on the same location of the point source,
 $R_{JB} = 0$.\\
 Assuming $m = 4.5$, $R_{JB} = 0$, $Vs_{30} = 760.0$, and $rake = 0$ (that is strike slip event), the median PGA is:
 \begin{equation}
-\overline{ln(PGA;m=4.5,r=0)} = - 1.86841
+\overline{\ln(PGA;m=4.5,r=0)} = - 1.86841
 \end{equation}
 and the total standard deviation is:
 \begin{equation}
@@ -830,18 +861,18 @@ and the total standard deviation is:
 \end{equation}
 The rates of exceedance for PGA levels equal to 0.1, 0.4, 0.6 are:
 \begin{eqnarray}
-\lambda(PGA \geq 0.1) & = & 1 - \frac{\Phi(\frac{ln(0.1) + 1.86841} {0.564}) -0.0228}
+\lambda(PGA \geq 0.1) & = & 1 - \frac{\Phi(\frac{\ln(0.1) + 1.86841} {0.564}) -0.0228}
 					{0.9545} = 0.79266 \nonumber \\
-\lambda(PGA \geq 0.4) & = & 1 - \frac{\Phi(\frac{ln(0.4) + 1.86841} {0.564}) -0.0228}
+\lambda(PGA \geq 0.4) & = & 1 - \frac{\Phi(\frac{\ln(0.4) + 1.86841} {0.564}) -0.0228}
 					{0.9545} = 0.02409 \nonumber \\
 \lambda(PGA \geq 0.6) & = & 0.0\nonumber \\
 \end{eqnarray}
-The rate of exceedance for PGA = 0.6 is zero because $\frac{ln(0.6) + 1.86841} {0.564} = 2.4$ which is larger than the truncation level, that is 2.0. 
+The rate of exceedance for PGA = 0.6 is zero because $\frac{\ln(0.6) + 1.86841} {0.564} = 2.4$ which is larger than the truncation level, that is 2.0. 
 The corresponding probabilities of exceedance in a time period of 1 year ($T=1.0$) considering the two sources are:
 \begin{eqnarray}
-P(PGA \geq 0.1) & = & 1 - exp(- (0.6107 + 0.79266) * 1.0) =  0.75423\nonumber \\
-P(PGA \geq 0.4) & = & 1 - exp(- (0.0605 + 0.02409) * 1.0) =  0.08111\nonumber \\
-P(PGA \geq 0.6) & = & 1 - exp(- (0.0069 + 0.0) * 1.0) = 0.00688 \nonumber \\
+P(PGA \geq 0.1) & = & 1 - \exp(- (0.6107 + 0.79266) * 1.0) =  0.75423\nonumber \\
+P(PGA \geq 0.4) & = & 1 - \exp(- (0.0605 + 0.02409) * 1.0) =  0.08111\nonumber \\
+P(PGA \geq 0.6) & = & 1 - \exp(- (0.0069 + 0.0) * 1.0) = 0.00688 \nonumber \\
 \end{eqnarray}
 %
 \clearpage
@@ -863,7 +894,7 @@ This test consider a source model consisting of a single point source as
 defined in test at page \pageref{sec:test12} (point source with $m = 4.5$).
 The GMPE used is \textcite{boore2008}
 %
-The test computes hzard using an event based approach; ground motion fields
+The test computes hazard using an event based approach; ground motion fields
 are computed considering spatial correlation \parencite{jayaram2009}
 
 The rates of exceedance predicted by the source model are:
@@ -874,30 +905,37 @@ The rates of exceedance predicted by the source model are:
 \end{eqnarray}
 and the corresponding probabilities of exceedance are:
 \begin{eqnarray}
-P(PGA \geq 0.1) & = & 1 - exp(- 0.79266 * 1.0) = 0.54736\nonumber \\
-P(PGA \geq 0.4) & = & 1 - exp(- 0.02409 * 1.0) =  0.02380\nonumber \\
-P(PGA \geq 0.6) & = & 1 - exp(- 0.0 * 1.0) = 0 \nonumber \\
+P(PGA \geq 0.1) & = & 1 - \exp(- 0.79266 * 1.0) = 0.54736\nonumber \\
+P(PGA \geq 0.4) & = & 1 - \exp(- 0.02409 * 1.0) =  0.02380\nonumber \\
+P(PGA \geq 0.6) & = & 1 - \exp(- 0.0 * 1.0) = 0 \nonumber \\
 \end{eqnarray}
 
-%\section{Test 12 - Hazard curve calculation with logic tree containing multiple source models and uncertainties applying only to specific source models}
-%\textit{\textbf{NOTE}: This test is meant to exercise the 'applyToBranches' option in the logic tree construction}\\
+%\section{Test 12 - Hazard curve calculation with logic tree containing multiple
+%source models and uncertainties applying only to specific source models}
+%\textit{\textbf{NOTE}: This test is meant to exercise the 'applyToBranches'
+%option in the logic tree construction}\\
 
+%\section{Test 13 - Hazard curve calculation with logic tree containing a single
+%source model consisting of multiple sources and uncertainties applying to a
+%specific source} \textit{\textbf{NOTE}: This test is meant to exercise the
+%''applyToSources" option in the logic tree construction}\\
 
-%\section{Test 13 - Hazard curve calculation with logic tree containing a single source model consisting of multiple sources and uncertainties applying to a specific source}
-%\textit{\textbf{NOTE}: This test is meant to exercise the ''applyToSources" option in the logic tree construction}\\
+%\section{Test 14 - Hazard curve calculation with logic tree containing a single
+%source model consisting of multiple sources belonging to different tectonic
+%region types and uncertainties applying only to sources belonging to a specific
+%tectonic region type} \textit{\textbf{NOTE}: This test is meant to exercise the
+%"applyToTectonicRegionType" option in the logic tree construction}\\
 
+%\section{Test 15 - Hazard curve calculation with logic tree containing a single
+%source model consisting of multiple sources of different type and uncertainties
+%applying only to sources belonging to a specific source type}
+%\textit{\textbf{NOTE}: This test is meant to exercise the "applyToSourceType"
+%option in the logic tree construction}\\
 
-%\section{Test 14 - Hazard curve calculation with logic tree containing a single source model consisting of multiple sources belonging to different tectonic region types and
-%uncertainties applying only to sources belonging to a specific tectonic region type}
-%\textit{\textbf{NOTE}: This test is meant to exercise the "applyToTectonicRegionType" option in the logic tree construction}\\
-
-
-%\section{Test 15 - Hazard curve calculation with logic tree containing a single source model consisting of multiple sources of different type and uncertainties applying only to 
-%sources belonging to a specific source type}
-%\textit{\textbf{NOTE}: This test is meant to exercise the "applyToSourceType" option in the logic tree construction}\\
-
-
-%\section{Test 16 - Hazard curve calculation with logic tree containing source model containing a single source model consisting of multiple sources belonging to different
-%tectonic region types, and multiple GMPEs each associated to a different tectonic region type}
-%\textit{\textbf{NOTE}: This test is meant to check that different GMPEs are correctly associated to different sources based on their tectonic region type}\\
+%\section{Test 16 - Hazard curve calculation with logic tree containing source
+%model containing a single source model consisting of multiple sources belonging
+%to different tectonic region types, and multiple GMPEs each associated to a
+%different tectonic region type} \textit{\textbf{NOTE}: This test is meant to
+%check that different GMPEs are correctly associated to different sources based
+%on their tectonic region type}\\
 \cleardoublepage
