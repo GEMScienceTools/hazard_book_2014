@@ -30,9 +30,8 @@ strike but cannot cross the seismogenic layer.
 %------- Faults ---------%
 For modeling fault-based seismicity, that is seismic activity occurring on a
 well identified and characterized fault zone, the OQ-engine provides three 
-main options, the \textit{Simple Fault} the \textit{Complex Fault} sources and
-the \textit{Characteristic Fault}. 
-\todo[inline]{characteristic source??}
+main options, the \textit{Simple Fault}, the \textit{Complex Fault} and
+the \textit{Characteristic Fault} sources.
 
 The Simple and Complex Faults distribute seismicity \textit{uniformly over a
 fault surface}, with the only constraint that an earthquake rupture cannot
@@ -65,13 +64,13 @@ Independently of the typology, all sources require the definition of the
 following main parameters:
 \begin{itemize}
 \item magnitude-frequency distribution
+\item temporal occurrence model
 \item tectonic region type
 \item magnitude-area scaling relationship (for all but the Characteristic Fault source)
 \item rupture-aspect ratio (for all but the Characteristic Fault source)
 \item upper seismogenic depth
 \item lower seismogenic depth
 \end{itemize}
-\todo[inline]{What about the temporal occurrence model?}
 %
 The magnitude-frequency distribution defines the total moment rate released by a
 source as well as the relative frequency of earthquakes of different magnitude
@@ -107,9 +106,15 @@ other words, while the particular geometry of a source determines location and
 number of ruptures of a given magnitude, the occurrence rate (and thus the
 occurrence probability) is uniform over ruptures with the same magnitude.
 
+%----------Temporal occurrence model---------%
+The temporal occurrence model defines the functional form used to compute the probability of
+the number of rupture occurrences in a given time span based on the occurrence rate specified
+by the magnitude frequency distribution, that is the term $P_{rup_{ij}}(k | T)$ in equation
+\ref{eq:hazard_eq_ind_srcs_rups}. Currently the \gls{acr:oqe} defines only the Poissonian model
+(that is equation \ref{eq:poisson_pd}) but other functional forms can be introduced.
+
 %----------Tectonic Region Type---------%
-The second parameter associated to a seismic source is the tectonic region type.
-This is an attribute used as a key to associate a seismic source to a ground
+The tectonic region type is an attribute used as a key to associate a seismic source to a ground
 motion model. Given a source model describing seismicity occurring in a region
 including different tectonic settings, the associated ground motion model may
 prescribe different equations for the different tectonic settings. The mapping
@@ -117,7 +122,7 @@ between a ground motion model equation and a seismic source is therefore
 achieved through the tectonic region type attribute.
 
 %-----------Magnitude-Area Scaling and Rupture Aspect Ratio----------%
-All sources typologies supporte by the \gls{acr:oqe} generate ruptures as
+All sources typologies supported by the \gls{acr:oqe} generate ruptures as
 extended surfaces. With the only exception of the Characteristic Fault source,
 the area of an earthquake rupture surface is magnitude dependent. To constrain
 the rupture surface area, the Point, Area, Simple and Complex Fault sources
@@ -164,6 +169,9 @@ definition of Area and Point sources in the OQ-engine}
 \bf{Parameter} & \bf{Purpose} \\ \hline
 Magnitude frequency distribution & Defines total moment rate and the relative
 frequency of earthquakes of different magnitude\\ 
+\hline
+Temporal occurrence model & Defines functional form for the calculation of
+the probability of the number of rupture occurrences in a given time span\\ 
 \hline
 Magnitude area scaling relationship & Define sizes and shapes of rupture planes \\
 Rupture aspect ratio (length / width) & \\
@@ -269,21 +277,24 @@ Table \ref{table:simple_fault_tab}.
 \centering
 \caption{Table summarizing parameters, and their functions, required for the
 definition of a Simple Fault source in the OQ-engine}
-\begin{tabular}{p{60mm} p{60mm}}
-\specialrule{.2em}{.1em}{.4em} 
-Parameter & Purpose \\ [0.5ex] % inserts table
-\specialrule{.2em}{.1em}{.4em}
+\begin{tabular}{|p{60mm} p{60mm}|}
+\hline
+\rowcolor{anti-flashwhite}
+\bf{Parameter} & \bf{Purpose} \\ \hline
 Magnitude frequency distribution & Defines total moment rate and the relative
 frequency of earthquakes of different magnitude\\
-\specialrule{.05em}{.1em}{.4em}
+\hline
+Temporal occurrence model & Defines functional form for the calculation of
+the probability of the number of rupture occurrences in a given time span\\ 
+\hline
 Magnitude area scaling relationship & Define sizes and shapes of rupture planes \\
 Rupture aspect ratio (length / width) & \\
-\specialrule{.05em}{.1em}{.4em}
+\hline
 Fault trace & Define fault surface \\
 Upper seismogenic depth & \\
 Lower seismogenic depth & \\
 Dip angle & \\
-\specialrule{.05em}{.1em}{.4em}
+\hline
 Rake angle & Defines faulting style \\
 \hline %inserts single line
 \end{tabular}
@@ -292,10 +303,8 @@ Rake angle & Defines faulting style \\
 The fault surface is constructed by translating the fault trace (defined as the
 intersection between the fault surface and the Earth s surface) from the upper
 to the lower seismogenic depth along a direction perpendicular to the fault
-trace (measured as the difference between the azimuths of the first and last
-coordinates of the trace) 
-\todo[inline]{no this is something I don't understand}
-and with an inclination equal to the dip angle. The
+trace strike (measured as the azimuth of the great circle line connection the first and last
+coordinates of the trace) and with an inclination equal to the dip angle. The
 surface so defined is effectively modeled as a regular (i.e. equally spaced in
 distance) mesh (Figure \ref{fig:SimpleFaultSource}a).
 \begin{figure}
@@ -334,7 +343,6 @@ $M$ (obtained from equation \ref{eq:rup_l_w}), the equivalent number of nodes
 & n_{dip}^{rup}(M)     = W(M) / \Delta + 1 
 \end{split}
 \end{equation}
-\todo[inline]{don't we need a rounding here?}
 By further assuming that a rupture is floated along strike and dip with a step
 equal to the mesh spacing ($\Delta$), we can compute the total number of
 ruptures along strike and dip as:
@@ -366,21 +374,24 @@ Table \ref{table:complex_fault_tab}.
 \centering
 \caption{Table summarizing parameters, and their functions, required for the
 definition of a Complex Fault source in the OQ-engine}
-\begin{tabular}{p{60mm} p{60mm}}
-\specialrule{.2em}{.1em}{.4em} 
-Parameter & Purpose \\ [0.5ex] % inserts table
-\specialrule{.2em}{.1em}{.4em}
+\begin{tabular}{|p{60mm} p{60mm}|}
+\hline
+\rowcolor{anti-flashwhite}
+\bf{Parameter} & \bf{Purpose} \\ \hline
 Magnitude frequency distribution & Defines total moment rate and the relative
 frequency of earthquakes of different magnitude\\
-\specialrule{.05em}{.1em}{.4em}
+\hline
+Temporal occurrence model & Defines functional form for the calculation of
+the probability of the number of rupture occurrences in a given time span\\ 
+\hline
 Magnitude area scaling relationship & Define sizes and shapes of rupture planes
 \\ 
 Rupture aspect ratio (length / width) & \\
-\specialrule{.05em}{.1em}{.4em}
+\hline
 Top edge & Define fault surface \\
 Intermediate edges (optional) & \\
 Bottom edge & \\
-\specialrule{.05em}{.1em}{.4em}
+\hline
 Rake angle & Defines faulting style \\
 \hline %inserts single line
 \end{tabular}
