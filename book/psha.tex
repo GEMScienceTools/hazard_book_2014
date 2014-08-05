@@ -96,7 +96,7 @@ It is worth noticing how equation \ref{eq:hazard_eq_ind_srcs_rups} allows the ca
 temporal occurrence model. More precisely, only the probability of the number of rupture occurrences $P_{rup_{ij}}(k | T)$
 depends on the temporal occurrence model, while the procedure for calculating the final probability of ground motion exceedance
 remains the same. This also means that is possible to define in the same source model sources with different temporal occurrence
-models (for instance Poissonian and Brownian Passage Time distributions).
+models (for instance time-dependent and time-independent sources).
 
 \subsection{Poissonian source model}
 If we now assume a source model to consist only of Poissonian sources, we can write $P_{rup_{ij}}(k | T)$ for every rupture as:
@@ -182,7 +182,6 @@ which is the traditional equation for calculating ground motion exceedance rates
 \citep{mcguire1995}.
 
 \section{Event-based PSHA}
-<<<<<<< HEAD
 The goal of an Event-based PSHA is to simulate seismicity in a region as described by a source model
 and to simulate ground shaking on a set of locations accordingly with a ground motion model. In both
 cases, simulation involves a Monte Carlo (i.e. random) sampling procedure.
