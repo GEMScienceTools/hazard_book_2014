@@ -33,7 +33,6 @@ modularity. Once the properties of the main objects are defined,
 \glspl{acr:gsim} can be used interchangeably. 
 %
 For example, the OpenQuake Ground Motion Toolkit \parencite{weatherill2014}
-\todo[inline]{check citation}
 builds on top of this library and provides tools for computing residuals given a
 dataset of recordings, or for the calculation of trellis plots that compare the
 scaling of multiple GMPEs side by side in terms of magnitude, distance,
@@ -125,7 +124,6 @@ version of the \gls{acr:gsim} implemented.
 %
 On average we accept discrepancies between the original implementation and the
 version included in the \gls{acr:oqe} lower than five percent.
-\todo[inline]{This percentage must be checked}
 
 GEM recommends that contextually to the publication of \glspl{acr:gsim} the
 table of coefficients as well as of a set of verification tables (or a software
@@ -148,6 +146,11 @@ computed hazard.
 % . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 \subsection{Spatial correlation of ground motion}
 %
+The current literature \parencite{bazzurro2005, crowley2006, park2007}
+clearly explains the necessity for considering spatially correlated
+ground motion fields in the calculation of losses for a portfolio. 
+
+%
 The OpenQuake-engine supports the calculation of ground-motion fields taking
 into account the spatial correlation of the within-event residuals
 \citep{boore2003}.
@@ -155,6 +158,6 @@ into account the spatial correlation of the within-event residuals
 The OpenQuake-engine supports correlation models developed according to a
 default scheme. Currently the OQ-engine provides only one correlation model, the
 one proposed by \citet{jayaram2009}.
-
+%
 The calculation of spatially correlated ground motion fields is summarized at
 page \pageref{sec:event_based}.
