@@ -5,6 +5,7 @@ known as ground motion models or \glspl{acr:gmpe} --- are implemented in the
 %
 % ..............................................................................
 \section{Introduction}
+\index{Ground-motion prediction equation}
 %
 \Glspl{groundshakingintensitymodel} are empirical equations that - given a 
 set of parameters - compute a value representative of the shaking 
@@ -84,7 +85,7 @@ Site parameters & - V$_{S,30}$ \\
 % ---------------------------------------------------------------------<<< Table
 %
 \subsubsection{Magnitude}
-\index{Ground-motion prediction equation!predictor variables!Magnitude}
+\index{Ground-motion prediction equation!Predictor variables!Magnitude}
 Moment magnitude \parencite{hanks1979} is the magnitude typology 
 preponderantly used within the most recent \glspl{acr:gsim} and - as a 
 consequence - within seismic hazard analysis in general. 
@@ -100,7 +101,7 @@ by default for the creation of almost all the source typologies supported by the
 \gls{acr:oqe}. 
 %
 \subsubsection{Distance}
-\index{Ground-motion prediction equation!predictor variables!Source-site 
+\index{Ground-motion prediction equation!Predictor variables!Source-site 
 distance}
 %
 The OpenQuake-engine supports almost all the rupture-site 
@@ -147,7 +148,7 @@ the engine does not contain conversion equations between different metrics
 % 
 % ..............................................................................
 \subsubsection{Rupture mechanism}
-\index{Ground-motion prediction equation!Rupture mechanism}
+\index{Ground-motion prediction equation!Predictor variables!Rupture mechanism}
 Many \glspl{acr:gsim} compute ground-motion using a 
 categorical variable describing the rupture mechanisms (e.g. normal,
 strike-slip or reverse).
@@ -164,7 +165,7 @@ supported by each specific model (for a review see
 % ..............................................................................
 \subsubsection{Time averaged shear-wave velocity in the uppermost 30m 
 (V$_{S,30}$)}
-\index{Ground-motion prediction equation!Rupture mechanism! Time averaged
+\index{Ground-motion prediction equation!Predictor variables!Time averaged
 shear-wave velocity in the uppermost 30m, V$_{S,30}$}
 %
 Local site conditions and their effects on the ground-motion are routinely 
@@ -189,7 +190,7 @@ to capture the influence of the deeper local geological structure.
 %
 % ..............................................................................
 \subsubsection{Depth to the top-of-rupture (Z$_{tor}$)}
-\index{Ground-motion prediction equation!Rupture mechanism!Depth to the top of
+\index{Ground-motion prediction equation!Predictor variables!Depth to the top of
 rupture}
 The depth to the top of rupture is a parameter introduced in some of the NGA
 West 1 \glspl{acr:gsim} such as the \textcite{chiou2008} and the

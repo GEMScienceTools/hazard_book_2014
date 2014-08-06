@@ -1,15 +1,22 @@
-This chapter describes the mathematical framework for PSHA implemented by the OpenQuake-engine.
-Two main assumptions are at the base of all PSHA calculators:
-\begin{itemize}
-	\item seismicity in a region is described by a collection of \textit{independent seismic sources}
-	(i.e. the occurrence of an earthquake rupture in a source does not affect the probability of
-	earthquake occurrence in the other sources)
-	\item each source generates \textit{independent earthquake ruptures} (i.e. the occurrence of an
-	earthquake rupture in a source does not affect the probability of occurrence of the other
-	potential earthquake ruptures in the same source)
-\end{itemize}
+This chapter describes the mathematical framework for PSHA implemented by 
+the OpenQuake-engine. More comprehensive descriptions of Probabilistic Seismic
+Hazard Analysis can be found for example in \textcite{mcguire2004} and 
+\textcite{usnrc2012}. 
 
 \section{Basic concepts}
+Two main assumptions are at the base of all PSHA calculators included in the 
+\gls{acr:oqe}:
+\begin{itemize}
+    \item seismicity in a region is described by a collection of
+        \textit{independent seismic sources} (i.e. the occurrence of an
+        earthquake rupture in a source does not affect the probability of
+        earthquake occurrence in the other sources)
+    \item each source generates \textit{independent earthquake ruptures} (i.e.
+        the occurrence of an earthquake rupture in a source does not affect the
+        probability of occurrence of the other potential earthquake ruptures in
+        the same source)
+\end{itemize}
+%
 The Classical, Event-Based, and Disaggregation analysis requires the definition
 of two main components: the \textit{seismic source model}, that is a collection
 of seismic sources describing the seismic activity in a region of interest, and
@@ -35,8 +42,9 @@ defines therefore a set of $J$ earthquake ruptures:
 Src_{i} = \left\{Rup_{i1}, Rup_{i2}, ..., Rup_{iJ}\right\}
 \end{equation}
 
-
+% ..............................................................................
 \section{Classical PSHA}
+\index{Hazard calculation!Classical}
 The classical PSHA analysis allows calculating the probabilities of exceeding,
 at least once in a given time span, and at a given site, a set of ground motion
 parameter levels considering all possible earthquake ruptures defined in a
@@ -172,16 +180,21 @@ can write the rate of occurrence of the $j$-th rupture as:
 \label{eq:rup_rate}
 \nu_{ij} = \nu_{i} * f_{i}(m, r)
 \end{equation}
-where $\nu_{i}$ is the total occurrence rate for the $i$-th source, and $f_{i}(m, r)$ is the probability, for the $i$-th source, of
-generating a rupture of magnitude $m$ and distance $r$. By placing \ref{eq:rup_rate} in \ref{eq:equivalence_condition_0} and
-by replacing the discrete summation over ruptures with a continuous integral over magnitude and distance, we can write:
+where $\nu_{i}$ is the total occurrence rate for the $i$-th source, and
+$f_{i}(m, r)$ is the probability, for the $i$-th source, of generating a rupture
+of magnitude $m$ and distance $r$. By placing \ref{eq:rup_rate} in
+\ref{eq:equivalence_condition_0} and by replacing the discrete summation over
+ruptures with a continuous integral over magnitude and distance, we can write:
 \begin{align}
 \nu = \sum_{i=1}^{I} \nu_{i} \iint f_{i}(m, r) P(X \ge x | m, r)\,dm \,dr
 \end{align}
 which is the traditional equation for calculating ground motion exceedance rates
 \citep{mcguire1995}.
-
+%
+% ..............................................................................
 \section{Event-based PSHA}
+\index{Hazard calculation!Event-based}
+\label{sec:event_based}
 The goal of an Event-based PSHA is to simulate seismicity in a region as described by a source model
 and to simulate ground shaking on a set of locations accordingly with a ground motion model. In both
 cases, simulation involves a Monte Carlo (i.e. random) sampling procedure.
@@ -236,7 +249,6 @@ covariance matrix $\bm\Sigma$.  $\bm\Sigma$ is a diagonal matrix when
 considering no correlation in the intra-event variability, while it has non-zero
 off-diagonal elements when considering a correlation model ($\rho$) for the
 intra-event aleatory variability.
-
 %
 %
 \subsection{Calculation of hazard curves from ground motion fields}
@@ -264,6 +276,7 @@ stochastic event sets. These can then be joined together to form a stochastic ev
 duration to provide a stable estimate of the rates of ground motion exceedance.
 
 \section{Disaggregation}
+\index{Hazard calculation!Disaggregation}
 The disaggregation analysis allows investigating how the different earthquake ruptures defined in a source model
 contribute to the probability of exceeding a certain ground motion level $x$ at a given site. Given the very
 large number of earthquake ruptures associated with a source model, contributions cannot be investigated on a rupture by
